@@ -64,5 +64,5 @@ You can choose any or take them all:
 - You can use libraries for charts, maps, fonts, icons etc.
 - All other libraries must be confirmed with mentor.
 
-##Design
+## Design
 There are no requirements for the application design at all. Be creative!
