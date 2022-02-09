@@ -1,12 +1,14 @@
 .footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   margin: 0 auto;
-
-  width: 1440px;
-  height: 100px;
   background-color: #eaefea;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: inherit;
+    height: 10vh;
+  }
 }
 
 .footer__text {
