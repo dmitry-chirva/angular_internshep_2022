@@ -64,10 +64,10 @@ button {
   cursor: pointer;
 }
 
-.container {
+.main-container {
   margin: 0 auto;
   padding: 0 20px;
   width: 1170px;
-  height: 90vh;
-  background-color: tomato;
+  min-height: calc(100vh - 100px);
+  background-color: tomato; // test
 }

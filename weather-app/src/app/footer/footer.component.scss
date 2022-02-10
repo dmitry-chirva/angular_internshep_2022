@@ -1,14 +1,9 @@
 .footer {
-  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #eaefea;
-
-  .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: inherit;
-    height: 10vh;
-  }
+  min-height: 100px;
 }
 
 .footer__text {
