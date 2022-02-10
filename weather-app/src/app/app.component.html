@@ -1,2 +1,14 @@
-<div class="main-container"></div>
+<div class="main-container">
+  <ul>
+    <li class="list"><a class="link" routerLink="/">Home</a></li>
+    <li class="list">
+      <a class="link" [routerLink]="'/:city/details'">Details</a>
+    </li>
+    <li class="list">
+      <a class="link" [routerLink]="'/:city/details/forecast'">Forecast</a>
+    </li>
+  </ul>
+
+  <router-outlet></router-outlet>
+</div>
 <app-footer></app-footer>
