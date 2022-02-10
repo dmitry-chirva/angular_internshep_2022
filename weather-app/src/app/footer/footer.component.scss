@@ -4,14 +4,14 @@
   justify-content: center;
   background-color: #eaefea;
   min-height: 100px;
-}
 
-.footer__text {
-  color: #747474;
-  line-height: 29px;
-  font-size: 24px;
+  &__text {
+    color: #747474;
+    line-height: 29px;
+    font-size: 24px;
 
-  .footer__text_link {
-    font-weight: 700;
+    &_link {
+      font-weight: 700;
+    }
   }
 }
