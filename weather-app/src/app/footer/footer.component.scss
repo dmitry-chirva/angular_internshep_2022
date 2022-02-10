@@ -1,0 +1,17 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eaefea;
+  min-height: 100px;
+
+  &__text {
+    color: #747474;
+    line-height: 29px;
+    font-size: 24px;
+
+    &_link {
+      font-weight: 700;
+    }
+  }
+}
