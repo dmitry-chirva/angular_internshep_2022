@@ -9,8 +9,6 @@ import { HomeComponent } from './home/home.component';
 import { DetailsComponent } from './details/details.component';
 import { ForecastComponent } from './forecast/forecast.component';
 
-import { CurrentWeatherComponent } from './current-weather/current-weather.component';
-
 
 @NgModule({
   declarations: [
@@ -19,8 +17,7 @@ import { CurrentWeatherComponent } from './current-weather/current-weather.compo
     FooterComponent,
     HomeComponent,
     DetailsComponent,
-    ForecastComponent,
-    CurrentWeatherComponent
+    ForecastComponent
   ],
   imports: [
     BrowserModule,
