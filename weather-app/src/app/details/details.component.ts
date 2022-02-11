@@ -13,4 +13,8 @@ export class DetailsComponent implements OnInit {
   openForecastPage() {
     this.router.navigate(['/:city/details/forecast']);
   }
+
+  openHomePage() {
+    this.router.navigate(['/']);
+  }
 }
