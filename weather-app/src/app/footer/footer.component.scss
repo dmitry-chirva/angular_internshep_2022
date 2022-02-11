@@ -1,8 +1,10 @@
+@import 'src/assets/styles/_general';
+
 .footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #eaefea;
+  background-color: $base-color;
   min-height: 100px;
 
   &__text {
