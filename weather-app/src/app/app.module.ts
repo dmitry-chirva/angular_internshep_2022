@@ -7,6 +7,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { DetailsComponent } from './details/details.component';
 import { ForecastComponent } from './forecast/forecast.component';
+import { FavoriteComponent } from './favorite/favorite.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ForecastComponent } from './forecast/forecast.component';
     FooterComponent,
     HomeComponent,
     DetailsComponent,
-    ForecastComponent
+    ForecastComponent,
+    FavoriteComponent
   ],
   imports: [
     BrowserModule,
