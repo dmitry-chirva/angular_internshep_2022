@@ -9,16 +9,18 @@ import { HomeComponent } from './home/home.component';
 import { DetailsComponent } from './details/details.component';
 import { ForecastComponent } from './forecast/forecast.component';
 
+import { CurrentWeatherComponent } from './current-weather/current-weather.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    FooterComponent,
     HomeComponent,
     DetailsComponent,
-    ForecastComponent
+    ForecastComponent,
+    CurrentWeatherComponent
   ],
   imports: [
     BrowserModule,
