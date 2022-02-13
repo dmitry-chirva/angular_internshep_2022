@@ -1,0 +1,53 @@
+.theme-switcher__label {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  & > input {
+    display: none;
+  }
+}
+
+.switcher--slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(6, 3, 167);
+  transition: 0.4s;
+}
+
+.switcher--slider:before {
+  position: absolute;
+  content: "";
+  height: 40px;
+  width: 40px;
+  left: 0px;
+  bottom: 4px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  transition: 0.4s;
+  box-shadow: 0 0px 15px #2020203d;
+  background: #fff url("../../../assets/img/dark-mode.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+input:checked + .switcher--slider {
+  background-color: #88aa7d;
+}
+
+input:checked + .switcher--slider:before {
+  transform: translateX(24px);
+  background: #fff url("../../../assets/img/light-mode.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.switcher--slider.round {
+  border-radius: 34px;
+}
+.switcher--slider.round:before {
+  border-radius: 50%;
+}
