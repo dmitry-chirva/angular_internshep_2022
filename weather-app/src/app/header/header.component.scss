@@ -23,6 +23,20 @@
 }
 
 .logo__icon {
+  width: 65px;
+  height: 75px;
+  background-color: #88AA7D;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FFF;
+  border-radius: 5px;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 59px;
+}
+
+.logo__icon {
   width: 75px;
   height: 65px;
 }
