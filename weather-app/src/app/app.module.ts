@@ -7,7 +7,8 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { DetailsComponent } from './details/details.component';
 import { ForecastComponent } from './forecast/forecast.component';
-import { FavoriteComponent } from './favorite/favorite.component';
+import { FavoriteListComponent } from './home/favorite-list/favorite-list.component';
+import { FavoriteItemComponent } from './home/favorite-list/favorite-item/favorite-item.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FavoriteComponent } from './favorite/favorite.component';
     HomeComponent,
     DetailsComponent,
     ForecastComponent,
-    FavoriteComponent
+    FavoriteListComponent,
+    FavoriteItemComponent
   ],
   imports: [
     BrowserModule,
