@@ -63,11 +63,8 @@ button {
 
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?c3xgqw');
-  src:  url('fonts/icomoon.eot?c3xgqw#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?c3xgqw') format('truetype'),
-    url('fonts/icomoon.woff?c3xgqw') format('woff'),
-    url('fonts/icomoon.svg?c3xgqw#icomoon') format('svg');
+  src: url('assets/fonts/weather-font.ttf') format('truetype'),
+    url('assets/fonts/weather-font.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: block;
