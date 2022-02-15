@@ -4,12 +4,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
-import {HeaderComponent} from "./header/header.component";
+import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { DetailsComponent } from './details/details.component';
 import { ForecastComponent } from './forecast/forecast.component';
 import { SharedModule } from './shared/shared.module';
-
+import { HomeModule } from './home/home.module';
+import { ForecastModule } from './forecast/forecast.module';
+import { DetailsModule } from './details/details.module';
 
 @NgModule({
   declarations: [
@@ -18,14 +20,17 @@ import { SharedModule } from './shared/shared.module';
     FooterComponent,
     HomeComponent,
     DetailsComponent,
-    ForecastComponent
+    ForecastComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    HomeModule,
+    ForecastModule,
+    DetailsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
