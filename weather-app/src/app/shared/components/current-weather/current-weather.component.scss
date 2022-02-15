@@ -1,29 +1,28 @@
-.current-weather{
-    &__info {
-        display: flex;
-        align-items: center;
-        margin-bottom: 51px;
-    }
-    & .icon-calendar{
-        font-size: 40px;
-    }
-    &__date{
-        margin-left: 25px;
-        font-size: 48px;
-
-    }
-    &__city {
-        font-size: 48px;
-        font-weight: 500;
-    }
-    & .icon-heart-active{
-        margin-left: 37px;
-        font-size: 40px;
-    }
-    &__temperature{
-        margin-top: 51px;
-        font-size: 48px;
-        font-weight: 500;
-    }
-
+.current-weather {
+  &__info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 51px;
+  }
+  & .icon-calendar {
+    font-size: 40px;
+  }
+  &__date {
+    margin-left: 25px;
+    font-size: 48px;
+  }
+  &__city {
+    font-size: 48px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  & .icon-heart-active {
+    margin-left: 37px;
+    font-size: 40px;
+  }
+  &__temperature {
+    margin-top: 51px;
+    font-size: 48px;
+    font-weight: 500;
+  }
 }

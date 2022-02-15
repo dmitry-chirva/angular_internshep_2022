@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-current-weather',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CurrentWeatherComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+    openDetailsPage() {
+    this.router.navigate(['/:city/details']);
   }
 
 }

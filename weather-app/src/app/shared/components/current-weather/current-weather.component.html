@@ -5,7 +5,13 @@
             February 7th, 2022
         </p>
     </div>
-    <a href='' class="current-weather__city">Kyiv, Ukraine</a>
+    <a                 
+        routerLink=":city/details"  
+        (click)="openDetailsPage()"
+        class="current-weather__city"
+    >
+        Kyiv, Ukraine
+    </a>
     <button><span class="icon icon-heart-active"></span></button>
     <p class="current-weather__temperature">7 ° С</p>
 </div>
