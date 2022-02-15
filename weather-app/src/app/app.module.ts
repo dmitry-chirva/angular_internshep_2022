@@ -8,6 +8,7 @@ import {HeaderComponent} from "./header/header.component";
 import { HomeComponent } from './home/home.component';
 import { DetailsComponent } from './details/details.component';
 import { ForecastComponent } from './forecast/forecast.component';
+import { ForecastCardComponent } from './forecast-card/forecast-card.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ForecastComponent } from './forecast/forecast.component';
     FooterComponent,
     HomeComponent,
     DetailsComponent,
-    ForecastComponent
+    ForecastComponent,
+    ForecastCardComponent
   ],
   imports: [
     BrowserModule,

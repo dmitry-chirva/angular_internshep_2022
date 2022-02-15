@@ -10,6 +10,26 @@ export class ForecastComponent implements OnInit {
   constructor(private router: Router) {}
 
   public city: string = "Kyiv, Ukraine";
+  public forecast: object[] = [
+    {
+      date: "Feb 7th, 2022",
+      icon: "string",
+      minTemp: "0",
+      maxTemp: "4",
+      weather: "Light snow",
+      wind: "2 km/h",
+      humidity: "70%"
+    },
+    {
+      date: "Feb 7th, 2022",
+      icon: "string",
+      minTemp: "0",
+      maxTemp: "4",
+      weather: "Light snow",
+      wind: "2 km/h",
+      humidity: "70%"
+    }
+  ]
 
   ngOnInit(): void {}
 
