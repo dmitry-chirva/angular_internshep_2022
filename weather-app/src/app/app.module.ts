@@ -15,7 +15,6 @@ import { ForecastComponent } from './forecast/forecast.component';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    FooterComponent,
     HomeComponent,
     DetailsComponent,
     ForecastComponent

@@ -41,6 +41,7 @@ img {
 body {
   min-height: 100vh;
   margin: 0;
+  font-size: 14px;
 }
 
 .list {
@@ -70,7 +71,6 @@ button {
 }
 
 [class^="icon-"], [class*=" icon-"] {
-  /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
   speak: never;
   font-style: normal;
@@ -78,8 +78,6 @@ button {
   font-variant: normal;
   text-transform: none;
   line-height: 1;
-
-  /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -106,5 +104,5 @@ button {
 }
 .icon-calendar:before {
   content: "\e904";
-  color: #fff;
+  color: #000;
 }
