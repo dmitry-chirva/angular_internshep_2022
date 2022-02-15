@@ -1,3 +1,25 @@
-<h3>THIS IS FORECAST PAGE ⚡</h3>
-<button (click)="openHomePage()">to home</button> <span> | </span>
-<button (click)="openDetailsPage()">to details</button>
+<div class="forecast">
+    <div class="bread-crumbs">
+      <button (click)="openHomePage()">Home/</button>
+      <button (click)="openDetailsPage()">Details/</button>
+      <span class="current-page">Forecast</span>
+    </div>
+    <div class="forecast__buttons">
+      <button type="button" class="forecast__type">
+        Today
+      </button>
+      <button type="button" class="forecast__type">
+        Tomorrow
+      </button>
+      <button type="button" class="forecast__type">
+        3 days
+      </button>
+      <button type="button" class="forecast__type active">
+        10 days
+      </button>
+    </div>
+    <h3 class="forecast__city">
+      {{ city }}
+    </h3>
+</div>
+

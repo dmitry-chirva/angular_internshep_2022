@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 export class ForecastComponent implements OnInit {
   constructor(private router: Router) {}
 
+  public city: string = "Kyiv, Ukraine";
+
   ngOnInit(): void {}
 
   openDetailsPage() {
