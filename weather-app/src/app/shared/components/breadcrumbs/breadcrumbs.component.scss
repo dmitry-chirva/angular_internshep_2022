@@ -1,0 +1,18 @@
+@import "src/assets/styles/_general";
+.menu {
+  display: flex;
+  margin-top: 39px;
+  margin-bottom: 29px;
+  &__item {
+    list-style-type: none;
+  }
+  &__link {
+    cursor: pointer;
+    &-active {
+      color: $accent-color;
+    }
+  }
+  &__link_decoration {
+    margin: 0 10px;
+  }
+}

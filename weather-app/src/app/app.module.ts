@@ -8,6 +8,7 @@ import {HeaderComponent} from "./header/header.component";
 import { HomeComponent } from './home/home.component';
 import { DetailsComponent } from './details/details.component';
 import { ForecastComponent } from './forecast/forecast.component';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ForecastComponent } from './forecast/forecast.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

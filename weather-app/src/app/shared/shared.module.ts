@@ -3,16 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { CurrentWeatherComponent } from './components/current-weather/current-weather.component';
 
+import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
+
 
 @NgModule({
   declarations: [
-    CurrentWeatherComponent
+    CurrentWeatherComponent,
+    BreadcrumbsComponent
   ],
   imports: [
     BrowserModule
   ],
   exports: [
-    CurrentWeatherComponent
+    CurrentWeatherComponent,
+    BreadcrumbsComponent
   ]
 })
 export class SharedModule { }
