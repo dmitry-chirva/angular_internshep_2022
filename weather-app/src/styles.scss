@@ -22,8 +22,11 @@ p {
   margin: 0;
 }
 
+a:active,
+a:hover,
 a {
   text-decoration: none;
+  color: #fff;
 }
 
 ul,
@@ -42,6 +45,7 @@ body {
   min-height: 100vh;
   margin: 0;
   font-size: 14px;
+  color: #fff;
 }
 
 .list {
@@ -70,9 +74,9 @@ button {
   font-display: block;
 }
 
-
-[class^="icon-"], [class*=" icon-"] {
-  font-family: 'icomoon' !important;
+[class^="icon-"],
+[class*=" icon-"] {
+  font-family: "icomoon" !important;
   speak: never;
   font-style: normal;
   font-weight: normal;
@@ -105,5 +109,5 @@ button {
 }
 .icon-calendar:before {
   content: "\e904";
-  color: #000;
+  color: #fff;
 }
