@@ -4,10 +4,9 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-current-weather',
   templateUrl: './current-weather.component.html',
-  styleUrls: ['./current-weather.component.scss']
+  styleUrls: ['./current-weather.component.scss'],
 })
 export class CurrentWeatherComponent implements OnInit {
-
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -15,5 +14,4 @@ export class CurrentWeatherComponent implements OnInit {
     openDetailsPage() {
     this.router.navigate(['/:city/details']);
   }
-
 }
