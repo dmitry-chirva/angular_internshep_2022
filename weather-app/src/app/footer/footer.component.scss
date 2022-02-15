@@ -1,17 +1,20 @@
+@import 'src/assets/styles/_general';
+
 .footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #eaefea;
+  background-color: $bkg-light-theme;
   min-height: 100px;
 
   &__text {
-    color: #747474;
+    color: $text-color-dark;
     line-height: 29px;
     font-size: 24px;
 
     &_link {
       font-weight: 700;
+      color: #88aa7d;
     }
   }
 }
