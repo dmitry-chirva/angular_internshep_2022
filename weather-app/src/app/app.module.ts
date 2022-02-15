@@ -17,7 +17,6 @@ import { DetailsModule } from './details/details.module';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    FooterComponent,
     HomeComponent,
     DetailsComponent,
     ForecastComponent,
