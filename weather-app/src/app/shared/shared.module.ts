@@ -10,6 +10,9 @@ import { CurrentWeatherComponent } from './components/current-weather/current-we
   ],
   imports: [
     BrowserModule
+  ],
+  exports: [
+    CurrentWeatherComponent
   ]
 })
 export class SharedModule { }
