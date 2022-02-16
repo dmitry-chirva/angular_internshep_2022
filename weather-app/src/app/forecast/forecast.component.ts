@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import {forecastCardI} from "./interfaces/forecastCard";
 
 @Component({
   selector: 'app-forecast',
@@ -10,7 +11,7 @@ export class ForecastComponent implements OnInit {
   constructor(private router: Router) {}
 
   public city: string = "Kyiv, Ukraine";
-  public forecast: object[] = [
+  public forecast: forecastCardI[] = [
     {
       date: "Feb 7th, 2022",
       icon: "string",
@@ -28,7 +29,79 @@ export class ForecastComponent implements OnInit {
       weather: "Light snow",
       wind: "2 km/h",
       humidity: "70%"
-    }
+    },
+    {
+      date: "Feb 7th, 2022",
+      icon: "string",
+      minTemp: "0",
+      maxTemp: "4",
+      weather: "Light snow",
+      wind: "2 km/h",
+      humidity: "70%"
+    },
+    {
+      date: "Feb 7th, 2022",
+      icon: "string",
+      minTemp: "0",
+      maxTemp: "4",
+      weather: "Light snow",
+      wind: "2 km/h",
+      humidity: "70%"
+    },
+    {
+      date: "Feb 7th, 2022",
+      icon: "string",
+      minTemp: "0",
+      maxTemp: "4",
+      weather: "Light snow",
+      wind: "2 km/h",
+      humidity: "70%"
+    },
+    {
+      date: "Feb 7th, 2022",
+      icon: "string",
+      minTemp: "0",
+      maxTemp: "4",
+      weather: "Light snow",
+      wind: "2 km/h",
+      humidity: "70%"
+    },
+    {
+      date: "Feb 7th, 2022",
+      icon: "string",
+      minTemp: "0",
+      maxTemp: "4",
+      weather: "Light snow",
+      wind: "2 km/h",
+      humidity: "70%"
+    },
+    {
+      date: "Feb 7th, 2022",
+      icon: "string",
+      minTemp: "0",
+      maxTemp: "4",
+      weather: "Light snow",
+      wind: "2 km/h",
+      humidity: "70%"
+    },
+    {
+      date: "Feb 7th, 2022",
+      icon: "string",
+      minTemp: "0",
+      maxTemp: "4",
+      weather: "Light snow",
+      wind: "2 km/h",
+      humidity: "70%"
+    },
+    {
+      date: "Feb 7th, 2022",
+      icon: "string",
+      minTemp: "0",
+      maxTemp: "4",
+      weather: "Light snow",
+      wind: "2 km/h",
+      humidity: "70%"
+    },
   ]
 
   ngOnInit(): void {}

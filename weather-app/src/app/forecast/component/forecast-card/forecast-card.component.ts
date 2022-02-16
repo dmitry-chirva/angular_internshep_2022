@@ -1,4 +1,5 @@
 import { Input, Component, OnInit } from '@angular/core';
+import {forecastCardI} from "../../interfaces/forecastCard";
 
 @Component({
   selector: 'app-forecast-card',
@@ -7,11 +8,20 @@ import { Input, Component, OnInit } from '@angular/core';
 })
 export class ForecastCardComponent implements OnInit {
 
-  @Input() dayState: object = {};
+  @Input() dayState: forecastCardI = {
+    date: "",
+    icon: "",
+    minTemp: "",
+    maxTemp: "",
+    weather: "",
+    wind: "",
+    humidity: "",
+  };
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.dayState);
   }
 
 }

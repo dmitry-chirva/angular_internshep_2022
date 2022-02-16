@@ -21,5 +21,10 @@
     <h3 class="forecast__city">
       {{ city }}
     </h3>
+    <div>
+      <div class="forecast-list">
+        <app-forecast-card *ngFor="let day of forecast" [dayState]="day" class="forecast-list__item"></app-forecast-card>
+      </div>
+    </div>
 </div>
 

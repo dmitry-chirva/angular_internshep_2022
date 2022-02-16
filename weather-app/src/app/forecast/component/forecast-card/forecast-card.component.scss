@@ -1,0 +1,28 @@
+@import 'src/assets/styles/_general';
+
+.forecast-day {
+  width: 100%;
+  height: fit-content;
+  padding: 10px 5px;
+  background-color: $bkg-card-light;
+  color: $text-color;
+  font-size: 14px;
+}
+
+.forecast-day__title {
+  font-size: 18px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.forecast-day__temp {
+  font-size: 24px;
+  color: $text-color;
+  margin-bottom: 25px;
+}
+
+.forecast-day__general-info, .forecast-day__wind {
+  margin-bottom: 20px;
+}
