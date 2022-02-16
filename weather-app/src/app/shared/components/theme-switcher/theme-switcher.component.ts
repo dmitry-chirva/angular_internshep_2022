@@ -14,7 +14,7 @@ export class ThemeSwitcherComponent implements OnInit {
   ngOnInit(): void {}
 
   onToggle(theme: string): void {
-    console.log(theme);
     this.theme = theme === this.lightTheme ? this.darkTheme : this.lightTheme;
+    // console.log('changed to', this.theme);
   }
 }

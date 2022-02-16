@@ -21,8 +21,9 @@
     right: 0;
     bottom: 0;
     border-radius: 40px;
-    border: 1px solid rgba(226, 226, 226, 0.527);
-    background-color: $bkg-overlay-dark;
+    border: 1px solid $text-color;
+    background-color: $text-color;
+
     transition: 0.4s;
 
     &:before {
@@ -30,27 +31,27 @@
       content: "";
       height: 36px;
       width: 36px;
-      left: -2px;
+      left: 24px;
       bottom: 4px;
       top: 0;
       bottom: 0;
       margin: auto 0;
       transition: 0.4s;
       border-radius: 42px;
-      background: $accent-color url("../../../../assets/img/moon.svg");
+      background: $accent-color url("../../../../assets/img/sun.svg");
       background-repeat: no-repeat;
-      background-position: left;
+      background-position: center;
     }
   }
 }
 
 input:checked + .theme-switcher__slider {
-  background: $text-color;
+  background: $bkg-overlay-dark;
 
   &:before {
-    transform: translateX(26px);
-    background: $accent-color url("../../../../assets/img/sun.svg");
+    transform: translateX(-26px);
+    background: $accent-color url("../../../../assets/img/moon.svg");
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: left;
   }
 }
