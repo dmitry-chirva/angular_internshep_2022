@@ -1,0 +1,56 @@
+@import "src/assets/styles/_general";
+@import "src/styles.scss";
+
+.theme-switcher {
+  &__input {
+    display: none;
+  }
+
+  &__label {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+
+  &__slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 40px;
+    border: 1px solid rgba(226, 226, 226, 0.527);
+    background-color: $bkg-overlay-dark;
+    transition: 0.4s;
+
+    &:before {
+      position: absolute;
+      content: "";
+      height: 36px;
+      width: 36px;
+      left: -2px;
+      bottom: 4px;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+      transition: 0.4s;
+      border-radius: 42px;
+      background: $accent-color url("../../../../assets/img/moon.svg");
+      background-repeat: no-repeat;
+      background-position: left;
+    }
+  }
+}
+
+input:checked + .theme-switcher__slider {
+  background: $text-color;
+
+  &:before {
+    transform: translateX(26px);
+    background: $accent-color url("../../../../assets/img/sun.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
