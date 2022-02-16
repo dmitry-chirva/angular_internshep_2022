@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forecast',
@@ -7,15 +6,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./forecast.component.scss'],
 })
 export class ForecastComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor() { }
 
-  ngOnInit(): void {}
-
-  openDetailsPage() {
-    this.router.navigate(['/:city/details']);
-  }
-
-  openHomePage() {
-    this.router.navigate(['/']);
+  ngOnInit(): void {
   }
 }

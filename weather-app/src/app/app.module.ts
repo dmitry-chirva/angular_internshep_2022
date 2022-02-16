@@ -4,27 +4,31 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { DetailsComponent } from './details/details.component';
 import { ForecastComponent } from './forecast/forecast.component';
-import { FavoriteListComponent } from './home/favorite-list/favorite-list.component';
-import { FavoriteItemComponent } from './home/favorite-list/favorite-item/favorite-item.component';
+import { HomeModule } from './home/home.module';
+import { ForecastModule } from './forecast/forecast.module';
+import { DetailsModule } from './details/details.module';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
     FooterComponent,
     HomeComponent,
     DetailsComponent,
     ForecastComponent,
-    FavoriteListComponent,
-    FavoriteItemComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HomeModule,
+    ForecastModule,
+    DetailsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

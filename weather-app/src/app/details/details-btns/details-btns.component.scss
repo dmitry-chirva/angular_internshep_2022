@@ -1,0 +1,24 @@
+.btn-groups {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 105px;
+    width: 630px;
+    height: 40px;
+    float: right
+}
+
+button {
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
+    font-family: Roboto;
+    color: #747474;
+    font-weight: 500;
+    font-size: 16px;
+    background: #EAEFEA;
+
+    &:nth-child(1){
+        background: #88AA7D;
+        color: #FFFFFF;
+    }
+}
