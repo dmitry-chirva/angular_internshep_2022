@@ -2,42 +2,59 @@
 
     &__item {
         margin: 0 38px 35px 0;
-        width: 351.5px;
+        width: 351px;
         height: 307px;
-        padding: 0 36.5px 0 13px;
+        padding: 25px 0 0 13px;
         position: relative;
         background: rgba(234, 239, 234, 0.2);
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
 
-    &__calendar {
-        display: inline;
+    &__icon-calendar {
         position: relative;
-        top: 7px;
+        top: 3px;
+        font-size: 22px;
+        margin-right: 10px;
+    }
+
+    &__icon-heart-active {
+        position: absolute;
+        font-size: 35px;
+        top: 25px;
+        right: 40px;
+    }
+
+    &__current-weather {
+        position: absolute;
+        top: 65px;
+        right: 35px;
+        width: 122px;
+        height: 132px;
     }
     
     &__date {
-        margin-top: 28px;
+        font-size: 18px;
     }
 
     &__city {
-        margin-top: 17px;
+        margin-top: 20px;
         font-weight: 500;
         font-size: 36px;
     }
 
     &__temperature {
-        margin-top: 21px;
+        margin-top: 20px;
         font-weight: 500;
         font-size: 48px;
         line-height: 47px;
     }
 
-    &__additional-info {
-        margin-top: 12px;
-        font-family: Montserrat;
-        font-style: normal;
-        font-weight: normal;
+    &__additional {
+        margin-top: 15px;
         font-size: 18px;
+
+        &-item {
+            margin-bottom: 13px;
+        }
     }
 }
