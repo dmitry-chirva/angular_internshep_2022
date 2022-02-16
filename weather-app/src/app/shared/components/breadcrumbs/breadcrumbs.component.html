@@ -2,8 +2,9 @@
     <ul class="menu">
         <li class="menu__item">
             <a 
-                routerLink="" 
-                (click)="openHomePage()"
+                routerLink="/" 
+                routerLinkActive="active-link"
+                [routerLinkActiveOptions]="{exact:true}"
                 class="menu__link"
             >
                 Home
@@ -11,18 +12,20 @@
         </li>
         <li class="menu__item">
             <a 
-                routerLink=":city/details"  
-                (click)="openDetailsPage()"
+                routerLink="/:city/details" 
+                routerLinkActive="active-link" 
+                [routerLinkActiveOptions]="{exact:true}"
                 class="menu__link"
             >
                 <span class="menu__link_decoration">/</span>
                 Details
             </a>
         </li>
-        <li class="menu__item">
+        <li class="menu__item" *ngIf="router.url === '/:city/details/forecast'">
             <a 
-                routerLink=":city/details/forecast" 
-                (click)="openForecastPage()"
+                routerLink="/:city/details/forecast" 
+                routerLinkActive="active-link"
+                [routerLinkActiveOptions]="{exact:true}"
                 class="menu__link"
             >
             <span class="menu__link_decoration">/</span>

@@ -8,16 +8,8 @@ import { Router } from '@angular/router';
 })
 export class BreadcrumbsComponent implements OnInit {
 
-  constructor(private router: Router) {}
+  constructor(public router: Router) { }
 
   ngOnInit(): void { }
-  openHomePage() {
-    this.router.navigate(['/']);
-  }
-  openDetailsPage() {
-    this.router.navigate(['/:city/details']);
-  }
-  openForecastPage() {
-    this.router.navigate(['/:city/details/forecast']);
-  }
+
 }
