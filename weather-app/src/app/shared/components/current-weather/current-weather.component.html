@@ -11,6 +11,8 @@
     >
         Kyiv, Ukraine
     </a>
-    <button><span class="icon icon-heart-active"></span></button>
+    <button *ngIf="router.url === '/:city/details'">
+        <span class="icon icon-heart-active"></span>
+    </button>
     <p class="current-weather__temperature">7 ° С</p>
 </div>
