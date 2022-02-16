@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { FooterComponent } from './footer/footer.component';
-import { HeaderComponent } from './header/header.component';
-import { HomeComponent } from './home/home.component';
-import { DetailsComponent } from './details/details.component';
-import { ForecastComponent } from './forecast/forecast.component';
 import { HomeModule } from './home/home.module';
 import { ForecastModule } from './forecast/forecast.module';
 import { DetailsModule } from './details/details.module';
+import { HeaderModule } from './header/header.module';
+
+import { AppComponent } from './app.component';
+import { FooterComponent } from './footer/footer.component';
+import { HomeComponent } from './home/home.component';
+import { DetailsComponent } from './details/details.component';
+import { ForecastComponent } from './forecast/forecast.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     FooterComponent,
     HomeComponent,
     DetailsComponent,
@@ -27,6 +27,7 @@ import { DetailsModule } from './details/details.module';
     HomeModule,
     ForecastModule,
     DetailsModule,
+    HeaderModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

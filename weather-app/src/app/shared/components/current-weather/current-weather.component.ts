@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./current-weather.component.scss'],
 })
 export class CurrentWeatherComponent implements OnInit {
+
   hasFavorite: boolean;
 
   constructor(router: Router) {
