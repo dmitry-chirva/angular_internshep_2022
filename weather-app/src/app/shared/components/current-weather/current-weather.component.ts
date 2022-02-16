@@ -11,7 +11,4 @@ export class CurrentWeatherComponent implements OnInit {
 
   ngOnInit(): void {
   }
-    openDetailsPage() {
-    this.router.navigate(['/:city/details']);
-  }
 }
