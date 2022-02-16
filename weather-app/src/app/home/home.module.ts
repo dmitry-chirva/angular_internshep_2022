@@ -6,7 +6,7 @@ import { CurrentWeatherComponent } from '../shared/components/current-weather/cu
 
 @NgModule({
   declarations: [SomeComponentComponent],
-  imports: [CommonModule, SharedModule], 
-  exports: [SomeComponentComponent, CurrentWeatherComponent], 
+  imports: [CommonModule, SharedModule],
+  exports: [SomeComponentComponent, CurrentWeatherComponent],
 })
 export class HomeModule {}
