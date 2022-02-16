@@ -8,9 +8,11 @@ import { Router } from '@angular/router';
 })
 export class CurrentWeatherComponent implements OnInit {
   hasFavorite: boolean;
+  isForecastPage: boolean;
 
   constructor(router: Router) {
     this.hasFavorite = router.url === '/:city/details';
+    this.isForecastPage = router.url === '/:city/details/forecast';
   }
 
   ngOnInit(): void {
