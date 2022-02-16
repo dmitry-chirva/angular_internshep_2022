@@ -8,7 +8,6 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { DetailsComponent } from './details/details.component';
 import { ForecastComponent } from './forecast/forecast.component';
-import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
 import { ForecastModule } from './forecast/forecast.module';
 import { DetailsModule } from './details/details.module';
@@ -25,7 +24,6 @@ import { DetailsModule } from './details/details.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule,
     HomeModule,
     ForecastModule,
     DetailsModule,
