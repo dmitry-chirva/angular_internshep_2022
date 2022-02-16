@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import { HomeModule } from './home/home.module';
+import { ForecastModule } from './forecast/forecast.module';
+import { DetailsModule } from './details/details.module';
 import { HeaderModule } from './header/header.module';
 
 import { AppComponent } from './app.component';
@@ -17,7 +20,14 @@ import { ForecastComponent } from './forecast/forecast.component';
     DetailsComponent,
     ForecastComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HeaderModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HomeModule,
+    ForecastModule,
+    DetailsModule,
+    HeaderModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
