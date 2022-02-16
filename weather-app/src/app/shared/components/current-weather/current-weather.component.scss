@@ -1,7 +1,6 @@
 .current-weather {
   padding-top: 50px;
   margin-bottom: 95px;
-
   &__info {
     display: flex;
     align-items: center;
@@ -17,6 +16,7 @@
   &__city {
     font-size: 48px;
     font-weight: 500;
+    cursor: pointer;
   }
   &__city:hover {
     color: #88aa7d;
