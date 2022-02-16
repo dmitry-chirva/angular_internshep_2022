@@ -1,5 +1,5 @@
 <div class="current-weather">
-    <div *ngIf="isNotForecastPage" class="current-weather__info">
+    <div *ngIf="hasInfo" class="current-weather__info">
         <i class="icon icon-calendar"></i>
         <p class="current-weather__date">
             February 7th, 2022
@@ -14,5 +14,5 @@
     <button *ngIf="hasFavorite">
         <span class="icon icon-heart-active"></span>
     </button>
-    <p *ngIf="isNotForecastPage" class="current-weather__temperature">7 ° С</p>
+    <p *ngIf="hasTemperature" class="current-weather__temperature">7 ° С</p>
 </div>

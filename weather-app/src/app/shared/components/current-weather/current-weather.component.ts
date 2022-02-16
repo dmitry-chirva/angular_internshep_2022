@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-current-weather',
@@ -7,14 +6,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./current-weather.component.scss'],
 })
 export class CurrentWeatherComponent implements OnInit {
-  hasFavorite: boolean;
-  isNotForecastPage: boolean;
+  @Input() hasFavorite: boolean = true;
+  @Input() hasTemperature: boolean = true;
+  @Input() hasInfo: boolean = true;
 
-  constructor(router: Router) {
-    this.hasFavorite = router.url === '/:city/details';
-    this.isNotForecastPage = router.url !== '/:city/details/forecast';
-  }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 }
