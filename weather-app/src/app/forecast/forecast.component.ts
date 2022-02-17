@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+
 import {forecastCardI} from "./interfaces/forecastCard";
+
 
 @Component({
   selector: 'app-forecast',
@@ -8,7 +9,8 @@ import {forecastCardI} from "./interfaces/forecastCard";
   styleUrls: ['./forecast.component.scss'],
 })
 export class ForecastComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor() { }
+
 
   city: string = "Kyiv, Ukraine";
   forecast: forecastCardI[] = [
@@ -112,5 +114,8 @@ export class ForecastComponent implements OnInit {
 
   openHomePage() {
     this.router.navigate(['/']);
+
+  ngOnInit(): void {
+
   }
 }

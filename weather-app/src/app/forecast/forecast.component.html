@@ -1,9 +1,6 @@
 <div class="forecast">
-    <div class="bread-crumbs">
-      <button (click)="openHomePage()">Home/</button>
-      <button (click)="openDetailsPage()">Details/</button>
-      <span class="current-page">Forecast</span>
-    </div>
+    <app-breadcrumbs></app-breadcrumbs>
+    <app-current-weather [hasFavorite]="false" [hasTemperature]="false" [hasInfo]="false"></app-current-weather>
     <div class="forecast__buttons">
       <button type="button" class="forecast__type">
         Today
@@ -28,4 +25,3 @@
     </div>
     <button type="button" class="forecast__history-button">Yesterday's weather</button>
 </div>
-

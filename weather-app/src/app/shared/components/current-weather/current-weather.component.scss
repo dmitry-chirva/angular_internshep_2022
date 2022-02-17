@@ -1,0 +1,31 @@
+.current-weather {
+  &__info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+  & .icon-calendar {
+    font-size: 40px;
+  }
+  &__date {
+    margin-left: 25px;
+    font-size: 48px;
+  }
+  &__city {
+    font-size: 48px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  &__city:hover {
+    color: #88aa7d;
+  }
+  & .icon-heart-active {
+    margin-left: 37px;
+    font-size: 40px;
+  }
+  &__temperature {
+    margin-top: 50px;
+    font-size: 48px;
+    font-weight: 500;
+  }
+}

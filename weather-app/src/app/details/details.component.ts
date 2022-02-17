@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-details',
@@ -7,14 +6,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor() { }
 
-  ngOnInit(): void {}
-  openForecastPage() {
-    this.router.navigate(['/:city/details/forecast']);
-  }
-
-  openHomePage() {
-    this.router.navigate(['/']);
+  ngOnInit(): void {
   }
 }
