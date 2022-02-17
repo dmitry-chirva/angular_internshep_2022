@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@500;700;900&display=swap");
 html {
   box-sizing: border-box;
-  min-height: 100vh;
+  min-height: 100%;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -10,6 +10,12 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 h1,
@@ -42,7 +48,7 @@ img {
 }
 
 body {
-  min-height: 100vh;
+  min-height: 100%;
   margin: 0;
   font-size: 14px;
   color: #fff;
