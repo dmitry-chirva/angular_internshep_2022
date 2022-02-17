@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-
 import { CurrentWeatherComponent } from './components/current-weather/current-weather.component';
 import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switcher.component';
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
+import { DetailsBtnsComponent } from './components/details-btns/details-btns.component';
 
 
 @NgModule({
@@ -12,6 +12,7 @@ import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.compo
     CurrentWeatherComponent,
     BreadcrumbsComponent,
     ThemeSwitcherComponent,
+    DetailsBtnsComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,6 +22,7 @@ import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.compo
     CurrentWeatherComponent,
     BreadcrumbsComponent,
     ThemeSwitcherComponent,
+    DetailsBtnsComponent,
   ]
 
 })
