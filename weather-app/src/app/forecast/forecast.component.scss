@@ -1,8 +1,8 @@
-@import 'src/assets/styles/_general';
+@import "src/assets/styles/_general";
 
 .forecast {
   width: 100%;
-  margin-top: 30px;
+  margin-bottom: 65px;
 }
 
 .forecast-list {
@@ -12,6 +12,7 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  margin-bottom: 50px;
 }
 
 .forecast-list__item {
@@ -20,7 +21,6 @@
 }
 
 .forecast__history-button {
-  background: none;
   color: $text-color;
   font-size: 24px;
   font-weight: 400;
@@ -36,4 +36,3 @@ app-current-weather {
   display: block;
   margin-bottom: 55px;
 }
-
