@@ -1,15 +1,19 @@
-
 <div class="forecast">
-    <app-breadcrumbs></app-breadcrumbs>
-    <app-details-btns></app-details-btns>
-    <app-current-weather
-      [hasFavorite]="false"
-      [hasTemperature]="false"
-      [hasInfo]="false"
-    ></app-current-weather>
-    <div class="forecast-list">
-      <app-forecast-card *ngFor="let day of forecast" [dayState]="day" class="forecast-list__item"></app-forecast-card>
-    </div>
-  <button type="button" class="forecast__history-button">Yesterday's weather</button>
+  <app-breadcrumbs></app-breadcrumbs>
+  <app-details-btns></app-details-btns>
+  <app-current-weather
+    [hasFavorite]="false"
+    [hasTemperature]="false"
+    [hasInfo]="false"
+  ></app-current-weather>
+  <div class="forecast-list">
+    <app-forecast-card
+      *ngFor="let day of forecast"
+      [dayState]="day"
+      class="forecast-list__item"
+    ></app-forecast-card>
+  </div>
+  <button type="button" class="forecast__history-button">
+    Yesterday's weather &#8594;
+  </button>
 </div>
-
