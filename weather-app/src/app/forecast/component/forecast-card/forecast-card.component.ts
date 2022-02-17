@@ -20,8 +20,6 @@ export class ForecastCardComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-    console.log(this.dayState);
-  }
+  ngOnInit(): void {}
 
 }

@@ -10,8 +10,8 @@ import {forecastCardI} from "./interfaces/forecastCard";
 export class ForecastComponent implements OnInit {
   constructor(private router: Router) {}
 
-  public city: string = "Kyiv, Ukraine";
-  public forecast: forecastCardI[] = [
+  city: string = "Kyiv, Ukraine";
+  forecast: forecastCardI[] = [
     {
       date: "Feb 7th, 2022",
       icon: "string",
