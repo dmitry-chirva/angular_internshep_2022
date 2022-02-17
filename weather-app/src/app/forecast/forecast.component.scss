@@ -1,3 +1,31 @@
+@import 'src/assets/styles/_general';
+
+.forecast {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.forecast-list {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.forecast-list__item {
+  width: 18%;
+  margin-bottom: 20px;
+}
+
+.forecast__history-button {
+  background: none;
+  color: $text-color;
+  font-size: 24px;
+  font-weight: 400;
+}
+
 app-details-btns {
   display: flex;
   justify-content: center;
@@ -8,3 +36,4 @@ app-current-weather {
   display: block;
   margin-bottom: 55px;
 }
+
