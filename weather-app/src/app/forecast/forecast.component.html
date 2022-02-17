@@ -1,27 +1,9 @@
 <div class="forecast">
     <app-breadcrumbs></app-breadcrumbs>
     <app-current-weather [hasFavorite]="false" [hasTemperature]="false" [hasInfo]="false"></app-current-weather>
-    <div class="forecast__buttons">
-      <button type="button" class="forecast__type">
-        Today
-      </button>
-      <button type="button" class="forecast__type">
-        Tomorrow
-      </button>
-      <button type="button" class="forecast__type">
-        3 days
-      </button>
-      <button type="button" class="forecast__type active">
-        10 days
-      </button>
-    </div>
-    <h3 class="forecast__city">
-      {{ city }}
-    </h3>
-    <div>
+    <app-details-btns></app-details-btns>
       <div class="forecast-list">
         <app-forecast-card *ngFor="let day of forecast" [dayState]="day" class="forecast-list__item"></app-forecast-card>
       </div>
-    </div>
     <button type="button" class="forecast__history-button">Yesterday's weather</button>
 </div>

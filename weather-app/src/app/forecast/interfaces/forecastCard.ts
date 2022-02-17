@@ -1,4 +1,4 @@
-interface forecastCardI {
+export interface forecastCardI {
   date: string,
   icon: string,
   minTemp: string,
@@ -7,5 +7,3 @@ interface forecastCardI {
   wind: string,
   humidity: string,
 }
-
-export {forecastCardI};

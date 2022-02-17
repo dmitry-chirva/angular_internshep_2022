@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import {forecastCardI} from "./interfaces/forecastCard";
 
 
@@ -107,15 +106,4 @@ export class ForecastComponent implements OnInit {
   ]
 
   ngOnInit(): void {}
-
-  openDetailsPage() {
-    this.router.navigate(['/:city/details']);
-  }
-
-  openHomePage() {
-    this.router.navigate(['/']);
-
-  ngOnInit(): void {
-
-  }
 }
