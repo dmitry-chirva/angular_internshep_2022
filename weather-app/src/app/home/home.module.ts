@@ -7,8 +7,17 @@ import { FavoriteListComponent } from './favorite-list/favorite-list.component';
 import { FavoriteItemComponent } from './favorite-list/favorite-item/favorite-item.component';
 
 @NgModule({
-  declarations: [SomeComponentComponent, FavoriteListComponent, FavoriteItemComponent],
+  declarations: [
+    SomeComponentComponent,
+    FavoriteListComponent,
+    FavoriteItemComponent,
+  ],
   imports: [CommonModule, SharedModule],
-  exports: [SomeComponentComponent, CurrentWeatherComponent,  FavoriteListComponent, FavoriteItemComponent],
+  exports: [
+    SomeComponentComponent,
+    CurrentWeatherComponent,
+    FavoriteListComponent,
+    FavoriteItemComponent,
+  ],
 })
 export class HomeModule {}
