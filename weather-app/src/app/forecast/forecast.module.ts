@@ -4,6 +4,7 @@ import { SharedModule } from '../shared/shared.module';
 import { BreadcrumbsComponent } from '../shared/components/breadcrumbs/breadcrumbs.component';
 import { CurrentWeatherComponent } from '../shared/components/current-weather/current-weather.component';
 import { ForecastCardComponent } from "./component/forecast-card/forecast-card.component";
+import { DetailsBtnsComponent } from '../shared/components/details-btns/details-btns.component';
 
 
 
@@ -15,7 +16,8 @@ import { ForecastCardComponent } from "./component/forecast-card/forecast-card.c
   ],
   exports: [BreadcrumbsComponent,
     CurrentWeatherComponent,
-    ForecastCardComponent
+    ForecastCardComponent,
+    DetailsBtnsComponent
   ]
 })
 export class ForecastModule { }

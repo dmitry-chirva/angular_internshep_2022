@@ -1,3 +1,4 @@
+
 @import 'src/assets/styles/_general';
 
 .forecast {
@@ -71,3 +72,9 @@
   font-size: 24px;
   font-weight: 400;
 }
+
+app-current-weather {
+  display: block;
+  margin-bottom: 30px;
+}
+
