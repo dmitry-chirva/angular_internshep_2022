@@ -1,55 +1,8 @@
-
 @import 'src/assets/styles/_general';
 
 .forecast {
   width: 100%;
   margin-top: 30px;
-}
-
-.bread-crumbs {
-  display: flex;
-  align-items: center;
-  button, .current-page {
-    font-size: 18px;
-    line-height: 22px;
-    color: $text-color-dark;
-  }
-  .current-page {
-    color: $accent-color;
-  }
-  margin-bottom: 10px;
-}
-
-.forecast__buttons {
-  width: 100%;
-  max-width: 630px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0 auto 40px;
-
-  .forecast__type {
-    width: 120px;
-    height: 40px;
-    background-color: $bkg-light-theme;
-    border-radius: 3px;
-    color: $text-color-dark;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 26px;
-  }
-  .active {
-    background-color: $accent-color;
-    color: $text-color;
-  }
-}
-
-.forecast__city {
-  font-weight: 400;
-  color: $text-color;
-  font-size: 36px;
-  line-height: 44px;
-  margin-bottom: 20px;
 }
 
 .forecast-list {
