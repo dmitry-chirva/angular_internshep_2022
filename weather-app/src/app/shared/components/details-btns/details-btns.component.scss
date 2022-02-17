@@ -1,24 +1,22 @@
 .btn-groups {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 105px;
-    width: 630px;
-    height: 40px;
-    float: right
+  display: flex;
+  justify-content: space-between;
+  width: 630px;
+  height: 40px;
 }
 
 button {
-    width: 120px;
-    height: 40px;
-    border-radius: 5px;
-    font-family: Roboto;
-    color: #747474;
-    font-weight: 500;
-    font-size: 16px;
-    background: #EAEFEA;
+  width: 120px;
+  height: 40px;
+  border-radius: 5px;
+  font-family: Roboto;
+  color: #747474;
+  font-weight: 500;
+  font-size: 16px;
+  background: #eaefea;
 
-    &:nth-child(1){
-        background: #88AA7D;
-        color: #FFFFFF;
-    }
+  &:nth-child(1) {
+    background: #88aa7d;
+    color: #ffffff;
+  }
 }

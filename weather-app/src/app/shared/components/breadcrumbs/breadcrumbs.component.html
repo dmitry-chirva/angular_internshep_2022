@@ -1,4 +1,4 @@
-<nav class='bread-crumbs'>
+<nav class='breadcrumbs'>
     <ul class="menu">
         <li class="menu__item">
             <a 
@@ -11,24 +11,24 @@
             </a>
         </li>
         <li class="menu__item">
+            <span class="menu__link_decoration">/</span>
             <a 
                 routerLink="/:city/details" 
                 routerLinkActive="active-link" 
                 [routerLinkActiveOptions]="{exact:true}"
                 class="menu__link"
             >
-                <span class="menu__link_decoration">/</span>
                 Details
             </a>
         </li>
         <li class="menu__item" *ngIf="router.url === '/:city/details/forecast'">
+            <span class="menu__link_decoration">/</span>
             <a 
                 routerLink="/:city/details/forecast" 
                 routerLinkActive="active-link"
                 [routerLinkActiveOptions]="{exact:true}"
                 class="menu__link"
             >
-            <span class="menu__link_decoration">/</span>
             Forecast</a>
         </li>
     </ul>
