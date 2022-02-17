@@ -2,9 +2,13 @@
 .menu {
   display: flex;
   &__item {
+    display: flex;
+    align-items: baseline;
     list-style-type: none;
   }
   &__link {
+    padding-top: 39px;
+    padding-bottom: 29px;
     cursor: pointer;
     &-active {
       color: $accent-color;
