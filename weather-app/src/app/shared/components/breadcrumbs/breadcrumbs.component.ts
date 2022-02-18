@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,10 +6,13 @@ import { Router } from '@angular/router';
   templateUrl: './breadcrumbs.component.html',
   styleUrls: ['./breadcrumbs.component.scss']
 })
-export class BreadcrumbsComponent implements OnInit {
+export class BreadcrumbsComponent {
 
-  constructor(public router: Router) { }
+  constructor(private router: Router) {
+  }
 
-  ngOnInit(): void { }
+  get isForecast() {
+    return this.router.url.includes('/details/');
+  }
 
 }

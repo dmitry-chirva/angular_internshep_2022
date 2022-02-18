@@ -1,0 +1,7 @@
+<h3 class="favorite__btn">Favorites:</h3>
+
+<div class="favorite-list">
+    <app-favorite-item *ngFor="let favorite of favorites"
+                       [info]="favorite">
+    </app-favorite-item>
+</div>

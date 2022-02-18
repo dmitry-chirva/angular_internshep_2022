@@ -1,7 +1,8 @@
 <div class="forecast">
   <app-breadcrumbs></app-breadcrumbs>
-  <app-details-btns></app-details-btns>
+  <app-btn-groups></app-btn-groups>
   <app-current-weather
+    [weatherInfo]="weatherInfo"
     [hasFavorite]="false"
     [hasTemperature]="false"
     [hasInfo]="false"
