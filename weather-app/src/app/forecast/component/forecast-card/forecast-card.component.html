@@ -1,9 +1,19 @@
 <div class="forecast-day">
-  <p class="forecast-day__title"><i class="icon-calendar"></i>{{dayState.date}}</p>
-  <p class="forecast-day__temp">
-    {{dayState.minTemp}}&#176;  ... {{dayState.maxTemp}}&#176;
-  </p>
-  <p class="forecast-day__general-info">{{dayState.weather}}</p>
-  <p class="forecast-day__wind">Wind speed: {{dayState.wind}}</p>
-  <p class="forecast-day__humidity">Humididty: {{dayState.humidity}}</p>
+  <header class="forecast__header">
+    <p class="forecast-day__title">
+      <i class="icon-calendar"></i>
+      {{dayState.date}}
+    </p>
+  </header>
+  <div class="forecast__body">
+    <p class="forecast-day__temp">
+      {{dayState.minTemp}} ... {{dayState.maxTemp}}
+    </p>
+    <img class="forecast-day__weather" src="../../../assets/images/weather.png" alt="current weather">
+  </div>
+  <footer class="forecast__footer">
+    <p class="forecast-day__general-info">{{dayState.weatherLabel}}</p>
+    <p class="forecast-day__wind">Wind speed: {{dayState.wind}}</p>
+    <p class="forecast-day__humidity">Humidity: {{dayState.humidity}}</p>
+  </footer>
 </div>

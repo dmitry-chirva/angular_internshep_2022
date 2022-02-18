@@ -28,7 +28,8 @@
             font-size: 35px;
             top: 25px;
             right: 40px;
-        }    
+            cursor: pointer;
+        }
     }
 
     &__body {
@@ -41,7 +42,7 @@
             width: 122px;
             height: 132px;
         }
-        
+
         &__city {
             font-weight: 500;
             font-size: 36px;
@@ -52,9 +53,9 @@
             font-weight: 500;
             font-size: 48px;
             line-height: 47px;
-        }    
+        }
     }
-    
+
 
     &__footer {
         margin-top: 15px;

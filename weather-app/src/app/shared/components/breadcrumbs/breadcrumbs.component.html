@@ -1,35 +1,33 @@
-<nav class='breadcrumbs'>
+<nav class="breadcrumbs">
     <ul class="menu">
         <li class="menu__item">
-            <a 
-                routerLink="/" 
+            <a
+                routerLink="/"
                 routerLinkActive="active-link"
                 [routerLinkActiveOptions]="{exact:true}"
-                class="menu__link"
-            >
+                class="menu__link">
                 Home
             </a>
         </li>
         <li class="menu__item">
             <span class="menu__link_decoration">/</span>
-            <a 
-                routerLink="/:city/details" 
-                routerLinkActive="active-link" 
+            <a
+                routerLink="/kiev/details"
+                routerLinkActive="active-link"
                 [routerLinkActiveOptions]="{exact:true}"
-                class="menu__link"
-            >
+                class="menu__link">
                 Details
             </a>
         </li>
-        <li class="menu__item" *ngIf="router.url === '/:city/details/forecast'">
+        <li *ngIf="isForecast"
+            class="menu__item">
             <span class="menu__link_decoration">/</span>
-            <a 
-                routerLink="/:city/details/forecast" 
+            <a
+                routerLink="/kiev/details/"
                 routerLinkActive="active-link"
-                [routerLinkActiveOptions]="{exact:true}"
-                class="menu__link"
-            >
-            Forecast</a>
+                class="menu__link">
+                Forecast
+            </a>
         </li>
     </ul>
 </nav>

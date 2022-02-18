@@ -1,18 +1,21 @@
 <div class="current-weather">
-    <div *ngIf="hasInfo" class="current-weather__info">
+    <div *ngIf="hasInfo"
+         class="current-weather__info">
         <i class="icon icon-calendar"></i>
         <p class="current-weather__date">
-            February 7th, 2022
+            {{ weatherInfo?.date }}
         </p>
     </div>
-    <a                 
-        routerLink="/:city/details" 
-        class="current-weather__city"
-    >
-        Kyiv, Ukraine
+    <a
+        routerLink="/kiev/details"
+        class="current-weather__city">
+      {{ weatherInfo?.city }}
     </a>
     <button *ngIf="hasFavorite">
-        <span class="icon icon-heart-active"></span>
+        <span class="icon icon-heart"></span>
     </button>
-    <p *ngIf="hasTemperature" class="current-weather__temperature">7 ° С</p>
+    <p *ngIf="hasTemperature"
+       class="current-weather__temperature">
+      {{ weatherInfo?.temp }}
+    </p>
 </div>

@@ -21,4 +21,6 @@
 }
 .active-link {
   color: $accent-color;
+  cursor: auto;
+  pointer-events: none;
 }
