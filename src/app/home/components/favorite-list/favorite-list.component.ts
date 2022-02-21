@@ -1,12 +1,15 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { CityWeatherInfo } from '../../../shared/interfaces/city-weather-info.interfaces';
+import {FavoriteStateService} from "../../../../core/favorites-state/favorite-state.service";
 
 @Component({
   selector: 'app-favorite-list',
   templateUrl: './favorite-list.component.html',
-  styleUrls: ['./favorite-list.component.scss']
+  styleUrls: ['./favorite-list.component.scss'],
+  providers: [FavoriteStateService]
 })
-export class FavoriteListComponent {
+export class FavoriteListComponent implements OnInit {
+  favoritesList: string[] = []
   favorites: CityWeatherInfo[] = [
     {
       city: 'Toronto',
@@ -45,4 +48,12 @@ export class FavoriteListComponent {
       }
     }
   ]
+
+  ngOnInit() {
+    this.favoritesList = this.favoritesData.receiveFavoritesCities();
+  }
+
+  constructor(public favoritesData: FavoriteStateService) {
+    this.favoritesData.setCity('Oslo');
+  }
 }
