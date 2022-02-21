@@ -1,7 +1,7 @@
 .favorite {
 
     &__item {
-        position: relative;
+        //position: relative;
         margin: 0 38px 35px 0;
         width: 351px;
         min-height: 307px;
@@ -34,13 +34,14 @@
     }
 
     &__body {
+        position: relative;
         margin-top: 20px;
         min-height: 10px;
 
         &__current-weather {
             position: absolute;
-            top: 95px;
-            right: 25px;
+            top: 25px;
+            right: -10px;
         }
 
         &__city {
