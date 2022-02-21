@@ -1,4 +1,4 @@
-@import "src/assets/styles/_general";
+@import "src/assets/styles/_variables";
 
 .forecast {
   width: 100%;
@@ -22,8 +22,8 @@
 
 .forecast__history-button {
   color: $text-color;
-  font-size: 24px;
-  font-weight: 400;
+  font-size: $font-size-small;
+  font-weight: $font-weight-regular;
 }
 
 app-btn-groups {
