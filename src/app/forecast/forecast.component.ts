@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ForecastInfo } from '../shared/interfaces/forecast-info.interfaces';
 import { CityWeatherInfo } from '../shared/interfaces/city-weather-info.interfaces';
 import { WeatherService } from 'src/core/api/weather/weather.service';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-forecast',
@@ -17,18 +18,40 @@ export class ForecastComponent implements OnInit {
     isFavorite: false,
   };
 
+  position: any = {};
+
   constructor(private weatherServise: WeatherService) {}
 
-  ngOnInit() {
-    this.weatherServise.getWeather().subscribe((res) => {
-      const year = res.location.localtime.split('').slice(0, 4).join('');
-      const date = res.location.localtime.split('').slice(8, 10).join('');
-      const month = new Date().toLocaleString('en', { month: 'long' });
+  async ngOnInit() {
+    if (navigator.geolocation) {
+      this.position = await this.getCoords();
+      this.weatherServise
+        .getCurrentLocation(this.position)
+        .pipe(
+          switchMap((res) => this.weatherServise.getWeather(res.location.name))
+        )
+        .subscribe((response) => {
+          const year = response.location.localtime
+            .split('')
+            .slice(0, 4)
+            .join('');
+          const date = response.location.localtime
+            .split('')
+            .slice(8, 10)
+            .join('');
+          const month = new Date().toLocaleString('en', { month: 'long' });
 
-      this.weatherInfo.date = `${month} ${date}th, ${year}`;
-      this.weatherInfo.temp = `${res.current.temp_c} °С`;
-      this.weatherInfo.city = `${res.location.name}, ${res.location.country}`;
-    });
+          this.weatherInfo.date = `${month} ${date}th, ${year}`;
+          this.weatherInfo.temp = `${Math.floor(response.current.temp_c)} °С`;
+          this.weatherInfo.city = `${response.location.name}, ${response.location.country}`;
+        });
+    } else alert('Geolocation is not supported!');
+  }
+
+  getCoords(options?: PositionOptions): Promise<any> {
+    return new Promise((resolve, reject) =>
+      navigator.geolocation.getCurrentPosition(resolve, reject, options)
+    );
   }
 
   forecast: ForecastInfo[] = [
