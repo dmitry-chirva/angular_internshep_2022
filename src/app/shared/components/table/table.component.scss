@@ -1,10 +1,12 @@
+@import "src/assets/styles/_variables";
+
 .table {
   table-layout: fixed;
   width: 100%;
   border-collapse: collapse;
   text-align: center;
-  font-weight: 700;
-  font-size: 24px;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-small;
 }
 
 tr {
@@ -12,7 +14,7 @@ tr {
 }
 
 td {
-  border-bottom: 3px solid #909793;
+  border-bottom: 3px solid $table-line;
   &:nth-child(1) {
     text-align: left;
   }
