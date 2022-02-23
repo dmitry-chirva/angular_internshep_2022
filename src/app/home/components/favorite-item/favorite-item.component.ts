@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { CityWeatherInfo } from '../../../shared/interfaces/city-weather-info.interfaces';
 
 @Component({
@@ -8,4 +8,11 @@ import { CityWeatherInfo } from '../../../shared/interfaces/city-weather-info.in
 })
 export class FavoriteItemComponent {
   @Input() info: CityWeatherInfo | null = null;
+
+
+  handleFavoriteChange(isFavorite: boolean | undefined) {
+    if (this.info) {
+      this.info.isFavorite = isFavorite;
+    }
+  }
 }

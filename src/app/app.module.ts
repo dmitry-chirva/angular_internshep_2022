@@ -21,6 +21,7 @@ import { AppComponent } from './app.component';
     ForecastModule,
     DetailsModule,
     HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],
