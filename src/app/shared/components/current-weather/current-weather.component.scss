@@ -7,7 +7,7 @@
     margin-bottom: 50px;
   }
   & .icon-calendar {
-    font-size: 40px;
+    font-size: 3.333rem;
   }
   &__date {
     margin-left: 25px;
@@ -21,13 +21,15 @@
   &__city:hover {
     color: $accent-color;
   }
+  
   & button {
-    font-size: 40px;
+    font-size: 3.333rem;
     margin-left: 37px;
+
   }
   &__temperature {
     margin-top: 50px;
-    font-size: 48px;
+    font-size: $font-size-large;
     font-weight: $font-weight-medium;
   }
 }
