@@ -9,6 +9,7 @@ import { CityWeatherInfo } from '../../../shared/interfaces/city-weather-info.in
 export class FavoriteItemComponent {
   @Input() info: CityWeatherInfo | null = null;
 
+
   handleFavoriteChange(isFavorite: boolean | undefined) {
     if (this.info) {
       this.info.isFavorite = isFavorite;

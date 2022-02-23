@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { DetailsService } from 'src/core/api/details/details.service';
+import { CurrentWeatherData } from '../../core/api/weather/current-weather.type';
 import { CityWeatherInfo } from '../shared/interfaces/city-weather-info.interfaces';
 import { DetailsInfo } from 'src/app/shared/interfaces/details-info.interfaces';
 import { Column } from '../shared/interfaces/table.interfaces';
@@ -10,10 +12,22 @@ import { Column } from '../shared/interfaces/table.interfaces';
 })
 export class DetailsComponent {
   weatherInfo: CityWeatherInfo = {
-    city: 'Kyiv, Ukraine',
-    date: 'February 7th, 2022',
-    temp: '7 °С',
-    isFavorite: false
+    city: 'Kiev, Ukraine',
+    date: '',
+    temp: '',
+    isFavorite: false,
+  };
+
+  constructor(private detailsService: DetailsService) {}
+
+  ngOnInit() {
+    this.detailsService
+      .getCurrentWeatherDetails()
+      .subscribe(({ year, date, month, temp, city }: CurrentWeatherData) => {
+        this.weatherInfo.date = `${month} ${date}th, ${year}`;
+        this.weatherInfo.temp = `${temp} °С`;
+        this.weatherInfo.city = city;
+      });
   }
 
   detailsColumns: Column[] = [
