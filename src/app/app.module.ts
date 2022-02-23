@@ -11,9 +11,7 @@ import { FooterModule } from './footer/footer.module';
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -21,7 +19,7 @@ import { AppComponent } from './app.component';
     FooterModule,
     HomeModule,
     ForecastModule,
-    DetailsModule
+    DetailsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

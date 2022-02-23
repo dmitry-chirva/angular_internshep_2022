@@ -1,3 +1,5 @@
+@import "src/assets/styles/_variables";
+
 .current-weather {
   &__info {
     display: flex;
@@ -9,23 +11,23 @@
   }
   &__date {
     margin-left: 25px;
-    font-size: 48px;
+    font-size: $font-size-large;
   }
   &__city {
-    font-size: 48px;
-    font-weight: 500;
+    font-size: $font-size-large;
+    font-weight: $font-weight-medium;
     cursor: pointer;
   }
   &__city:hover {
-    color: #88aa7d;
+    color: $accent-color;
   }
-  & .icon-heart {
-    margin-left: 37px;
+  & button {
     font-size: 40px;
+    margin-left: 37px;
   }
   &__temperature {
     margin-top: 50px;
     font-size: 48px;
-    font-weight: 500;
+    font-weight: $font-weight-medium;
   }
 }

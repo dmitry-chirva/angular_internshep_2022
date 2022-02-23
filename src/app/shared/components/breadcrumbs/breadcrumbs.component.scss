@@ -1,4 +1,4 @@
-@import "src/assets/styles/_general";
+@import "src/assets/styles/_variables";
 .menu {
   display: flex;
   &__item {
@@ -21,5 +21,5 @@
   color: $accent-color;
   cursor: auto;
   pointer-events: none;
-  font-weight: 900;
+  font-weight: $font-weight-extraBold;
 }
