@@ -51,12 +51,8 @@ export class FavoriteListComponent implements OnInit {
   ]
 
   ngOnInit() {
-    this.favoritesData.addFavoriteCity('Oslo');
-    this.favoritesData.removeFavoriteCity('Oslo');
-    this.favoritesData.removeFavoriteCity('Nica');
-    this.favoritesData.getFavoritesCity()
   }
 
-  constructor(public favoritesData: FavoriteStateService) {
+  constructor(public favoriteStateService: FavoriteStateService) {
   }
 }
