@@ -10,7 +10,7 @@ export class FavoriteItemComponent {
   @Input() info: CityWeatherInfo | null = null;
 
   handleFavoriteChange(isFavorite: boolean | undefined) {
-    if (this.info != null) {
+    if (this.info) {
       this.info.isFavorite = isFavorite;
     }
   }
