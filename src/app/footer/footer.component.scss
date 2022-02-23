@@ -1,4 +1,4 @@
-@import 'src/assets/styles/_general';
+@import 'src/assets/styles/_variables';
 
 .footer {
   display: flex;
@@ -10,11 +10,11 @@
   &__text {
     color: $text-color-dark;
     line-height: 29px;
-    font-size: 24px;
+    font-size: $font-size-small;
 
     &_link {
-      font-weight: 700;
-      color: #88aa7d;
+      font-weight: $font-weight-bold;
+      color: $accent-color;
     }
   }
 }

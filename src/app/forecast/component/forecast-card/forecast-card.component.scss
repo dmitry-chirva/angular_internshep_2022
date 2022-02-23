@@ -1,4 +1,4 @@
-@import 'src/assets/styles/_general';
+@import 'src/assets/styles/_variables';
 
 .forecast-day {
   width: 100%;
@@ -14,7 +14,7 @@
 }
 
 .forecast-day__title {
-  font-size: 18px;
+  font-size: $font-size-extraSmall;
 
   .icon-calendar {
     position: relative;
@@ -46,7 +46,7 @@
 }
 
 .forecast__footer {
-  font-size: 18px;
+  font-size: $font-size-extraSmall;
 }
 
 .forecast-day__general-info,
