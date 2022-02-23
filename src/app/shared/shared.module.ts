@@ -5,6 +5,7 @@ import { CurrentWeatherComponent } from './components/current-weather/current-we
 import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switcher.component';
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 import { BtnGroupsComponent } from './components/btn-groups/btn-groups.component';
+import { TableComponent } from './components/table/table.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { BtnGroupsComponent } from './components/btn-groups/btn-groups.component
     BreadcrumbsComponent,
     ThemeSwitcherComponent,
     BtnGroupsComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +25,7 @@ import { BtnGroupsComponent } from './components/btn-groups/btn-groups.component
     BreadcrumbsComponent,
     ThemeSwitcherComponent,
     BtnGroupsComponent,
+    TableComponent
   ]
-
 })
 export class SharedModule {}

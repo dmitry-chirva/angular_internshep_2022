@@ -1,0 +1,19 @@
+.table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+tr {
+  line-height: 62px;
+}
+
+td {
+  border-bottom: 3px solid #909793;
+  &:nth-child(1) {
+    text-align: left;
+  }
+}
