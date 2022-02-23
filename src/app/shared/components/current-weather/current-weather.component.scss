@@ -21,9 +21,11 @@
   &__city:hover {
     color: $accent-color;
   }
-  & .icon-heart {
-    margin-left: 37px;
+  
+  & button {
     font-size: 3.333rem;
+    margin-left: 37px;
+
   }
   &__temperature {
     margin-top: 50px;
