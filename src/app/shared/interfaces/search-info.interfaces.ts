@@ -1,6 +1,7 @@
-export interface CurrentLocationI {
+export interface CurrentLocation {
+  coords: any;
   location: Location;
-  current: Current;
+  current: CurrentTemp;
 }
 
 export interface Location {
@@ -10,6 +11,6 @@ export interface Location {
   localtime: string;
 }
 
-export interface Current {
+export interface CurrentTemp {
   temp_c: number;
 }

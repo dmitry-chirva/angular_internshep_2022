@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { HomeService } from 'src/core/api/home/home.service';
-import { CurrentWeatherData } from 'src/core/api/weather/types-weather';
+import { CurrentWeatherData } from '../../core/api/weather/current-weather.type';
 import { CityWeatherInfo } from '../shared/interfaces/city-weather-info.interfaces';
 
 @Component({
@@ -22,18 +22,10 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.homeService
       .getCurrentWeatherHome()
-      .subscribe((response: CurrentWeatherData) => {
-        // console.log('Current', response);
-        const year = response.location.localtime.split('').slice(0, 4).join('');
-        const date = response.location.localtime
-          .split('')
-          .slice(8, 10)
-          .join('');
-        const month = new Date().toLocaleString('en', { month: 'long' });
-
+      .subscribe(({ year, date, month, temp, city }: CurrentWeatherData) => {
         this.weatherInfo.date = `${month} ${date}th, ${year}`;
-        this.weatherInfo.temp = `${Math.floor(response.current.temp_c)} °С`;
-        this.weatherInfo.city = `${response.location.name}, ${response.location.country}`;
+        this.weatherInfo.temp = `${temp} °С`;
+        this.weatherInfo.city = city;
       });
   }
 }

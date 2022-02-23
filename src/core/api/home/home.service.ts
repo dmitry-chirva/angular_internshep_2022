@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { switchMap } from 'rxjs';
+import { map, Observable, switchMap } from 'rxjs';
 
 import { GeoLocationService } from '../weather/geo-location.service';
+import { CurrentWeatherData } from '../weather/current-weather.type';
 import { WeatherService } from '../weather/weather.service';
 
 @Injectable({
@@ -13,14 +14,24 @@ export class HomeService {
     private geolocationService: GeoLocationService
   ) {}
 
-  getCurrentWeatherHome(): any {
-    if (navigator.geolocation) {
-      return this.geolocationService.getPosition().pipe(
-        switchMap((pos) => {
-          // console.log('Location:', pos);
-          return this.weatherService.getCurrentWeather(pos);
-        })
-      );
-    } else alert('Geolocation is not supported!');
+  getCurrentWeatherHome(): Observable<CurrentWeatherData> {
+    return this.geolocationService.getPosition().pipe(
+      switchMap((pos) => {
+        return this.weatherService.getCurrentWeather(pos).pipe(
+          map((data) => {
+            const year = data.location.localtime.split('').slice(0, 4).join('');
+            const date = data.location.localtime
+              .split('')
+              .slice(8, 10)
+              .join('');
+            const month = new Date().toLocaleString('en', { month: 'long' });
+            const temp = Math.floor(data.current.temp_c);
+            const city = `${data.location.name}, ${data.location.country}`;
+
+            return { year, date, month, temp, city };
+          })
+        );
+      })
+    );
   }
 }

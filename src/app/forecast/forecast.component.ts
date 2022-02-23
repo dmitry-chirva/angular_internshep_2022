@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ForecastInfo } from '../shared/interfaces/forecast-info.interfaces';
 import { CityWeatherInfo } from '../shared/interfaces/city-weather-info.interfaces';
 import { ForecastService } from 'src/core/api/forecast/forecast.service';
-import { CurrentWeatherData } from 'src/core/api/weather/types-weather';
+import { CurrentWeatherData } from '../../core/api/weather/current-weather.type';
 
 @Component({
   selector: 'app-forecast',
@@ -22,11 +22,11 @@ export class ForecastComponent implements OnInit {
 
   constructor(private forecastService: ForecastService) {}
 
-  async ngOnInit() {
+  ngOnInit() {
     this.forecastService
       .getCurrentWeatherForecast()
-      .subscribe((response: CurrentWeatherData) => {
-        this.weatherInfo.city = `${response.location.name}, ${response.location.country}`;
+      .subscribe(({ city }: CurrentWeatherData) => {
+        this.weatherInfo.city = city;
       });
   }
 
