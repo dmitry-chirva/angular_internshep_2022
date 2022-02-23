@@ -48,13 +48,24 @@
   font-weight: $font-weight-semiBold;
   margin-left: 5px;
   color: $accent-color;
-}
 
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
+}
 
 .header__search {
   width: 470px;
   height: 66px;
   position: relative;
+
+  @media only screen and (max-width: 1280px) {
+    width: 300px;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    width: 55%;
+  }
 }
 
 .search__input {

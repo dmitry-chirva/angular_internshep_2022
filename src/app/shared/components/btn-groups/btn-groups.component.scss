@@ -2,8 +2,14 @@
 .btn-groups {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   width: 630px;
-  height: 40px;
+  min-height: 40px;
+
+  @media only screen and (max-width: 768px) {
+    width: 80%;
+    margin: 0 auto;
+  }
 }
 
 button {
@@ -13,11 +19,16 @@ button {
   font-family: $font-family-roboto;
   color: $text-color-dark;
   font-weight: $font-weight-medium;
-  font-size: 16px;
+  font-size: $font-size-extraSmall;
   background: $bkg-light-theme;
 
   &.active {
     background: $accent-color;
     color: $text-color;
+  }
+
+  @media only screen and (max-width: 768px) {
+    margin-bottom: 10px;
+    width: 48%;
   }
 }

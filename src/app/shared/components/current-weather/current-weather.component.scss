@@ -8,15 +8,27 @@
   }
   & .icon-calendar {
     font-size: 40px;
+    @media only screen and (max-width: 480px) {
+      font-size: 30px;
+    }
   }
   &__date {
     margin-left: 25px;
     font-size: $font-size-large;
+    @media only screen and (max-width: 1280px) {
+      font-size: $font-size-medium;
+    }
+    @media only screen and (max-width: 480px) {
+      font-size: $font-size-small;
+    }
   }
   &__city {
     font-size: $font-size-large;
     font-weight: $font-weight-medium;
     cursor: pointer;
+    @media only screen and (max-width: 1280px) {
+      font-size: $font-size-medium;
+    }
   }
   &__city:hover {
     color: $accent-color;
@@ -27,7 +39,10 @@
   }
   &__temperature {
     margin-top: 50px;
-    font-size: 48px;
+    font-size: $font-size-large;
     font-weight: $font-weight-medium;
+    @media only screen and (max-width: 768px) {
+      margin-top: 30px;
+    }
   }
 }

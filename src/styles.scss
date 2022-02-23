@@ -70,6 +70,18 @@ button {
   margin: 0 auto;
   padding: 0 20px;
   width: 1210px;
+
+  @media only screen and (max-width: 1280px) {
+    width: 755px;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+  }
+
+  @media only screen and (max-width: 480px) {
+    padding: 0 10px;
+  }
 }
 
 @font-face {
