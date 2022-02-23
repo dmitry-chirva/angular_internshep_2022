@@ -7,7 +7,7 @@
     margin-bottom: 50px;
   }
   & .icon-calendar {
-    font-size: 40px;
+    font-size: 3.333rem;
   }
   &__date {
     margin-left: 25px;
@@ -23,11 +23,11 @@
   }
   & .icon-heart {
     margin-left: 37px;
-    font-size: 40px;
+    font-size: 3.333rem;
   }
   &__temperature {
     margin-top: 50px;
-    font-size: 48px;
+    font-size: $font-size-large;
     font-weight: $font-weight-medium;
   }
 }
