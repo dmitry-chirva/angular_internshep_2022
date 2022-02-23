@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HomeModule } from './home/home.module';
@@ -7,7 +8,6 @@ import { ForecastModule } from './forecast/forecast.module';
 import { DetailsModule } from './details/details.module';
 import { HeaderModule } from './header/header.module';
 import { FooterModule } from './footer/footer.module';
-
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -20,6 +20,8 @@ import { AppComponent } from './app.component';
     HomeModule,
     ForecastModule,
     DetailsModule,
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],
