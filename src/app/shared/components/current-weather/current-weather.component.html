@@ -1,21 +1,21 @@
 <div class="current-weather">
-    <div *ngIf="hasInfo"
-         class="current-weather__info">
-        <i class="icon icon-calendar"></i>
-        <p class="current-weather__date">
-            {{ weatherInfo?.date }}
-        </p>
-    </div>
-    <a
-        routerLink="/kiev/details"
-        class="current-weather__city">
-      {{ weatherInfo?.city }}
-    </a>
-    <button *ngIf="hasFavorite">
-        <span class="icon icon-heart"></span>
-    </button>
-    <p *ngIf="hasTemperature"
-       class="current-weather__temperature">
-      {{ weatherInfo?.temp }}
+  <div *ngIf="hasInfo" class="current-weather__info">
+    <i class="icon icon-calendar"></i>
+    <p class="current-weather__date">
+      {{ weatherInfo?.date }}
     </p>
+  </div>
+  <a routerLink="/kiev/details" class="current-weather__city">
+    {{ weatherInfo?.city }}
+  </a>
+  <button *ngIf="hasFavorite">
+    <!-- <i class="icon icon-heart"></i> -->
+    <app-favorite-toggle
+      [isFavorite]="weatherInfo?.isFavorite"
+      (onChange)="handleFavoriteChange($event)"
+    ></app-favorite-toggle>
+  </button>
+  <p *ngIf="hasTemperature" class="current-weather__temperature">
+    {{ weatherInfo?.temp }}
+  </p>
 </div>

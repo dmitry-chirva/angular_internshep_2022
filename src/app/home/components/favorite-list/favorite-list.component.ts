@@ -4,7 +4,7 @@ import { CityWeatherInfo } from '../../../shared/interfaces/city-weather-info.in
 @Component({
   selector: 'app-favorite-list',
   templateUrl: './favorite-list.component.html',
-  styleUrls: ['./favorite-list.component.scss']
+  styleUrls: ['./favorite-list.component.scss'],
 })
 export class FavoriteListComponent {
   favorites: CityWeatherInfo[] = [
@@ -12,25 +12,25 @@ export class FavoriteListComponent {
       city: 'Toronto',
       date: 'February 18th, 2022',
       temp: '1 °С',
-      isFavorite: true,
+      isFavorite: false,
       weatherIcon: '',
       additionalInfo: {
-        weatherLabel: "Light snow",
-        windSpeed: "3 km/h",
-        humidity: "72%"
-      }
+        weatherLabel: 'Light snow',
+        windSpeed: '3 km/h',
+        humidity: '72%',
+      },
     },
     {
       city: 'Stockholm',
       date: 'February 18th, 2022',
       temp: '-3 °С',
-      isFavorite: true,
+      // isFavorite: true,
       weatherIcon: '',
       additionalInfo: {
-        weatherLabel: "Light snow",
-        windSpeed: "5 km/h",
-        humidity: "85%"
-      }
+        weatherLabel: 'Light snow',
+        windSpeed: '5 km/h',
+        humidity: '85%',
+      },
     },
     {
       city: 'Oslo',
@@ -39,10 +39,10 @@ export class FavoriteListComponent {
       isFavorite: true,
       weatherIcon: '',
       additionalInfo: {
-        weatherLabel: "Light snow",
-        windSpeed: "10 km/h",
-        humidity: "90%"
-      }
-    }
-  ]
+        weatherLabel: 'Light snow',
+        windSpeed: '10 km/h',
+        humidity: '90%',
+      },
+    },
+  ];
 }

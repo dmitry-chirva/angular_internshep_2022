@@ -2,7 +2,12 @@
   <header class="favorite__header">
     <i class="icon-calendar favorite__header__icon-calendar"></i>
     <time class="favorite__header__date">{{ info?.date }}</time>
-    <app-favorite-toggle [condition]="info?.isFavorite"></app-favorite-toggle>
+    <app-favorite-toggle
+      class="favorite__header__icon-heart-active"
+      [isFavorite]="info?.isFavorite"
+      (onChange)="handleFavoriteChange($event)"
+    ></app-favorite-toggle>
+    <!-- <i class="icon-heart-active favorite__header__icon-heart-active"></i> -->
   </header>
   <div class="favorite__body">
     <div class="favorite__body__city">{{ info?.city }}</div>
