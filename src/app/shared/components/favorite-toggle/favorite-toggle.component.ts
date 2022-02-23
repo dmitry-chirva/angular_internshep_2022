@@ -15,6 +15,3 @@ export class FavoriteToggleComponent {
     this.onChange.emit(this.isFavorite);
   }
 }
-// <i class="icon icon-heart"></i>
-// <i class="icon-heart-active favorite__header__icon-heart-active"></i>
-// <i class="icon-heart favorite__header__icon-heart-active"></i>
