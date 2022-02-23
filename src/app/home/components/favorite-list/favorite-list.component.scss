@@ -1,15 +1,21 @@
-.favorite__btn {
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 29px;
-    display: flex;
-    align-items: center;
+@import "src/assets/styles/_variables";
 
+.favorite__btn {
+  font-weight: $font-weight-medium;
+  font-size: $font-size-small;
+  display: flex;
+  align-items: center;
 }
 
 .favorite-list {
-    display: flex;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+app-favorite-item {
+  margin-right: 60px;
+
+  &:nth-child(3n) {
+    margin-right: 0;
+  }
 }
