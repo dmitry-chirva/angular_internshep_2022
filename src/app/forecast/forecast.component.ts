@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { ForecastInfo } from '../shared/interfaces/forecast-info.interfaces';
 import { CityWeatherInfo } from '../shared/interfaces/city-weather-info.interfaces';
+import { ForecastService } from 'src/core/api/forecast/forecast.service';
+import { CurrentWeatherData } from '../../core/api/weather/current-weather.type';
 
 @Component({
   selector: 'app-forecast',
@@ -9,43 +11,52 @@ import { CityWeatherInfo } from '../shared/interfaces/city-weather-info.interfac
   styleUrls: ['./forecast.component.scss'],
 })
 export class ForecastComponent implements OnInit {
-  constructor() { }
   weatherInfo: CityWeatherInfo = {
-    city: 'Kyiv, Ukraine',
-    date: 'February 7th, 2022',
-    temp: '7 °С',
-    isFavorite: false
+    city: 'Kiev, Ukraine',
+    date: '',
+    temp: '',
+    isFavorite: false,
+  };
+
+  position: any = {};
+
+  constructor(private forecastService: ForecastService) {}
+
+  ngOnInit() {
+    this.forecastService
+      .getCurrentWeatherForecast()
+      .subscribe(({ city }: CurrentWeatherData) => {
+        this.weatherInfo.city = city;
+      });
   }
 
   forecast: ForecastInfo[] = [
     {
-      date: "Feb 7th, 2022",
-      weatherIcon: "string",
-      minTemp: "0 °С",
-      maxTemp: "4 °С",
-      weatherLabel: "Light snow",
-      wind: "2 km/h",
-      humidity: "70%"
+      date: 'Feb 7th, 2022',
+      weatherIcon: 'string',
+      minTemp: '0 °С',
+      maxTemp: '4 °С',
+      weatherLabel: 'Light snow',
+      wind: '2 km/h',
+      humidity: '70%',
     },
     {
-      date: "Feb 7th, 2022",
-      weatherIcon: "string",
-      minTemp: "0 °С",
-      maxTemp: "4 °С",
-      weatherLabel: "Light snow",
-      wind: "2 km/h",
-      humidity: "70%"
+      date: 'Feb 7th, 2022',
+      weatherIcon: 'string',
+      minTemp: '0 °С',
+      maxTemp: '4 °С',
+      weatherLabel: 'Light snow',
+      wind: '2 km/h',
+      humidity: '70%',
     },
     {
-      date: "Feb 7th, 2022",
-      weatherIcon: "string",
-      minTemp: "0 °С",
-      maxTemp: "4 °С",
-      weatherLabel: "Light snow",
-      wind: "2 km/h",
-      humidity: "70%"
-    }
-  ]
-
-  ngOnInit(): void {}
+      date: 'Feb 7th, 2022',
+      weatherIcon: 'string',
+      minTemp: '0 °С',
+      maxTemp: '4 °С',
+      weatherLabel: 'Light snow',
+      wind: '2 km/h',
+      humidity: '70%',
+    },
+  ];
 }
