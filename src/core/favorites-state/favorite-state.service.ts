@@ -1,36 +1,28 @@
 import {Injectable, OnInit} from '@angular/core';
+import {StorageService} from "../storage/storage.service";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class FavoriteStateService implements OnInit{
+export class FavoriteStateService {
 
-  receiveFavoritesCities(): string[] {
-    return JSON.parse(<string>localStorage.getItem('favorite-list'));
+  readonly FAVORITES_KEY = 'favorites-cities'
+
+  constructor(private storage: StorageService) {}
+
+  getFavoritesCity(): string[] {
+    return this.storage.getItem(this.FAVORITES_KEY);
   }
 
-  setCity(city: string): string[]  {
-    let favoriteList: string[]  = this.receiveFavoritesCities();
-    favoriteList.push(city);
-    this.setFavoriteCity(favoriteList);
-    return favoriteList;
+  addFavoriteCity(city: string): void {
+    this.storage.addItem(this.FAVORITES_KEY, city);
   }
 
-  setFavoriteCity(cities: string[]) {
-    localStorage.removeItem('favorite-list');
-    localStorage.setItem('favorite-list', JSON.stringify(cities));
+  removeFavoriteCity(city: string): void {
+    this.storage.removeItem(this.FAVORITES_KEY, city);
   }
 
-  removeCity(city: string): string[] {
-    let favoriteList: string[]  = this.receiveFavoritesCities();
-    let filterList: string[] = favoriteList.filter(e => e != city)
-    this.setFavoriteCity(filterList);
-    return filterList;
-  }
-
-  ngOnInit() {
-    if(!localStorage.getItem('favorite-list')) {
-      localStorage.setItem('favorite-list', JSON.stringify([]));
-    }
+  isFavoriteCity(city: string): boolean {
+    return this.storage.getItem(this.FAVORITES_KEY).indexOf(city) === -1;
   }
 }
