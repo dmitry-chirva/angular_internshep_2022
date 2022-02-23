@@ -1,0 +1,29 @@
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class GeoLocationService {
+  constructor() {}
+
+  getPosition(): Observable<any> {
+    return new Observable((obs) => {
+      navigator.geolocation.getCurrentPosition(
+        (success) => {
+          obs.next(success);
+          obs.complete();
+        },
+        (error) => {
+          obs.error(error);
+        }
+      );
+    });
+  }
+}
+
+// getCoords(): Promise<any> {
+//   return new Promise((resolve, reject) =>
+//     navigator.geolocation.getCurrentPosition(resolve, reject)
+//   );
+// }
