@@ -6,5 +6,5 @@ export interface CityWeatherInfo {
   temp: string;
   weatherIcon?: string;
   isFavorite?: boolean;
-  additionalInfo?: CityWeatherAdditionalInfo
+  additionalInfo?: CityWeatherAdditionalInfo;
 }
