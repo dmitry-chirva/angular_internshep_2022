@@ -13,6 +13,8 @@ export class CurrentWeatherComponent {
   @Input() hasInfo: boolean = true;
 
   handleFavoriteChange(isFavorite: boolean | undefined) {
-    console.log(isFavorite);
+    if (this.weatherInfo != null) {
+      this.weatherInfo.isFavorite = isFavorite;
+    }
   }
 }

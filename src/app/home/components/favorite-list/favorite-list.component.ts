@@ -12,7 +12,7 @@ export class FavoriteListComponent {
       city: 'Toronto',
       date: 'February 18th, 2022',
       temp: '1 °С',
-      isFavorite: false,
+      isFavorite: true,
       weatherIcon: '',
       additionalInfo: {
         weatherLabel: 'Light snow',
@@ -24,7 +24,7 @@ export class FavoriteListComponent {
       city: 'Stockholm',
       date: 'February 18th, 2022',
       temp: '-3 °С',
-      // isFavorite: true,
+      isFavorite: true,
       weatherIcon: '',
       additionalInfo: {
         weatherLabel: 'Light snow',

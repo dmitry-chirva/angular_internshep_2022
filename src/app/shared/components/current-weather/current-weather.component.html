@@ -9,7 +9,6 @@
     {{ weatherInfo?.city }}
   </a>
   <button *ngIf="hasFavorite">
-    <!-- <i class="icon icon-heart"></i> -->
     <app-favorite-toggle
       [isFavorite]="weatherInfo?.isFavorite"
       (onChange)="handleFavoriteChange($event)"
