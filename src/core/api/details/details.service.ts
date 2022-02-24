@@ -17,7 +17,9 @@ export class DetailsService {
   getCurrentWeatherDetails(): Observable<CurrentWeatherData> {
     return this.geolocationService.getPosition().pipe(
       switchMap((pos) => {
-        return this.weatherService.getCurrentWeather(pos).pipe(
+        let latitude = pos.coords.latitude;
+        let longitude = pos.coords.longitude;
+        return this.weatherService.getCurrentWeather(latitude, longitude).pipe(
           map((data) => {
             const year = data.location.localtime.split('').slice(0, 4).join('');
             const date = data.location.localtime

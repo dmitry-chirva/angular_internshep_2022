@@ -5,6 +5,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class GeoLocationService {
+  defLocation: any = {
+    coords: {
+      latitude: 50.45641,
+      longitude: 30.40166,
+    },
+  };
+
   constructor() {}
 
   getPosition(): Observable<any> {
@@ -15,7 +22,8 @@ export class GeoLocationService {
           obs.complete();
         },
         (error) => {
-          obs.error(error);
+          obs.next(this.defLocation);
+          obs.complete();
         }
       );
     });
