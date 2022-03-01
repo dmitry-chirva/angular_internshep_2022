@@ -6,7 +6,7 @@
   width: 630px;
   min-height: 40px;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: $screen-l) {
     width: 80%;
     margin: 0 auto;
   }
@@ -27,7 +27,7 @@ button {
     color: $text-color;
   }
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: $screen-l) {
     margin-bottom: 10px;
     width: 48%;
   }

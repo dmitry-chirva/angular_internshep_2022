@@ -14,7 +14,7 @@
   flex-wrap: wrap;
   margin-bottom: 50px;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: $screen-l) {
     justify-content: space-around;
   }
 }
@@ -34,7 +34,7 @@ app-btn-groups {
   display: flex;
   justify-content: center;
   margin-bottom: 55px;
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: $screen-l) {
     margin-bottom: 30px;
   }
 }

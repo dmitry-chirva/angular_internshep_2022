@@ -12,11 +12,11 @@
     line-height: 29px;
     font-size: $font-size-small;
   
-    @media only screen and (max-width: 1280px) {
+    @media only screen and (max-width: $screen-xl) {
       font-size: $font-size-theSmallest;
     }
 
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: $screen-l) {
       width: 80%;
       text-align: center;
     }

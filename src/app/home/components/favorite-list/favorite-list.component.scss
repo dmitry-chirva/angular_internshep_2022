@@ -13,7 +13,7 @@
   justify-content: space-between;
   margin-top: 24px;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: $screen-l) {
     justify-content: space-around;
   }
 }
@@ -26,7 +26,7 @@ app-favorite-item {
     margin-right: 0;
   }
 
-  @media only screen and (max-width: 1280px) {
+  @media only screen and (max-width: $screen-xl) {
     margin: 0px;
   }
 }

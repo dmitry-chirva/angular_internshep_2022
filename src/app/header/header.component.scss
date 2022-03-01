@@ -49,7 +49,7 @@
   margin-left: 5px;
   color: $accent-color;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: $screen-l) {
     display: none;
   }
 }
@@ -59,11 +59,11 @@
   height: 66px;
   position: relative;
 
-  @media only screen and (max-width: 1280px) {
+  @media only screen and (max-width: $screen-xl) {
     width: 300px;
   }
   
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: $screen-l) {
     width: 55%;
   }
 }
