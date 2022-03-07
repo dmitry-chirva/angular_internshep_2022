@@ -26,8 +26,8 @@ export class WeatherService {
   }
 
   getCurrentWeather(
-    latitude = 50.45641,
-    longitude = 30.40166
+    latitude: number,
+    longitude: number
   ): Observable<CurrentLocationWeather> {
     return this.http.get<CurrentLocationWeather>(
       `${this.BASE_URL}current.json?key=${this.API_KEY}&q=${latitude},${longitude}&aqi=no`
