@@ -19,8 +19,8 @@ export class HomeService {
       .getPosition()
       .pipe(
         switchMap((pos) => {
-          let latitude = pos.coords.latitude;
-          let longitude = pos.coords.longitude;
+          const latitude = pos.coords.latitude;
+          const longitude = pos.coords.longitude;
           return this.weatherService
             .getCurrentWeather(latitude, longitude)
             .pipe(
