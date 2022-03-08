@@ -8,7 +8,6 @@ import { BtnGroupsComponent } from './components/btn-groups/btn-groups.component
 import { FavoriteToggleComponent } from './components/favorite-toggle/favorite-toggle.component';
 import { ForecastCardComponent } from './components/forecast-card/forecast-card.component';
 
-
 @NgModule({
   declarations: [
     CurrentWeatherComponent,
@@ -16,7 +15,7 @@ import { ForecastCardComponent } from './components/forecast-card/forecast-card.
     ThemeSwitcherComponent,
     BtnGroupsComponent,
     FavoriteToggleComponent,
-    ForecastCardComponent
+    ForecastCardComponent,
   ],
   imports: [BrowserModule, RouterModule],
   exports: [
