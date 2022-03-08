@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { ForecastI } from 'src/app/shared/interfaces/forecast-info.interfaces';
-import { CurrentLocation } from 'src/app/shared/interfaces/search-info.interfaces';
+import { CurrentLocationWeather } from 'src/app/shared/interfaces/search-info.interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -25,11 +25,11 @@ export class WeatherService {
     );
   }
 
-  getCurrentWeather(position: CurrentLocation): Observable<CurrentLocation> {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
-
-    return this.http.get<CurrentLocation>(
+  getCurrentWeather(
+    latitude: number,
+    longitude: number
+  ): Observable<CurrentLocationWeather> {
+    return this.http.get<CurrentLocationWeather>(
       `${this.BASE_URL}current.json?key=${this.API_KEY}&q=${latitude},${longitude}&aqi=no`
     );
   }

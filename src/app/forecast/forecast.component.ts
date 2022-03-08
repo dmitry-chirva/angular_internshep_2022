@@ -18,8 +18,6 @@ export class ForecastComponent implements OnInit {
     isFavorite: false,
   };
 
-  position: any = {};
-
   constructor(private forecastService: ForecastService) {}
 
   ngOnInit() {
