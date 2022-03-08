@@ -24,6 +24,7 @@ import { ForecastCardComponent } from './components/forecast-card/forecast-card.
     ThemeSwitcherComponent,
     BtnGroupsComponent,
     FavoriteToggleComponent,
+    ForecastCardComponent,
   ],
 })
 export class SharedModule {}

@@ -18,9 +18,9 @@
   }
 }
 
-
-app-favorite-item {
+.favorite-item__wrapper {
   margin-right: 60px;
+  width: 350px;
 
   &:nth-child(3n) {
     margin-right: 0;

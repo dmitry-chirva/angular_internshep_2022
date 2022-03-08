@@ -1,1 +1,15 @@
-<p>forecast-card works!</p>
+<div class="card">
+  <div class="card__header">
+    <i class="icon-calendar header__calendar"></i>
+    <time class="header__date">{{ state.date }}</time>
+  </div>
+  <app-favorite-toggle *ngIf="state.isFavorite" class="card__favorite-icon" [isFavorite]="state.isFavorite">
+  </app-favorite-toggle>
+  <img class="card__weather-img" src='{{state.weatherIcon}}'  alt="weather icon">
+  <h2 class="card__city">{{ state.city }}</h2>
+  <p class="card__temp">{{ state.temp }}</p>
+  <p class="card__weather-info">{{ state.additionalInfo?.weatherLabel }}</p>
+  <p class="card__weather-info">Wind speed: {{ state.additionalInfo?.windSpeed }}</p>
+  <p class="card__weather-info">Humidity: {{ state.additionalInfo?.humidity }}</p>
+</div>
+
