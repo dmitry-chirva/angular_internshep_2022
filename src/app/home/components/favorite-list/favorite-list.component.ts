@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CityWeatherInfo } from '../../../shared/interfaces/city-weather-info.interfaces';
+import { ICityWeatherInfo } from '../../../shared/interfaces/city-weather-info.interfaces';
 import { FavoriteStateService } from '../../../../core/favorites-state/favorite-state.service';
 import { StorageService } from '../../../../core/storage/storage.service';
 
@@ -11,7 +11,7 @@ import { StorageService } from '../../../../core/storage/storage.service';
 })
 export class FavoriteListComponent implements OnInit {
   favoritesList: string[] = [];
-  favorites: CityWeatherInfo[] = [
+  favorites: ICityWeatherInfo[] = [
     {
       city: 'Toronto',
       date: 'February 18th, 2022',

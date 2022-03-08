@@ -1,5 +1,5 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
-import { CityWeatherInfo } from '../../../shared/interfaces/city-weather-info.interfaces';
+import { ICityWeatherInfo } from '../../../shared/interfaces/city-weather-info.interfaces';
 
 @Component({
   selector: 'app-favorite-item',
@@ -7,7 +7,7 @@ import { CityWeatherInfo } from '../../../shared/interfaces/city-weather-info.in
   styleUrls: ['./favorite-item.component.scss'],
 })
 export class FavoriteItemComponent {
-  @Input() info: CityWeatherInfo | null = null;
+  @Input() info: ICityWeatherInfo | null = null;
 
 
   handleFavoriteChange(isFavorite: boolean | undefined) {
