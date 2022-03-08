@@ -1,6 +1,7 @@
 @import "src/assets/styles/_variables";
 
 .header {
+  position: fixed;
   width: 100%;
   height: 100px;
   background: $bkg-light-theme;
