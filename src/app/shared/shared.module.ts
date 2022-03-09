@@ -7,6 +7,7 @@ import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.compo
 import { BtnGroupsComponent } from './components/btn-groups/btn-groups.component';
 import { TableComponent } from './components/table/table.component';
 import { FavoriteToggleComponent } from './components/favorite-toggle/favorite-toggle.component';
+import { NotificationComponent } from './components/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { FavoriteToggleComponent } from './components/favorite-toggle/favorite-t
     BtnGroupsComponent,
     TableComponent,
     FavoriteToggleComponent,
+    NotificationComponent
   ],
   imports: [BrowserModule, RouterModule],
   exports: [
@@ -24,7 +26,8 @@ import { FavoriteToggleComponent } from './components/favorite-toggle/favorite-t
     ThemeSwitcherComponent,
     BtnGroupsComponent,
     TableComponent,
-    FavoriteToggleComponent
+    FavoriteToggleComponent,
+    NotificationComponent
   ]
 })
 export class SharedModule {}
