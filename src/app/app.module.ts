@@ -9,6 +9,7 @@ import { DetailsModule } from './details/details.module';
 import { HeaderModule } from './header/header.module';
 import { FooterModule } from './footer/footer.module';
 import { AppComponent } from './app.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { AppComponent } from './app.component';
     ForecastModule,
     DetailsModule,
     HttpClientModule,
+    SharedModule
 
   ],
   providers: [],
