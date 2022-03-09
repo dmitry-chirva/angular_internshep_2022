@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ICityWeatherInfo} from "../../interfaces/city-weather-info.interfaces";
+import {CityWeatherInfo} from "../../interfaces/city-weather-info.interfaces";
 
 @Component({
   selector: 'app-forecast-card',
@@ -8,7 +8,7 @@ import {ICityWeatherInfo} from "../../interfaces/city-weather-info.interfaces";
 })
 export class ForecastCardComponent implements OnInit {
 
-  @Input() state: ICityWeatherInfo = {
+  @Input() state: CityWeatherInfo = {
     city: '',
     date: '',
     temp: '',

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { DetailsService } from 'src/core/api/details/details.service';
 import { CurrentWeatherData } from '../../core/api/weather/current-weather.type';
-import { ICityWeatherInfo } from '../shared/interfaces/city-weather-info.interfaces';
+import { CityWeatherInfo } from '../shared/interfaces/city-weather-info.interfaces';
 
 @Component({
   selector: 'app-details',
@@ -10,7 +10,7 @@ import { ICityWeatherInfo } from '../shared/interfaces/city-weather-info.interfa
   styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent {
-  weatherInfo: ICityWeatherInfo = {
+  weatherInfo: CityWeatherInfo = {
     city: 'Kiev, Ukraine',
     date: '',
     temp: '',

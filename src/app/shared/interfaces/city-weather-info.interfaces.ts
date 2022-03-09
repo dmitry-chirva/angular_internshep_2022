@@ -1,6 +1,6 @@
 import { ICityWeatherAdditionalInfo } from './city-weather-additional-info.interfaces';
 
-export interface ICityWeatherInfo {
+export interface CityWeatherInfo {
   city?: string;
   date: string;
   temp?: string;

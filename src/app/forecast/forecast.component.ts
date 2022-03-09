@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ForecastInfo } from '../shared/interfaces/forecast-info.interfaces';
-import { ICityWeatherInfo } from '../shared/interfaces/city-weather-info.interfaces';
+import { CityWeatherInfo } from '../shared/interfaces/city-weather-info.interfaces';
 import { ForecastService } from 'src/core/api/forecast/forecast.service';
 import { CurrentWeatherData } from '../../core/api/weather/current-weather.type';
 
@@ -11,7 +11,7 @@ import { CurrentWeatherData } from '../../core/api/weather/current-weather.type'
   styleUrls: ['./forecast.component.scss'],
 })
 export class ForecastComponent implements OnInit {
-  weatherInfo: ICityWeatherInfo = {
+  weatherInfo: CityWeatherInfo = {
     city: 'Kiev, Ukraine',
     date: '',
     temp: '',
@@ -28,7 +28,7 @@ export class ForecastComponent implements OnInit {
       });
   }
 
-  forecast: ICityWeatherInfo[] = [
+  forecast: CityWeatherInfo[] = [
     {
       date: 'February 18th, 2022',
       minTemp: '0°',

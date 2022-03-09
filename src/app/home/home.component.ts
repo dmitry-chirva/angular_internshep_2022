@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { HomeService } from 'src/core/api/home/home.service';
 import { CurrentWeatherData } from '../../core/api/weather/current-weather.type';
-import { ICityWeatherInfo } from '../shared/interfaces/city-weather-info.interfaces';
+import { CityWeatherInfo } from '../shared/interfaces/city-weather-info.interfaces';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +10,7 @@ import { ICityWeatherInfo } from '../shared/interfaces/city-weather-info.interfa
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  weatherInfo: ICityWeatherInfo = {
+  weatherInfo: CityWeatherInfo = {
     city: 'Kiev, Ukraine',
     date: '',
     temp: '',
