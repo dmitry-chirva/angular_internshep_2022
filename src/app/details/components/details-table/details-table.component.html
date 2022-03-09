@@ -8,51 +8,30 @@
   </tr>
   <tr>
     <td>Temperature, °C</td>
-    <td>{{ dataDetails.temp_c[0] }}</td>
-    <td>{{ dataDetails.temp_c[1] }}</td>
-    <td>{{ dataDetails.temp_c[2] }}</td>
-    <td>{{ dataDetails.temp_c[3] }}</td>
+    <td *ngFor="let temp of dataDetails.temp_c">{{ temp }}</td>
   </tr>
   <tr>
     <td>Feels like, °C</td>
-    <td>{{ dataDetails.feelslike_c[0] }}</td>
-    <td>{{ dataDetails.feelslike_c[1] }}</td>
-    <td>{{ dataDetails.feelslike_c[2] }}</td>
-    <td>{{ dataDetails.feelslike_c[3] }}</td>
+    <td *ngFor="let feelslike of dataDetails.feelslike_c">{{ feelslike }}</td>
   </tr>
   <tr>
     <td>Wind speed, m/s</td>
-    <td>{{ dataDetails.wind_kph[0] }}</td>
-    <td>{{ dataDetails.wind_kph[1] }}</td>
-    <td>{{ dataDetails.wind_kph[2] }}</td>
-    <td>{{ dataDetails.wind_kph[3] }}</td>
+    <td *ngFor="let wind of dataDetails.wind_kph">{{ wind }}</td>
   </tr>
   <tr>
     <td>Wind gust, m/s</td>
-    <td>{{ dataDetails.gust_kph[0] }}</td>
-    <td>{{ dataDetails.gust_kph[1] }}</td>
-    <td>{{ dataDetails.gust_kph[2] }}</td>
-    <td>{{ dataDetails.gust_kph[3] }}</td>
+    <td *ngFor="let gust of dataDetails.gust_kph">{{ gust }}</td>
   </tr>
   <tr>
     <td>Cloud cover, %</td>
-    <td>{{ dataDetails.cloud[0] }}</td>
-    <td>{{ dataDetails.cloud[1] }}</td>
-    <td>{{ dataDetails.cloud[2] }}</td>
-    <td>{{ dataDetails.cloud[3] }}</td>
+    <td *ngFor="let cloud of dataDetails.cloud">{{ cloud }}</td>
   </tr>
   <tr>
     <td>Humidity, %</td>
-    <td>{{ dataDetails.humidity[0] }}</td>
-    <td>{{ dataDetails.humidity[1] }}</td>
-    <td>{{ dataDetails.humidity[2] }}</td>
-    <td>{{ dataDetails.humidity[3] }}</td>
+    <td *ngFor="let humidity of dataDetails.humidity">{{ humidity }}</td>
   </tr>
   <tr>
     <td>Pressure, mm</td>
-    <td>{{ dataDetails.pressure_mb[0] }}</td>
-    <td>{{ dataDetails.pressure_mb[1] }}</td>
-    <td>{{ dataDetails.pressure_mb[2] }}</td>
-    <td>{{ dataDetails.pressure_mb[3] }}</td>
+    <td *ngFor="let pressure of dataDetails.pressure_mb">{{ pressure }}</td>
   </tr>
 </table>
