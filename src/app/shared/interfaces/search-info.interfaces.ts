@@ -1,14 +1,13 @@
-export interface CurrentLocation {
-  coords: any;
-  location: Location;
+export interface CurrentLocationWeather {
   current: CurrentTemp;
+  location: CurrentLocation;
+  latitude: number;
+  longitude: number;
 }
-
-export interface Location {
-  name: string;
-  region: string;
-  country: string;
+export interface CurrentLocation {
   localtime: string;
+  name: string;
+  country: string;
 }
 
 export interface CurrentTemp {

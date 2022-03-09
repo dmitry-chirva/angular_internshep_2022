@@ -13,10 +13,14 @@
   align-items: center;
   flex-wrap: wrap;
   margin-bottom: 50px;
+
+  @media only screen and (max-width: $screen-l) {
+    justify-content: space-around;
+  }
 }
 
 .forecast-list__item {
-  width: 30%;
+  width: 351px;
   margin-bottom: 20px;
 }
 
@@ -30,6 +34,9 @@ app-btn-groups {
   display: flex;
   justify-content: center;
   margin-bottom: 55px;
+  @media only screen and (max-width: $screen-l) {
+    margin-bottom: 30px;
+  }
 }
 
 app-current-weather {

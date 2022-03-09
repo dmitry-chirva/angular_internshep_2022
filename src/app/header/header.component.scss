@@ -1,6 +1,7 @@
 @import "src/assets/styles/_variables";
 
 .header {
+  position: fixed;
   width: 100%;
   height: 100px;
   background: $bkg-light-theme;
@@ -48,13 +49,24 @@
   font-weight: $font-weight-semiBold;
   margin-left: 5px;
   color: $accent-color;
-}
 
+  @media only screen and (max-width: $screen-l) {
+    display: none;
+  }
+}
 
 .header__search {
   width: 470px;
   height: 66px;
   position: relative;
+
+  @media only screen and (max-width: $screen-xl) {
+    width: 300px;
+  }
+  
+  @media only screen and (max-width: $screen-l) {
+    width: 55%;
+  }
 }
 
 .search__input {

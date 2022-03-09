@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 export class GeoLocationService {
   constructor() {}
 
-  getPosition(): Observable<any> {
+  getPosition(): Observable<GeolocationPosition> {
     return new Observable((obs) => {
       navigator.geolocation.getCurrentPosition(
         (success) => {

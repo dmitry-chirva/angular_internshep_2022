@@ -3,17 +3,20 @@ import { CommonModule } from '@angular/common';
 
 import { SharedModule } from '../shared/shared.module';
 import { DetailsComponent } from './details.component';
+import { DetailsTableComponent } from './components/details-table/details-table.component';
 
 @NgModule({
   declarations: [
-    DetailsComponent
+    DetailsComponent,
+    DetailsTableComponent
   ],
   imports: [
     CommonModule,
     SharedModule
   ],
   exports: [
-    DetailsComponent
+    DetailsComponent,
+    DetailsTableComponent
   ]
 })
 export class DetailsModule { }

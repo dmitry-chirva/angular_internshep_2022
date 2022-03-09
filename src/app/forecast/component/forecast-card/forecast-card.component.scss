@@ -6,7 +6,7 @@
   padding: 15px;
   background-color: $bkg-card-dark;
   color: $text-color;
-  font-size: 1.167rem;
+  font-size: 14px;
 }
 
 .forecast__header {
@@ -19,7 +19,7 @@
   .icon-calendar {
     position: relative;
     top: 3px;
-    font-size: 1.833rem;
+    font-size: 22px;
     margin-right: 10px;
   }
 }
@@ -41,7 +41,7 @@
 }
 
 .forecast-day__temp {
-  font-size: 2.333rem;
+  font-size: 28px;
   color: $text-color;
 }
 

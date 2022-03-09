@@ -11,6 +11,15 @@
     color: $text-color-dark;
     line-height: 29px;
     font-size: $font-size-small;
+  
+    @media only screen and (max-width: $screen-xl) {
+      font-size: $font-size-theSmallest;
+    }
+
+    @media only screen and (max-width: $screen-l) {
+      width: 80%;
+      text-align: center;
+    }
 
     &_link {
       font-weight: $font-weight-bold;

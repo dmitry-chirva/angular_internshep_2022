@@ -10,12 +10,23 @@
 .favorite-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   margin-top: 24px;
+
+  @media only screen and (max-width: $screen-l) {
+    justify-content: space-around;
+  }
 }
+
+
 app-favorite-item {
   margin-right: 60px;
 
   &:nth-child(3n) {
     margin-right: 0;
+  }
+
+  @media only screen and (max-width: $screen-xl) {
+    margin: 0px;
   }
 }

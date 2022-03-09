@@ -15,7 +15,6 @@ import { NotificationComponent } from './components/notification/notification.co
     BreadcrumbsComponent,
     ThemeSwitcherComponent,
     BtnGroupsComponent,
-    TableComponent,
     FavoriteToggleComponent,
     NotificationComponent
   ],
