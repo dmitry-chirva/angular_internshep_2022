@@ -1,4 +1,4 @@
-export interface ICityWeatherAdditionalInfo {
+export interface CityWeatherAdditionalInfo {
   weatherLabel: string;
   windSpeed: string;
   humidity: string;

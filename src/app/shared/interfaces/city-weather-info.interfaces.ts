@@ -1,4 +1,4 @@
-import { ICityWeatherAdditionalInfo } from './city-weather-additional-info.interfaces';
+import { CityWeatherAdditionalInfo } from './city-weather-additional-info.interfaces';
 
 export interface CityWeatherInfo {
   city?: string;
@@ -8,5 +8,5 @@ export interface CityWeatherInfo {
   maxTemp? : string;
   weatherIcon?: string;
   isFavorite?: boolean;
-  additionalInfo?: ICityWeatherAdditionalInfo;
+  additionalInfo?: CityWeatherAdditionalInfo;
 }
