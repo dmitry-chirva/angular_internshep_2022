@@ -12,31 +12,22 @@ import { FavoriteService } from 'src/core/favorite/favorite.service';
   styleUrls: ['./favorite-list.component.scss'],
   providers: [FavoriteStateService, StorageService],
 })
-export class FavoriteListComponent {
+export class FavoriteListComponent implements OnInit {
   favorites: CityWeatherInfo[];
   readonly maxAmountOfFavs: number = 1;
-  readonly favoritesElems = document.querySelectorAll('.favorite__item');
 
   constructor(public favoriteStateService: FavoriteStateService, private FavoriteService: FavoriteService, private notificationService: NotificationService) {
     this.favorites = this.FavoriteService.favorites;
-    console.log(this.favorites);
     this.checkAmountOfFavorites();
   }
+
+  ngOnInit() {}
+  getElement(event:any){}
 
   checkAmountOfFavorites(){
     if(this.favorites.length>this.maxAmountOfFavs){
       this.notificationService.create('error',`fav cities amount is more than ${this.maxAmountOfFavs}!`);
     }
   }
-
-  getElement(event:any){
-
-    console.log(this.favoritesElems)
-
-
-
-
-  }
-
 
 }

@@ -14,7 +14,7 @@ export class FavoriteService {
       date: 'February 18th, 2022',
       temp: '1 °С',
       isFavorite: true,
-      weatherIcon: '',
+      weatherIcon: 'assets/images/weather.png',
       additionalInfo: {
         weatherLabel: 'Light snow',
         windSpeed: '3 km/h',
@@ -26,7 +26,7 @@ export class FavoriteService {
       date: 'February 18th, 2022',
       temp: '-3 °С',
       isFavorite: true,
-      weatherIcon: '',
+      weatherIcon: 'assets/images/weather.png',
       additionalInfo: {
         weatherLabel: 'Light snow',
         windSpeed: '5 km/h',
@@ -38,14 +38,12 @@ export class FavoriteService {
       date: 'February 7th, 2022',
       temp: '-5 °С',
       isFavorite: true,
-      weatherIcon: '',
+      weatherIcon: 'assets/images/weather.png',
       additionalInfo: {
         weatherLabel: 'Light snow',
         windSpeed: '10 km/h',
         humidity: '90%',
       },
     },
-
-
   ];
 }

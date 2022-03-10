@@ -8,6 +8,7 @@ import { BtnGroupsComponent } from './components/btn-groups/btn-groups.component
 // import { TableComponent } from './components/table/table.component';
 import { FavoriteToggleComponent } from './components/favorite-toggle/favorite-toggle.component';
 import { NotificationComponent } from './components/notification/notification.component';
+import { ForecastCardComponent } from './components/forecast-card/forecast-card.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NotificationComponent } from './components/notification/notification.co
     ThemeSwitcherComponent,
     BtnGroupsComponent,
     FavoriteToggleComponent,
-    NotificationComponent
+    NotificationComponent,
+    ForecastCardComponent,
   ],
   imports: [BrowserModule, RouterModule],
   exports: [
@@ -26,7 +28,8 @@ import { NotificationComponent } from './components/notification/notification.co
     BtnGroupsComponent,
     // TableComponent,
     FavoriteToggleComponent,
-    NotificationComponent
-  ]
+    NotificationComponent,
+    ForecastCardComponent,
+  ],
 })
 export class SharedModule {}
