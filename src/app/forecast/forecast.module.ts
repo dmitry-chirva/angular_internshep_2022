@@ -3,12 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { SharedModule } from '../shared/shared.module';
 import { ForecastComponent } from './forecast.component';
-import { ForecastCardComponent } from "./component/forecast-card/forecast-card.component";
 
 @NgModule({
   declarations: [
     ForecastComponent,
-    ForecastCardComponent
   ],
   imports: [
     CommonModule,
@@ -16,7 +14,6 @@ import { ForecastCardComponent } from "./component/forecast-card/forecast-card.c
   ],
   exports: [
     ForecastComponent,
-    ForecastCardComponent
   ]
 })
 export class ForecastModule { }

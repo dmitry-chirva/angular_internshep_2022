@@ -28,33 +28,39 @@ export class ForecastComponent implements OnInit {
       });
   }
 
-  forecast: ForecastInfo[] = [
+  forecast: CityWeatherInfo[] = [
     {
-      date: 'Feb 7th, 2022',
-      weatherIcon: 'string',
-      minTemp: '0 °С',
-      maxTemp: '4 °С',
-      weatherLabel: 'Light snow',
-      wind: '2 km/h',
-      humidity: '70%',
+      date: 'February 18th, 2022',
+      minTemp: '0°',
+      maxTemp: '3°',
+      weatherIcon: 'assets/images/weather.png',
+      additionalInfo: {
+        weatherLabel: 'Light snow',
+        windSpeed: '3 km/h',
+        humidity: '72%',
+      },
     },
     {
-      date: 'Feb 7th, 2022',
-      weatherIcon: 'string',
-      minTemp: '0 °С',
-      maxTemp: '4 °С',
-      weatherLabel: 'Light snow',
-      wind: '2 km/h',
-      humidity: '70%',
+      date: 'February 18th, 2022',
+      minTemp: '-3°',
+      maxTemp: '4°',
+      weatherIcon: 'assets/images/weather.png',
+      additionalInfo: {
+        weatherLabel: 'Light snow',
+        windSpeed: '5 km/h',
+        humidity: '85%',
+      },
     },
     {
-      date: 'Feb 7th, 2022',
-      weatherIcon: 'string',
-      minTemp: '0 °С',
-      maxTemp: '4 °С',
-      weatherLabel: 'Light snow',
-      wind: '2 km/h',
-      humidity: '70%',
+      date: 'February 7th, 2022',
+      minTemp: '1°',
+      maxTemp: '2°',
+      weatherIcon: 'assets/images/weather.png',
+      additionalInfo: {
+        weatherLabel: 'Light snow',
+        windSpeed: '10 km/h',
+        humidity: '90%',
+      },
     },
   ];
 }
