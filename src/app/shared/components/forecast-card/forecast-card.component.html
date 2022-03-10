@@ -1,20 +1,20 @@
 <div class="card">
   <div class="card__header">
     <i class="icon-calendar header__calendar"></i>
-    <time class="header__date">{{ state.date }}</time>
+    <time class="header__date">{{ day.date }}</time>
   </div>
   <div class="card__icon-group">
-    <app-favorite-toggle *ngIf="state.isFavorite" class="card__favorite-icon" [isFavorite]="state.isFavorite">
+    <app-favorite-toggle *ngIf="day.isFavorite" class="card__favorite-icon" [isFavorite]="day.isFavorite">
     </app-favorite-toggle>
-    <img class="card__weather-img" src='{{state.weatherIcon}}'  alt="weather icon">
+    <img class="card__weather-img" src='{{day.weatherIcon}}'  alt="weather icon">
   </div>
-  <h2 *ngIf="state.city" class="card__city">{{ state.city }}</h2>
-  <p *ngIf="state.minTemp && state.maxTemp" class="card__day-temp">
-    {{ state.minTemp }}...{{ state.maxTemp }}
+  <h2 *ngIf="day.city" class="card__city">{{ day.city }}</h2>
+  <p *ngIf="day.minTemp && day.maxTemp" class="card__day-temp">
+    {{ day.minTemp }}...{{ day.maxTemp }}
   </p>
-  <p class="card__temp" *ngIf="state.temp">{{ state.temp }}</p>
-  <p class="card__weather-info">{{ state.additionalInfo?.weatherLabel }}</p>
-  <p class="card__weather-info">Wind speed: {{ state.additionalInfo?.windSpeed }}</p>
-  <p class="card__weather-info">Humidity: {{ state.additionalInfo?.humidity }}</p>
+  <p class="card__temp" *ngIf="day.temp">{{ day.temp }}</p>
+  <p class="card__weather-info">{{ day.additionalInfo?.weatherLabel }}</p>
+  <p class="card__weather-info">Wind speed: {{ day.additionalInfo?.windSpeed }}</p>
+  <p class="card__weather-info">Humidity: {{ day.additionalInfo?.humidity }}</p>
 </div>
 

@@ -8,7 +8,7 @@ import {CityWeatherInfo} from "../../interfaces/city-weather-info.interfaces";
 })
 export class ForecastCardComponent implements OnInit {
 
-  @Input() state: CityWeatherInfo = {
+  @Input() day: CityWeatherInfo = {
     city: '',
     date: '',
     temp: '',
