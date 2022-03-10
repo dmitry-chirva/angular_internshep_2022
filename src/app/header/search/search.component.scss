@@ -1,0 +1,18 @@
+@import "src/assets/styles/_variables";
+
+.search__input {
+  font-size: $font-size-small;
+  width: 100%;
+  padding: 0 50px 0 28px;
+  height: 100%;
+  background: $text-color;
+  border: none;
+  border-radius: 5px;
+}
+
+.search__icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 1.8rem;
+}
