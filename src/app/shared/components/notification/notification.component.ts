@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component } from '@angular/core';
 
 import { NotificationService } from 'src/core/api/notification/notification.service';
 import { Notification } from 'src/app/shared/interfaces/notification.interface';
@@ -10,16 +10,16 @@ import { Notification } from 'src/app/shared/interfaces/notification.interface';
 export class NotificationComponent  {
   notifications: Notification[];
 
-  constructor(private NotificationService: NotificationService) {
+  constructor(private notificationService: NotificationService) {
 
-    this.notifications = this.NotificationService.getAll();
+    this.notifications = this.notificationService.getAll();
     // this.NotificationService.create('5','5');
     // this.NotificationService.create('6','6');
     // this.NotificationService.create('7','7');
   }
 
   addNew(type:string,message:string){
-    this.NotificationService.create(type,message);
+    this.notificationService.create(type,message);
   }
 
 }

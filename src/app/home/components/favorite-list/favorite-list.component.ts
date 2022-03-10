@@ -15,7 +15,7 @@ import { FavoriteService } from 'src/core/favorite/favorite.service';
 export class FavoriteListComponent {
   favorites: CityWeatherInfo[];
   readonly maxAmountOfFavs: number = 1;
-  readonly favoritesElems = document.querySelectorAll('favorite__item');
+  readonly favoritesElems = document.querySelectorAll('.favorite__item');
 
   constructor(public favoriteStateService: FavoriteStateService, private FavoriteService: FavoriteService, private notificationService: NotificationService) {
     this.favorites = this.FavoriteService.favorites;
@@ -31,7 +31,10 @@ export class FavoriteListComponent {
 
   getElement(event:any){
 
-    console.log()
+    console.log(this.favoritesElems)
+
+
+
 
   }
 
