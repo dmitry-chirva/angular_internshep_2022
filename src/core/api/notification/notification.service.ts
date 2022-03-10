@@ -1,45 +1,40 @@
 
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Notification } from 'src/app/shared/interfaces/notification.interface';
 @Injectable({
   providedIn: 'root'
 })
 export class NotificationService {
 
-  constructor() {}
-
-  // TYPES = ['success','error','warning','general'];
-
   notifications : Notification[] =  [
-    { type: '1', message: 'the max limit of favorite cities is 10'+'1'},
-    { type: '2', message: 'the max limit of favorite cities is 10'+'1'},
-    { type: '3', message: 'the max limit of favorite cities is 10'+'1'}
+    { type: '1', message: 'This is simple test notification'},
+    // { type: '2', message: 'the max limit of favorite cities is 10'+'1'},
+    // { type: '3', message: 't2342424'},
+    // { type: '3', message: 'the max limit of favorite cities is 10'+'1'}
   ];
+  currNotification: Notification | undefined;
+  constructor() {
 
-  // getTest():any{
-  //   return this.notifications;
-  // }
+  }
 
 
   create( type: string, message:string ){
-    this.notifications.push( { type: type, message: message});
+    this.currNotification = { type: type, message: message}
+    this.notifications.push( this.currNotification);
   }
-
-  // deleteAll():Array<Notification>{
-  //   this.notifications = [];
-  //   return this.notifications;
-  // }
-
 
   getAll():Array<Notification>{
     return this.notifications;
   }
 
+  OnInit(currNotification: Notification){
+
+    setTimeout(() => {
+      this.notifications.filter( notification =>  notification!= currNotification)
+    }, 4000);
+  }
 
 
 }
 
-// export interface Notification {
-//   type: string,
-//   message: string
-// }
+  // TYPES = ['success','error','warning','general'];

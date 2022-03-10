@@ -1,56 +1,39 @@
 import { Component, OnInit } from '@angular/core';
-import { CityWeatherInfo } from '../../../shared/interfaces/city-weather-info.interfaces';
-import { FavoriteStateService } from '../../../../core/favorites-state/favorite-state.service';
-import { StorageService } from '../../../../core/storage/storage.service';
 
+import { CityWeatherInfo } from '../../../shared/interfaces/city-weather-info.interfaces';
+
+import { FavoriteStateService } from '../../../../core/favorites-state/favorite-state.service';
+import { NotificationService } from 'src/core/api/notification/notification.service';
+import { StorageService } from '../../../../core/storage/storage.service';
+import { FavoriteService } from 'src/core/favorite/favorite.service';
 @Component({
   selector: 'app-favorite-list',
   templateUrl: './favorite-list.component.html',
   styleUrls: ['./favorite-list.component.scss'],
   providers: [FavoriteStateService, StorageService],
 })
-export class FavoriteListComponent implements OnInit {
-  favoritesList: string[] = [];
-  favorites: CityWeatherInfo[] = [
-    {
-      city: 'Toronto',
-      date: 'February 18th, 2022',
-      temp: '1 °С',
-      isFavorite: true,
-      weatherIcon: '',
-      additionalInfo: {
-        weatherLabel: 'Light snow',
-        windSpeed: '3 km/h',
-        humidity: '72%',
-      },
-    },
-    {
-      city: 'Stockholm',
-      date: 'February 18th, 2022',
-      temp: '-3 °С',
-      isFavorite: true,
-      weatherIcon: '',
-      additionalInfo: {
-        weatherLabel: 'Light snow',
-        windSpeed: '5 km/h',
-        humidity: '85%',
-      },
-    },
-    {
-      city: 'Oslo',
-      date: 'February 7th, 2022',
-      temp: '-5 °С',
-      isFavorite: true,
-      weatherIcon: '',
-      additionalInfo: {
-        weatherLabel: 'Light snow',
-        windSpeed: '10 km/h',
-        humidity: '90%',
-      },
-    },
-  ];
+export class FavoriteListComponent {
+  favorites: CityWeatherInfo[];
+  readonly maxAmountOfFavs: number = 1;
+  readonly favoritesElems = document.querySelectorAll('favorite__item');
 
-  ngOnInit() {}
+  constructor(public favoriteStateService: FavoriteStateService, private FavoriteService: FavoriteService, private notificationService: NotificationService) {
+    this.favorites = this.FavoriteService.favorites;
+    console.log(this.favorites);
+    this.checkAmountOfFavorites();
+  }
 
-  constructor(public favoriteStateService: FavoriteStateService) {}
+  checkAmountOfFavorites(){
+    if(this.favorites.length>this.maxAmountOfFavs){
+      this.notificationService.create('error',`fav cities amount is more than ${this.maxAmountOfFavs}!`);
+    }
+  }
+
+  getElement(event:any){
+
+    console.log()
+
+  }
+
+
 }

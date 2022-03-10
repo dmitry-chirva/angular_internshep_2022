@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { HomeService } from 'src/core/api/home/home.service';
-import { CurrentWeatherData } from '../../core/api/weather/current-weather.type';
+import { CurrentWeatherData } from 'src/core/api/weather/current-weather.type';
 import { CityWeatherInfo } from '../shared/interfaces/city-weather-info.interfaces';
 
 @Component({

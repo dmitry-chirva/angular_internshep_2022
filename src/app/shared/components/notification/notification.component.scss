@@ -7,6 +7,7 @@
     top:20px;
     right: 20px;
 
+    max-width: 16%;
     display: flex;
     flex-direction: column;
 
@@ -18,19 +19,18 @@
   &__item{
     position: relative;
 
-    min-height: 80px;
-    min-width: 350px;
+    min-height: 6rem;
 
-    padding: 20px 0;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    border: 5px solid red;
+    padding: 1.5rem 2.5rem;
+    margin-bottom: 0.4rem;
+    border-radius: 2rem;
+    border: 4px solid red;
 
     & p {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       font-family: $font-family;
-      word-break: keep-all;
-      // font-family: black;
+      font-weight: bold;
+
     }
 
     &:hover {

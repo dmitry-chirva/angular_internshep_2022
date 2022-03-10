@@ -11,8 +11,19 @@ export class FavoriteItemComponent {
 
 
   handleFavoriteChange(isFavorite: boolean | undefined) {
+    // console.log('this.info', this.info);
     if (this.info) {
       this.info.isFavorite = isFavorite;
+      if(!this.info.isFavorite){
+        //false
+
+      }
+      else{
+        //true
+
+      }
     }
   }
+
+
 }

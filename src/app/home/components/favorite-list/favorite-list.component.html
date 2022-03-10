@@ -2,7 +2,7 @@
 
 <div class="favorite-list">
     <app-favorite-item *ngFor="let favorite of favorites"
-                       [info]="favorite">
+                       [info]="favorite" (click)="getElement($event)">
     </app-favorite-item>
 </div>
 
