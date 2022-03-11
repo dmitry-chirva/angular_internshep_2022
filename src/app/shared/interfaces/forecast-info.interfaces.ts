@@ -10,7 +10,7 @@ export interface ForecastInfo {
 
 //======
 
-export interface ForecastI {
+export interface ForecastData {
   location: Location;
   current: Current;
   forecast: Forecast;
@@ -47,6 +47,9 @@ export interface Condition {
 }
 
 export interface Forecast {
+  current: any;
+  location: any;
+  forecast: any;
   forecastday: Forecastday[];
 }
 
@@ -65,7 +68,6 @@ export interface Day {
   maxwind_kph: number;
   totalprecip_mm: number;
   avgvis_km: number;
-
   avghumidity: number;
   daily_will_it_rain: number;
   daily_chance_of_rain: number;
@@ -90,27 +92,15 @@ export interface Astro {
 }
 
 export interface Hour {
-  time_epoch: number;
-  time: string;
+  gust_kps: number;
   temp_c: number;
-  is_day: number;
   condition: Condition3;
   wind_kph: number;
-  wind_degree: number;
-  wind_dir: string;
+  wind_kps?: number;
   pressure_mb: number;
-  precip_mm: number;
   humidity: number;
   cloud: number;
   feelslike_c: number;
-  windchill_c: number;
-  heatindex_c: number;
-  dewpoint_c: number;
-  will_it_rain: number;
-  chance_of_rain: number;
-  will_it_snow: number;
-  chance_of_snow: number;
-  vis_km: number;
   gust_kph: number;
 }
 

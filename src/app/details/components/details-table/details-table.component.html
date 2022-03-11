@@ -8,30 +8,70 @@
   </tr>
   <tr>
     <td>Temperature, °C</td>
-    <td *ngFor="let temp of dataDetails.temp_c">{{ temp }}</td>
+    <ng-container
+      *ngFor="let temp of dataDetails.celsiusTemperature; let i = index"
+    >
+      <td *ngIf="i === 0 || i === 6 || i === 12 || i === 18">
+        {{ temp }}
+      </td>
+    </ng-container>
   </tr>
   <tr>
     <td>Feels like, °C</td>
-    <td *ngFor="let feelslike of dataDetails.feelslike_c">{{ feelslike }}</td>
+    <ng-container
+      *ngFor="
+        let tempFeelsLike of dataDetails.celsiusTemperatureFeelslike;
+        let i = index
+      "
+    >
+      <td *ngIf="i === 0 || i === 6 || i === 12 || i === 18">
+        {{ tempFeelsLike }}
+      </td>
+    </ng-container>
   </tr>
   <tr>
     <td>Wind speed, m/s</td>
-    <td *ngFor="let wind of dataDetails.wind_kph">{{ wind }}</td>
+    <ng-container
+      *ngFor="let windSpeed of dataDetails.windSpeed; let i = index"
+    >
+      <td *ngIf="i === 0 || i === 6 || i === 12 || i === 18">
+        {{ windSpeed }}
+      </td>
+    </ng-container>
   </tr>
   <tr>
     <td>Wind gust, m/s</td>
-    <td *ngFor="let gust of dataDetails.gust_kph">{{ gust }}</td>
+    <ng-container
+      *ngFor="
+        let windSpeedFeelslike of dataDetails.windSpeedFeelslike;
+        let i = index
+      "
+    >
+      <td *ngIf="i === 0 || i === 6 || i === 12 || i === 18">
+        {{ windSpeedFeelslike }}
+      </td>
+    </ng-container>
   </tr>
   <tr>
     <td>Cloud cover, %</td>
-    <td *ngFor="let cloud of dataDetails.cloud">{{ cloud }}</td>
+    <ng-container *ngFor="let cloud of dataDetails.cloud; let i = index">
+      <td *ngIf="i === 0 || i === 6 || i === 12 || i === 18">
+        {{ cloud }}
+      </td>
+    </ng-container>
   </tr>
   <tr>
     <td>Humidity, %</td>
-    <td *ngFor="let humidity of dataDetails.humidity">{{ humidity }}</td>
+    <ng-container *ngFor="let humidity of dataDetails.humidity; let i = index">
+      <td *ngIf="i === 0 || i === 6 || i === 12 || i === 18">
+        {{ humidity }}
+      </td>
+    </ng-container>
   </tr>
   <tr>
     <td>Pressure, mm</td>
-    <td *ngFor="let pressure of dataDetails.pressure_mb">{{ pressure }}</td>
+    <ng-container *ngFor="let pressure of dataDetails.pressure; let i = index">
+      <td *ngIf="i === 0 || i === 6 || i === 12 || i === 18">{{ pressure }}</td>
+    </ng-container>
   </tr>
 </table>

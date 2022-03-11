@@ -19,13 +19,13 @@ export class DetailsComponent {
   };
 
   detailsWeatherData: DataDetailsWeather = {
-    temp_c: [],
-    feelslike_c: [],
-    wind_kph: [],
-    gust_kph: [],
+    celsiusTemperature: [],
+    celsiusTemperatureFeelslike: [],
+    windSpeed: [],
+    windSpeedFeelslike: [],
     cloud: [],
     humidity: [],
-    pressure_mb: [],
+    pressure: [],
   };
 
   constructor(private detailsService: DetailsService) {}
@@ -41,24 +41,18 @@ export class DetailsComponent {
 
     this.detailsService
       .getDataForWeatherTable()
-      .subscribe(
-        ({
-          temp_c,
-          feelslike_c,
-          wind_kph,
-          gust_kph,
-          cloud,
-          humidity,
-          pressure_mb,
-        }: DataDetailsWeather) => {
-          this.detailsWeatherData.temp_c = [...temp_c];
-          this.detailsWeatherData.feelslike_c = [...feelslike_c];
-          this.detailsWeatherData.wind_kph = [...wind_kph];
-          this.detailsWeatherData.gust_kph = [...gust_kph];
-          this.detailsWeatherData.cloud = [...cloud];
-          this.detailsWeatherData.humidity = [...humidity];
-          this.detailsWeatherData.pressure_mb = [...pressure_mb];
+      .subscribe((data: DataDetailsWeather[] | any) => {
+        if (!data) {
+          return;
         }
-      );
+
+        this.detailsWeatherData.celsiusTemperature = data.temp_c;
+        this.detailsWeatherData.celsiusTemperatureFeelslike = data.feelslike_c;
+        this.detailsWeatherData.windSpeed = data.wind_kps;
+        this.detailsWeatherData.windSpeedFeelslike = data.gust_kps;
+        this.detailsWeatherData.cloud = data.cloud;
+        this.detailsWeatherData.humidity = data.humidity;
+        this.detailsWeatherData.pressure = data.pressure_mb;
+      });
   }
 }

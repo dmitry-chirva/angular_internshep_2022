@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ForecastInfo } from '../shared/interfaces/forecast-info.interfaces';
 import { CityWeatherInfo } from '../shared/interfaces/city-weather-info.interfaces';
 import { ForecastService } from 'src/core/api/forecast/forecast.service';
 import { CurrentWeatherData } from '../../core/api/weather/current-weather.type';
+import { ForecastInfo } from '../shared/interfaces/forecast-info.interfaces';
 
 @Component({
   selector: 'app-forecast',

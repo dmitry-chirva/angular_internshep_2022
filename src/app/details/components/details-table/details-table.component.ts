@@ -12,12 +12,12 @@ export class DetailsTableComponent implements OnInit {
   ngOnInit(): void {}
 
   @Input() dataDetails: DataDetailsWeather = {
-    temp_c: [],
-    feelslike_c: [],
-    wind_kph: [],
-    gust_kph: [],
+    celsiusTemperature: [],
+    celsiusTemperatureFeelslike: [],
+    windSpeed: [],
+    windSpeedFeelslike: [],
     cloud: [],
     humidity: [],
-    pressure_mb: [],
+    pressure: [],
   };
 }
