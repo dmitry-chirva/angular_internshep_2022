@@ -2,7 +2,7 @@
 
 <div class="favorite-list">
     <div class="favorite-item__wrapper" *ngFor="let favorite of favorites">
-      <app-forecast-card [day]="favorite" (click)="getElement($event)">
+      <app-forecast-card [day]="favorite">
       </app-forecast-card>
     </div>
 </div>

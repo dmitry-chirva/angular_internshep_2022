@@ -1,4 +1,5 @@
 export interface Notification {
   type: string,
-  message: string
+  message: string,
+  isClicked?: boolean
 }

@@ -1,4 +1,3 @@
-
 import { Injectable, OnInit } from '@angular/core';
 import { Notification } from 'src/app/shared/interfaces/notification.interface';
 @Injectable({
@@ -6,35 +5,19 @@ import { Notification } from 'src/app/shared/interfaces/notification.interface';
 })
 export class NotificationService {
 
-  notifications : Notification[] =  [
-    { type: '1', message: 'This is simple test notification'},
-    // { type: '2', message: 'the max limit of favorite cities is 10'+'1'},
-    // { type: '3', message: 't2342424'},
-    // { type: '3', message: 'the max limit of favorite cities is 10'+'1'}
-  ];
-  currNotification: Notification | undefined;
+  notifications : Notification[] =  [];
+
   constructor() {
-
+    this.defaultGreeting();
   }
-
-
-  create( type: string, message:string ){
-    this.currNotification = { type: type, message: message}
-    this.notifications.push( this.currNotification);
+  defaultGreeting():void {
+    this.show('Info', 'Hello, I am new notification service!');
+    this.show('Info', 'Have a nice day =)');
+  };
+  show( type: string, message:string ):void {
+    this.notifications.push(  {type: type, message: message} );
   }
-
-  getAll():Array<Notification>{
+  getAll(): Notification[] {
     return this.notifications;
   }
-
-  OnInit(currNotification: Notification){
-
-    setTimeout(() => {
-      this.notifications.filter( notification =>  notification!= currNotification)
-    }, 4000);
-  }
-
-
 }
-
-  // TYPES = ['success','error','warning','general'];

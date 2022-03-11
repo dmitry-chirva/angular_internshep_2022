@@ -10,6 +10,8 @@ import { FavoriteToggleComponent } from './components/favorite-toggle/favorite-t
 import { NotificationComponent } from './components/notification/notification.component';
 import { ForecastCardComponent } from './components/forecast-card/forecast-card.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     CurrentWeatherComponent,
@@ -20,7 +22,7 @@ import { ForecastCardComponent } from './components/forecast-card/forecast-card.
     NotificationComponent,
     ForecastCardComponent,
   ],
-  imports: [BrowserModule, RouterModule],
+  imports: [BrowserModule, RouterModule, BrowserAnimationsModule],
   exports: [
     CurrentWeatherComponent,
     BreadcrumbsComponent,
