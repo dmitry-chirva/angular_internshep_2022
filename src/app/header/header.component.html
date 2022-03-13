@@ -5,8 +5,11 @@
         <div class="logo__icon">W</div>
         <p class="logo__text">eather</p>
       </a>
-      <app-search class="header__search">
-      </app-search>
+      <div class="header__search">
+        <input type="text" class="search__input" (input)="getList()" [formControl]="search" placeholder="Search..."/>
+        <i class="icon icon-search search__icon"></i>
+        <app-autocomplete [data]="out"></app-autocomplete>
+      </div>
       <app-theme-switcher></app-theme-switcher>
     </div>
   </div>

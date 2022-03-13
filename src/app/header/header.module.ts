@@ -4,10 +4,10 @@ import {CommonModule} from "@angular/common";
 
 import { SharedModule } from '../shared/shared.module';
 import { HeaderComponent } from './header.component';
-import {SearchComponent} from "./search/search.component";
+import { AutocompleteComponent } from "./autocomplete/autocomplete.component";
 
 @NgModule({
-  declarations: [HeaderComponent, SearchComponent],
+  declarations: [HeaderComponent, AutocompleteComponent],
   imports: [SharedModule, ReactiveFormsModule, CommonModule],
   exports: [HeaderComponent],
 })

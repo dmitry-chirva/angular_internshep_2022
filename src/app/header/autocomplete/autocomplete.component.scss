@@ -1,0 +1,20 @@
+@import "src/assets/styles/_variables";
+
+.result__item, .result__not-defined {
+  font-size: $font-size-small;
+  padding: 7px 10px;
+  width: 100%;
+  color: #E83A14;
+}
+
+.result__item {
+  color: $text-color;
+  transition: .3s background-color linear;
+
+  &:hover {
+    background-color: $bkg-overlay-light;
+  }
+  &:last-of-type {
+    border-radius: 0 0 5px 5px;
+  }
+}

@@ -1,6 +1,0 @@
-<input type="text" class="search__input" (input)="searching($event)" placeholder="Search..." [formControl]="search"/>
-<i class="icon icon-search search__icon"></i>
-<div class="search__result">
-  <a href="/{{city}}}" class="result__item" *ngFor="let city of searchResult">{{ city }}</a>
-  <p class="result__not-defined" *ngIf="notDefined.length != 0">{{ notDefined }}</p>
-</div>
