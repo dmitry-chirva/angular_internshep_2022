@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
+import {CitySearchInterface} from "../shared/interfaces/city-search.interface";
 
 @Component({
   selector: 'app-header',
@@ -10,13 +11,13 @@ import {HttpClient} from "@angular/common/http";
 export class HeaderComponent {
   search = new FormControl('');
 
-  out: any[] = []
+  citiesList: CitySearchInterface[] = []
 
   constructor(private http: HttpClient) { }
 
-  getList (): any {
+  getCities (): any {
     this.http.get<[]>(
       `http://api.weatherapi.com/v1/search.json?key=b88614b3fb684e8b996104153220302&q=${this.search.value}`
-    ).subscribe((data) => this.out = data)
+    ).subscribe((data) => this.citiesList = data)
   }
 }

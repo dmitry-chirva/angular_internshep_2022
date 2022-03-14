@@ -1,9 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-
-
-interface obj {
-  name: string
-}
+import {CitySearchInterface} from "../../shared/interfaces/city-search.interface";
 
 @Component({
   selector: 'app-autocomplete',
@@ -13,9 +9,7 @@ interface obj {
 
 export class AutocompleteComponent implements OnInit {
 
-
-
-  @Input() data: obj[] = [{name: 'kei'}]
+  @Input() cities: CitySearchInterface[] = []
 
   constructor() { }
 
