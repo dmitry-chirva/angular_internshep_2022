@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ForecastInfo } from '../shared/interfaces/forecast-info.interfaces';
 import { CityWeatherInfo } from '../shared/interfaces/city-weather-info.interfaces';
 import { ForecastService } from 'src/core/api/forecast/forecast.service';
 import { CurrentWeatherData } from '../../core/api/weather/current-weather.type';
+import { BreadcrumbLink } from '../shared/interfaces/breadcrumbs-links.interfaces';
 
 @Component({
   selector: 'app-forecast',
@@ -17,6 +17,12 @@ export class ForecastComponent implements OnInit {
     temp: '',
     isFavorite: false,
   };
+
+  forecastBreadcrumbLinks: BreadcrumbLink[] = [
+    { link : '/', name : 'Home', isActive : false },
+    { link: '/kiev/details', name: 'Details', isActive : false },
+    { link: '/kiev/details/forecast', name: 'Forecast', isActive : true }
+  ];
 
   constructor(private forecastService: ForecastService) {}
 
