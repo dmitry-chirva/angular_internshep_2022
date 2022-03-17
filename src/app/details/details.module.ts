@@ -6,17 +6,8 @@ import { DetailsComponent } from './details.component';
 import { DetailsTableComponent } from './components/details-table/details-table.component';
 
 @NgModule({
-  declarations: [
-    DetailsComponent,
-    DetailsTableComponent
-  ],
-  imports: [
-    CommonModule,
-    SharedModule
-  ],
-  exports: [
-    DetailsComponent,
-    DetailsTableComponent
-  ]
+  declarations: [DetailsComponent, DetailsTableComponent],
+  imports: [CommonModule, SharedModule],
+  exports: [DetailsComponent, DetailsTableComponent],
 })
-export class DetailsModule { }
+export class DetailsModule {}
