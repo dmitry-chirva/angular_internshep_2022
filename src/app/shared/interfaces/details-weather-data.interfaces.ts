@@ -1,8 +1,8 @@
-export interface DataDetailsWeather {
-  celsiusTemperature: number[];
-  celsiusTemperatureFeelslike: number[];
+export interface DetailsWeather {
+  temperature: number[];
+  temperatureFeelsLike: number[];
   windSpeed: number[];
-  windSpeedFeelslike: number[];
+  windSpeedFeelsLike: number[];
   cloud: number[];
   humidity: number[];
   pressure: number[];

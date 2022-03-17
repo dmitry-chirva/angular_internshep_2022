@@ -9,7 +9,7 @@
   <tr>
     <td>Temperature, °C</td>
     <ng-container
-      *ngFor="let temp of dataDetails.celsiusTemperature; let i = index"
+      *ngFor="let temp of dataDetails.temperature; let i = index"
     >
       <td *ngIf="i === 0 || i === 6 || i === 12 || i === 18">
         {{ temp }}
@@ -20,7 +20,7 @@
     <td>Feels like, °C</td>
     <ng-container
       *ngFor="
-        let tempFeelsLike of dataDetails.celsiusTemperatureFeelslike;
+        let tempFeelsLike of dataDetails.temperatureFeelsLike;
         let i = index
       "
     >
@@ -43,12 +43,12 @@
     <td>Wind gust, m/s</td>
     <ng-container
       *ngFor="
-        let windSpeedFeelslike of dataDetails.windSpeedFeelslike;
+        let windSpeedFeelsLike of dataDetails.windSpeedFeelsLike;
         let i = index
       "
     >
       <td *ngIf="i === 0 || i === 6 || i === 12 || i === 18">
-        {{ windSpeedFeelslike }}
+        {{ windSpeedFeelsLike }}
       </td>
     </ng-container>
   </tr>

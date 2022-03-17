@@ -1,21 +1,17 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { DataDetailsWeather } from 'src/app/shared/interfaces/details-weather-data.interfaces';
+import { Component, Input } from '@angular/core';
+import { DetailsWeather } from 'src/app/shared/interfaces/details-weather-data.interfaces';
 
 @Component({
   selector: 'app-details-table',
   templateUrl: './details-table.component.html',
   styleUrls: ['./details-table.component.scss'],
 })
-export class DetailsTableComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
-
-  @Input() dataDetails: DataDetailsWeather = {
-    celsiusTemperature: [],
-    celsiusTemperatureFeelslike: [],
+export class DetailsTableComponent {
+  @Input() dataDetails: DetailsWeather = {
+    temperature: [],
+    temperatureFeelsLike: [],
     windSpeed: [],
-    windSpeedFeelslike: [],
+    windSpeedFeelsLike: [],
     cloud: [],
     humidity: [],
     pressure: [],

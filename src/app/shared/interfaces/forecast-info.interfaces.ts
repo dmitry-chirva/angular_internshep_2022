@@ -32,7 +32,6 @@ export interface Current {
   cloud: number;
   pressure_mb: number;
   is_day: number;
-  condition: Condition;
   wind_degree: number;
   wind_dir: string;
   precip_mm: number;
@@ -40,16 +39,7 @@ export interface Current {
   vis_km: number;
 }
 
-export interface Condition {
-  text: string;
-  icon: string;
-  code: number;
-}
-
 export interface Forecast {
-  current: any;
-  location: any;
-  forecast: any;
   forecastday: Forecastday[];
 }
 
@@ -58,7 +48,7 @@ export interface Forecastday {
   date_epoch: number;
   day: Day;
   astro: Astro;
-  hour: Hour[];
+  hour: Day[];
 }
 
 export interface Day {
@@ -91,7 +81,7 @@ export interface Astro {
   moon_illumination: string;
 }
 
-export interface Hour {
+export interface Day {
   gust_kps: number;
   temp_c: number;
   condition: Condition3;

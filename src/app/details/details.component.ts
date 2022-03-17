@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { tap } from 'rxjs';
 
 import { DetailsService } from 'src/core/api/details/details.service';
+import { TransformDataDetailsService } from 'src/core/api/details/transform-data-details.service';
 import { CurrentWeatherData } from '../../core/api/weather/current-weather.type';
 import { CityWeatherInfo } from '../shared/interfaces/city-weather-info.interfaces';
-import { DataDetailsWeather } from '../shared/interfaces/details-weather-data.interfaces';
+import { DetailsWeather } from '../shared/interfaces/details-weather-data.interfaces';
 
 @Component({
   selector: 'app-details',
@@ -18,17 +20,20 @@ export class DetailsComponent {
     isFavorite: false,
   };
 
-  detailsWeatherData: DataDetailsWeather = {
-    celsiusTemperature: [],
-    celsiusTemperatureFeelslike: [],
+  detailsWeatherData: DetailsWeather = {
+    temperature: [],
+    temperatureFeelsLike: [],
     windSpeed: [],
-    windSpeedFeelslike: [],
+    windSpeedFeelsLike: [],
     cloud: [],
     humidity: [],
     pressure: [],
   };
 
-  constructor(private detailsService: DetailsService) {}
+  constructor(
+    private detailsService: DetailsService,
+    private transformDataDetailsService: TransformDataDetailsService
+  ) {}
 
   ngOnInit() {
     this.detailsService
@@ -41,18 +46,13 @@ export class DetailsComponent {
 
     this.detailsService
       .getDataForWeatherTable()
-      .subscribe((data: DataDetailsWeather[] | any) => {
-        if (!data) {
-          return;
-        }
-
-        this.detailsWeatherData.celsiusTemperature = data.temp_c;
-        this.detailsWeatherData.celsiusTemperatureFeelslike = data.feelslike_c;
-        this.detailsWeatherData.windSpeed = data.wind_kps;
-        this.detailsWeatherData.windSpeedFeelslike = data.gust_kps;
-        this.detailsWeatherData.cloud = data.cloud;
-        this.detailsWeatherData.humidity = data.humidity;
-        this.detailsWeatherData.pressure = data.pressure_mb;
-      });
+      .pipe(
+        tap(
+          (data) =>
+            (this.detailsWeatherData =
+              this.transformDataDetailsService.transformDetailsWeather(data))
+        )
+      )
+      .subscribe();
   }
 }
