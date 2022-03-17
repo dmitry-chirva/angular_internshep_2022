@@ -21,7 +21,7 @@ export class ForecastComponent implements OnInit {
   forecastBreadcrumbLinks: BreadcrumbLink[] = [
     { link : '/', name : 'Home', isActive : false },
     { link: '/kiev/details', name: 'Details', isActive : false },
-    { link: '/kiev/details/forecast', name: 'Forecast', isActive : true }
+    { link: '/kiev/details', name: 'Forecast', isActive : true }
   ];
 
   constructor(private forecastService: ForecastService) {}

@@ -9,7 +9,7 @@ const appRouts: Routes = [
   { path: '', component: HomeComponent },
   { path: ':city/details', component: DetailsComponent },
   { path: ':city/details/tomorrow', component: DetailsComponent },
-  { path: ':city/details/forecast/:forecast', component: ForecastComponent },
+  { path: ':city/details/:forecast', component: ForecastComponent },
 ];
 
 @NgModule({
