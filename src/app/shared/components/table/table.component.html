@@ -1,6 +1,75 @@
-<table class="table">
-  <tr *ngFor="let column of columns">
-    <td>{{ column.displayName }}</td>
-    <td *ngFor="let row of data">{{ row[column.name] }}</td>
+<table class="details-table">
+  <tr>
+    <td></td>
+    <td>12PM</td>
+    <td>6AM</td>
+    <td>12AM</td>
+    <td>6PM</td>
+  </tr>
+  <tr>
+    <td>Temperature, °C</td>
+    <ng-container *ngFor="let temp of dataDetails.temperature; let i = index">
+      <td *ngIf="i === 0 || i === 6 || i === 12 || i === 18">
+        {{ temp }}
+      </td>
+    </ng-container>
+  </tr>
+  <tr>
+    <td>Feels like, °C</td>
+    <ng-container
+      *ngFor="
+        let tempFeelsLike of dataDetails.temperatureFeelsLike;
+        let i = index
+      "
+    >
+      <td *ngIf="i === 0 || i === 6 || i === 12 || i === 18">
+        {{ tempFeelsLike }}
+      </td>
+    </ng-container>
+  </tr>
+  <tr>
+    <td>Wind speed, m/s</td>
+    <ng-container
+      *ngFor="let windSpeed of dataDetails.windSpeed; let i = index"
+    >
+      <td *ngIf="i === 0 || i === 6 || i === 12 || i === 18">
+        {{ windSpeed }}
+      </td>
+    </ng-container>
+  </tr>
+  <tr>
+    <td>Wind gust, m/s</td>
+    <ng-container
+      *ngFor="
+        let windSpeedFeelsLike of dataDetails.windSpeedFeelsLike;
+        let i = index
+      "
+    >
+      <td *ngIf="i === 0 || i === 6 || i === 12 || i === 18">
+        {{ windSpeedFeelsLike }}
+      </td>
+    </ng-container>
+  </tr>
+  <tr>
+    <td>Cloud cover, %</td>
+    <ng-container *ngFor="let cloud of dataDetails.cloud; let i = index">
+      <td *ngIf="i === 0 || i === 6 || i === 12 || i === 18">
+        {{ cloud }}
+      </td>
+    </ng-container>
+  </tr>
+  <tr>
+    <td>Humidity, %</td>
+    <ng-container *ngFor="let humidity of dataDetails.humidity; let i = index">
+      <td *ngIf="i === 0 || i === 6 || i === 12 || i === 18">
+        {{ humidity }}
+      </td>
+    </ng-container>
+  </tr>
+  <tr>
+    <td>Pressure, mm</td>
+    <ng-container *ngFor="let pressure of dataDetails.pressure; let i = index">
+      <td *ngIf="i === 0 || i === 6 || i === 12 || i === 18">{{ pressure }}</td>
+    </ng-container>
   </tr>
 </table>
