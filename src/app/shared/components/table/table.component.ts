@@ -8,5 +8,5 @@ import { Column } from '../../interfaces/table.interfaces';
 })
 export class TableComponent {
   @Input() columns: Column[] = [];
-  @Input() data: any = [];
+  @Input() data: any[] = [];
 }
