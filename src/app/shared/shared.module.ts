@@ -7,7 +7,6 @@ import { CurrentWeatherComponent } from './components/current-weather/current-we
 import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switcher.component';
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 import { BtnGroupsComponent } from './components/btn-groups/btn-groups.component';
-// import { TableComponent } from './components/table/table.component';
 import { FavoriteToggleComponent } from './components/favorite-toggle/favorite-toggle.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { ForecastCardComponent } from './components/forecast-card/forecast-card.component';
@@ -28,7 +27,6 @@ import { ForecastCardComponent } from './components/forecast-card/forecast-card.
     BreadcrumbsComponent,
     ThemeSwitcherComponent,
     BtnGroupsComponent,
-    // TableComponent,
     FavoriteToggleComponent,
     NotificationComponent,
     ForecastCardComponent,

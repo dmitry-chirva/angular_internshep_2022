@@ -10,7 +10,7 @@ export class FavoriteStateService {
 
   constructor(private storage: StorageService) {}
 
-  getFavoritesCity(): string[] {
+  getFavoriteCities(): string[] {
     return this.storage.getItem(this.FAVORITES_KEY);
   }
 

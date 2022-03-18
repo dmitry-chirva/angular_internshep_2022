@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 
-import { CityWeatherInfo } from '../../../shared/interfaces/city-weather-info.interfaces';
-
-import { FavoriteStateService } from '../../../../core/favorites-state/favorite-state.service';
-import { NotificationService } from 'src/core/api/notification/notification.service';
-import { StorageService } from '../../../../core/storage/storage.service';
+import { CityWeatherInfo } from 'src/app/shared/interfaces/city-weather-info.interfaces';
+import { FavoriteStateService } from 'src/core/favorites-state/favorite-state.service';
+import { StorageService } from 'src/core/storage/storage.service';
 import { FavoriteService } from 'src/core/favorite/favorite.service';
 @Component({
   selector: 'app-favorite-list',
@@ -12,10 +10,13 @@ import { FavoriteService } from 'src/core/favorite/favorite.service';
   styleUrls: ['./favorite-list.component.scss'],
   providers: [FavoriteStateService, StorageService],
 })
-export class FavoriteListComponent {
+export class FavoriteListComponent implements OnInit  {
+
   favorites: CityWeatherInfo[] = [];
 
-  constructor(public favoriteStateService: FavoriteStateService, private favoriteService: FavoriteService, private notificationService: NotificationService) {
+  constructor(private favoriteService: FavoriteService) {}
+
+  ngOnInit(){
     this.favorites = this.favoriteService.favorites;
   }
 }
