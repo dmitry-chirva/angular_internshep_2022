@@ -26,10 +26,11 @@ export class NotificationComponent  {
     this.notifications = this.notificationService.getAll();
   }
 
-  handleClick(itemToDel: Notification){
-    itemToDel.isClicked = true;
-    setTimeout(() => {
-      this.notifications = this.notifications.filter(notification => JSON.stringify(notification) != JSON.stringify(itemToDel));
-    }, 400);
+  handleClick(currentNotification: Notification){
+    currentNotification.isClicked = true;
+    // notification => notification.id != id
+
+    this.notifications = this.notifications.filter(notification =>notification.id != currentNotification.id);
+
   }
 }
