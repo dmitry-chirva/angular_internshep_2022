@@ -8,7 +8,8 @@ import { StringUtils } from 'src/app/shared/utils/string.utils';
 export class NotificationService {
   notifications : Notification[] =  [];
 
-  constructor(){}
+  constructor(){
+  }
 
   show( type: string, message:string ): void {
     const id = StringUtils.generateUID();

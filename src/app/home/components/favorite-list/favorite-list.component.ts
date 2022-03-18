@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { CityWeatherInfo } from 'src/app/shared/interfaces/city-weather-info.interfaces';
 import { FavoriteStateService } from 'src/core/favorites-state/favorite-state.service';
