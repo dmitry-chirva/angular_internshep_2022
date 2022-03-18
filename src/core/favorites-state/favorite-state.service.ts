@@ -1,4 +1,4 @@
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {StorageService} from "../storage/storage.service";
 
 @Injectable({
@@ -10,7 +10,7 @@ export class FavoriteStateService {
 
   constructor(private storage: StorageService) {}
 
-  getFavoritesCity(): string[] {
+  getFavoriteCities(): string[] {
     return this.storage.getItem(this.FAVORITES_KEY);
   }
 
