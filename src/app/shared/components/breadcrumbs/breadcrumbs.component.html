@@ -1,32 +1,21 @@
 <nav class="breadcrumbs">
     <ul class="menu">
-        <li class="menu__item">
+        <li class="menu__item" *ngFor="let link of links">
+            <!-- <span class="menu__link_decoration">/</span> -->
             <a
-                routerLink="/"
+                *ngIf="!link.isActive"
+                routerLink="{{link.link}}"
                 routerLinkActive="active-link"
                 [routerLinkActiveOptions]="{exact:true}"
                 class="menu__link">
-                Home
+                {{link.name}}
             </a>
-        </li>
-        <li class="menu__item">
-            <span class="menu__link_decoration">/</span>
             <a
-                routerLink="/kiev/details"
-                routerLinkActive="active-link"
-                [routerLinkActiveOptions]="{exact:true}"
-                class="menu__link">
-                Details
-            </a>
-        </li>
-        <li *ngIf="isForecast"
-            class="menu__item">
-            <span class="menu__link_decoration">/</span>
-            <a
-                routerLink="/kiev/details/"
+                *ngIf="link.isActive"
+                routerLink="{{link.link}}"
                 routerLinkActive="active-link"
                 class="menu__link">
-                Forecast
+                {{link.name}}
             </a>
         </li>
     </ul>

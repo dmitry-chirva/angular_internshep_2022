@@ -1,3 +1,5 @@
+@import "src/assets/styles/_variables";
+
 .current-weather {
   &__info {
     display: flex;
@@ -6,26 +8,41 @@
   }
   & .icon-calendar {
     font-size: 40px;
+    @media only screen and (max-width: $screen-m) {
+      font-size: 30px;
+    }
   }
   &__date {
     margin-left: 25px;
-    font-size: 48px;
+    font-size: $font-size-large;
+    @media only screen and (max-width: $screen-xl) {
+      font-size: $font-size-medium;
+    }
+    @media only screen and (max-width: $screen-m) {
+      font-size: $font-size-small;
+    }
   }
   &__city {
-    font-size: 48px;
-    font-weight: 500;
+    font-size: $font-size-large;
+    font-weight: $font-weight-medium;
     cursor: pointer;
+    @media only screen and (max-width: $screen-xl) {
+      font-size: $font-size-medium;
+    }
   }
   &__city:hover {
-    color: #88aa7d;
+    color: $accent-color;
   }
-  & .icon-heart {
-    margin-left: 37px;
+  & button {
     font-size: 40px;
+    margin-left: 37px;
   }
   &__temperature {
     margin-top: 50px;
-    font-size: 48px;
-    font-weight: 500;
+    font-size: $font-size-large;
+    font-weight: $font-weight-medium;
+    @media only screen and (max-width: $screen-l) {
+      margin-top: 30px;
+    }
   }
 }

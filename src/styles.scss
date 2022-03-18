@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@500;700;900&display=swap");
+@import '../src/assets/styles/_variables';
+
 html {
   box-sizing: border-box;
   height: 100%;
@@ -70,6 +72,18 @@ button {
   margin: 0 auto;
   padding: 0 20px;
   width: 1210px;
+
+  @media only screen and (max-width: $screen-xl) {
+    width: 755px;
+  }
+  
+  @media only screen and (max-width: $screen-l) {
+    width: 100%;
+  }
+
+  @media only screen and (max-width: $screen-m) {
+    padding: 0 10px;
+  }
 }
 
 @font-face {

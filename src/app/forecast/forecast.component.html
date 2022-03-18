@@ -1,5 +1,5 @@
 <div class="forecast">
-  <app-breadcrumbs></app-breadcrumbs>
+  <app-breadcrumbs [links]="forecastBreadcrumbLinks"></app-breadcrumbs>
   <app-btn-groups></app-btn-groups>
   <app-current-weather
     [weatherInfo]="weatherInfo"
@@ -10,7 +10,7 @@
   <div class="forecast-list">
     <app-forecast-card
       *ngFor="let day of forecast"
-      [dayState]="day"
+      [day]="day"
       class="forecast-list__item"
     ></app-forecast-card>
   </div>

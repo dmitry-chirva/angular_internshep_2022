@@ -1,10 +1,15 @@
+@import "src/assets/styles/_variables";
+
 .header {
+  position: fixed;
+  z-index: 1;
   width: 100%;
   height: 100px;
-  background: #EAEFEA;
+  background: $bkg-light-theme;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 }
 
 .header__inner {
@@ -25,14 +30,14 @@
 .logo__icon {
   width: 65px;
   height: 75px;
-  background-color: #88AA7D;
+  background-color: $accent-color;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #FFF;
+  color: $text-color;
   border-radius: 5px;
-  font-size: 48px;
-  font-weight: 700;
+  font-size: $font-size-large;
+  font-weight: $font-weight-bold;
   line-height: 59px;
 }
 
@@ -42,28 +47,36 @@
 }
 
 .logo__text {
-  font-size: 48px;
-  font-weight: 600;
-  line-height: 59px;
+  font-size: $font-size-large;
+  font-weight: $font-weight-semiBold;
   margin-left: 5px;
-  color: #88AA7D;
-}
+  color: $accent-color;
 
+  @media only screen and (max-width: $screen-l) {
+    display: none;
+  }
+}
 
 .header__search {
   width: 470px;
   height: 66px;
   position: relative;
+
+  @media only screen and (max-width: $screen-xl) {
+    width: 300px;
+  }
+
+  @media only screen and (max-width: $screen-l) {
+    width: 55%;
+  }
 }
 
 .search__input {
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 36px;
+  font-size: $font-size-small;
   width: 100%;
   padding: 0 50px 0 28px;
   height: 100%;
-  background: #FFF;
+  background: $text-color;
   border: none;
   border-radius: 5px;
 }

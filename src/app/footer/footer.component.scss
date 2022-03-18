@@ -1,4 +1,4 @@
-@import 'src/assets/styles/_general';
+@import 'src/assets/styles/_variables';
 
 .footer {
   display: flex;
@@ -10,11 +10,20 @@
   &__text {
     color: $text-color-dark;
     line-height: 29px;
-    font-size: 24px;
+    font-size: $font-size-small;
+  
+    @media only screen and (max-width: $screen-xl) {
+      font-size: $font-size-theSmallest;
+    }
+
+    @media only screen and (max-width: $screen-l) {
+      width: 80%;
+      text-align: center;
+    }
 
     &_link {
-      font-weight: 700;
-      color: #88aa7d;
+      font-weight: $font-weight-bold;
+      color: $accent-color;
     }
   }
 }

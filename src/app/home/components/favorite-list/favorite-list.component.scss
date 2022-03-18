@@ -1,15 +1,32 @@
-.favorite__btn {
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 29px;
-    display: flex;
-    align-items: center;
+@import "src/assets/styles/_variables";
 
+.favorite__btn {
+  font-weight: $font-weight-medium;
+  font-size: $font-size-small;
+  display: flex;
+  align-items: center;
 }
 
 .favorite-list {
-    display: flex;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 24px;
+
+  @media only screen and (max-width: $screen-l) {
+    justify-content: space-around;
+  }
+}
+
+.favorite-item__wrapper {
+  margin-right: 60px;
+  width: 350px;
+
+  &:nth-child(3n) {
+    margin-right: 0;
+  }
+
+  @media only screen and (max-width: $screen-xl) {
+    margin: 0px;
+  }
 }

@@ -1,26 +1,25 @@
-@import "src/assets/styles/_general";
+@import "src/assets/styles/_variables";
 .menu {
   display: flex;
   &__item {
     display: flex;
     align-items: baseline;
     list-style-type: none;
+    font-size: 20px;
+    &:not(:last-child)::after {
+      content: "/";
+      margin: 0 10px;
+    }
   }
   &__link {
     padding-top: 31px;
     padding-bottom: 31px;
     cursor: pointer;
-    &-active {
-      color: $accent-color;
-    }
-  }
-  &__link_decoration {
-    color: $text-color;
-    margin: 0 10px;
   }
 }
 .active-link {
   color: $accent-color;
   cursor: auto;
   pointer-events: none;
+  font-weight: $font-weight-extraBold;
 }

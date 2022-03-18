@@ -1,0 +1,33 @@
+@import "src/assets/styles/_variables";
+
+.details-table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-small;
+
+  @media only screen and (max-width: $screen-l) {
+    font-size: $font-size-theSmallest;
+  }
+}
+
+tr {
+  line-height: 62px;
+}
+
+td {
+  border-bottom: 3px solid $table-line;
+  &:nth-child(1) {
+    text-align: left;
+
+    @media only screen and (max-width: $screen-xl) {
+      width: 213px;
+    }
+
+    @media only screen and (max-width: $screen-m) {
+      width: 145px;
+    }
+  }
+}

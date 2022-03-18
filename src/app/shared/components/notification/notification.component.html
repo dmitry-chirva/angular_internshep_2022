@@ -1,0 +1,7 @@
+<ul class="notification__list">
+  <li *ngFor="let notification of notifications">
+      <button type="text" class="notification__item" (click)="handleClick(notification)" [@shownHidden]="notification.isClicked ? 'hidden' : 'shown'">
+        <p>[{{notification.type}}] : {{notification.message}}</p>
+      </button>
+  </li>
+</ul>

@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
+import { tap } from 'rxjs';
 
+import { DetailsService } from 'src/core/api/details/details.service';
+import { TransformDataDetailsService } from 'src/core/api/details/transform-data-details.service';
+import { CurrentWeatherData } from '../../core/api/weather/current-weather.type';
 import { CityWeatherInfo } from '../shared/interfaces/city-weather-info.interfaces';
+import { DetailsWeather } from '../shared/interfaces/details-weather-data.interfaces';
+import { BreadcrumbLink } from '../shared/interfaces/breadcrumbs-links.interfaces';
 
 @Component({
   selector: 'app-details',
@@ -9,9 +15,50 @@ import { CityWeatherInfo } from '../shared/interfaces/city-weather-info.interfac
 })
 export class DetailsComponent {
   weatherInfo: CityWeatherInfo = {
-    city: 'Kyiv, Ukraine',
-    date: 'February 7th, 2022',
-    temp: '7 °С',
-    isFavorite: false
+    city: 'Kiev, Ukraine',
+    date: '',
+    temp: '',
+    isFavorite: false,
+  };
+
+  detailsWeatherData: DetailsWeather = {
+    temperature: [],
+    temperatureFeelsLike: [],
+    windSpeed: [],
+    windSpeedFeelsLike: [],
+    cloud: [],
+    humidity: [],
+    pressure: [],
+  };
+
+  constructor(
+    private detailsService: DetailsService,
+    private transformDataDetailsService: TransformDataDetailsService
+  ) {}
+
+  detailBreadcrumbLinks: BreadcrumbLink[] = [
+    { link: '/', name: 'Home', isActive: false },
+    { link: '/kiev/details', name: 'Details', isActive: true },
+  ];
+
+  ngOnInit() {
+    this.detailsService
+      .getCurrentWeatherDetails()
+      .subscribe(({ year, date, month, temp, city }: CurrentWeatherData) => {
+        this.weatherInfo.date = `${month} ${date}th, ${year}`;
+        this.weatherInfo.temp = `${temp} °С`;
+        this.weatherInfo.city = city;
+      });
+
+    this.detailsService
+      .getDataForWeatherTable()
+      .pipe(
+        tap(
+          (data) =>
+            (this.detailsWeatherData =
+              this.transformDataDetailsService.transformDetailsWeather(data))
+        )
+      )
+      .subscribe();
   }
 }

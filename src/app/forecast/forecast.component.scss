@@ -1,4 +1,4 @@
-@import "src/assets/styles/_general";
+@import "src/assets/styles/_variables";
 
 .forecast {
   width: 100%;
@@ -13,23 +13,30 @@
   align-items: center;
   flex-wrap: wrap;
   margin-bottom: 50px;
+
+  @media only screen and (max-width: $screen-l) {
+    justify-content: space-around;
+  }
 }
 
 .forecast-list__item {
-  width: 30%;
+  width: 351px;
   margin-bottom: 20px;
 }
 
 .forecast__history-button {
   color: $text-color;
-  font-size: 24px;
-  font-weight: 400;
+  font-size: $font-size-small;
+  font-weight: $font-weight-regular;
 }
 
 app-btn-groups {
   display: flex;
   justify-content: center;
   margin-bottom: 55px;
+  @media only screen and (max-width: $screen-l) {
+    margin-bottom: 30px;
+  }
 }
 
 app-current-weather {
