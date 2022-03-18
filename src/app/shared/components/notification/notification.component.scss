@@ -8,7 +8,6 @@
     right: 20px;
     z-index: 1;
     max-width: 18%;
-
     display: flex;
     flex-direction: column-reverse;
     list-style: none;
@@ -17,11 +16,10 @@
 
   &__item{
     position: relative;
-
     margin-bottom: 0.4rem;
     border-radius: 2rem;
-
     background: $accent-color;
+    
     & p {
       padding: 1.2rem;
       color: $text-color;
@@ -33,8 +31,5 @@
       opacity: 0.8;
       border: 2px solid $text-color-dark;
     }
-  }
-  &.hidden{
-    display: none;
   }
 }
