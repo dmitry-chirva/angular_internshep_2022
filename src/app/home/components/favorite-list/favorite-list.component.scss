@@ -10,7 +10,7 @@
 .favorite-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-top: 24px;
 
   @media only screen and (max-width: $screen-l) {

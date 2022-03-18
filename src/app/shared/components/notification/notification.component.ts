@@ -15,7 +15,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
         opacity: 0,
       })),
       transition('shown => hidden', [
-        animate('0.3s')
+        animate('0.1s')
       ])
     ]),
   ],
@@ -30,6 +30,6 @@ export class NotificationComponent  {
     itemToDel.isClicked = true;
     setTimeout(() => {
       this.notifications = this.notifications.filter(notification => JSON.stringify(notification) != JSON.stringify(itemToDel));
-    }, 400);
+    }, 120);
   }
 }
