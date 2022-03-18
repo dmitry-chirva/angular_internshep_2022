@@ -8,17 +8,11 @@ export class NotificationService {
 
   notifications : Notification[] =  [];
 
-  constructor() {
-    this.defaultGreeting();
-  }
-  defaultGreeting():void {
-    this.show('Info', 'Hello, I am new notification service!');
-    this.show('Info', 'Have a nice day =)');
-  };
+  constructor() {}
 
   show( type: string, message:string ):void {
     const id = StringsUtils.generateUID();
-    this.notifications.push(  { id, type, message} );
+    this.notifications.push({id, type, message});
   }
 
   getAll(): Notification[] {

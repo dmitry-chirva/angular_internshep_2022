@@ -28,9 +28,7 @@ export class NotificationComponent  {
 
   handleClick(currentNotification: Notification){
     currentNotification.isClicked = true;
-    // notification => notification.id != id
-
-    this.notifications = this.notifications.filter(notification =>notification.id != currentNotification.id);
+    this.notifications = this.notifications.filter(notification => notification.id != currentNotification.id);
 
   }
 }

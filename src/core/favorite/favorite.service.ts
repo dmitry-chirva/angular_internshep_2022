@@ -7,7 +7,8 @@ import { Injectable } from '@angular/core';
 export class FavoriteService {
 
   maxAmountOfFavs: number = 10;
-  favorites: CityWeatherInfo[] = [
+  favorites: CityWeatherInfo[] = [];
+  testFavorites: CityWeatherInfo[] = [
     {
       city: 'Toronto',
       date: 'February 18th, 2022',
@@ -46,12 +47,12 @@ export class FavoriteService {
     },
   ];
 
-  newFavCitiesCanBeAdded: boolean = (this.favorites.length < this.maxAmountOfFavs) ? true : false;
-
-  constructor() {}
+  constructor() {
+    this.favorites = this.testFavorites;
+  }
 
   checkAmountOfFavorites():boolean{
-    return this.newFavCitiesCanBeAdded;
+    return this.favorites.length < this.maxAmountOfFavs;
   }
 
 }

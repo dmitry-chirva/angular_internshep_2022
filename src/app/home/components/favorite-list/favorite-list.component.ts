@@ -15,15 +15,10 @@ import { FavoriteService } from 'src/core/favorite/favorite.service';
 export class FavoriteListComponent implements OnInit {
   favorites: CityWeatherInfo[] = [];
 
-  constructor(public favoriteStateService: FavoriteStateService, private favoriteService: FavoriteService, private notificationService: NotificationService) {
-    this.favorites = this.favoriteService.favorites;
-    if(this.favoriteService.checkAmountOfFavorites()){
-      // this.notificationService.show('Advise', `There is less than ${this.favoriteService.maxAmountOfFavs} favorite cities in your list, you can add more!`);
-    }
-    else{
-      // this.notificationService.show('Error', `There is max amount of cities in your list of favorites!`);
-    };
+  constructor(private favoriteStateService: FavoriteStateService, private favoriteService: FavoriteService, private notificationService: NotificationService) {
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.favorites = this.favoriteService.favorites;
+  }
 }
