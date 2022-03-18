@@ -1,22 +1,20 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Notification } from 'src/app/shared/interfaces/notification.interface';
+import { StringUtils } from 'src/app/shared/utils/string.utils';
+
 @Injectable({
   providedIn: 'root'
 })
 export class NotificationService {
-
   notifications : Notification[] =  [];
 
-  constructor() {
-    this.defaultGreeting();
+  constructor(){}
+
+  show( type: string, message:string ): void {
+    const id = StringUtils.generateUID();
+    this.notifications.push({id, type, message});
   }
-  defaultGreeting():void {
-    this.show('Info', 'Hello, I am new notification service!');
-    this.show('Info', 'Have a nice day =)');
-  };
-  show( type: string, message:string ):void {
-    this.notifications.push(  {type: type, message: message} );
-  }
+
   getAll(): Notification[] {
     return this.notifications;
   }

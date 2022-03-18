@@ -13,11 +13,9 @@ import { FavoriteService } from 'src/core/favorite/favorite.service';
 export class FavoriteListComponent implements OnInit  {
   favorites: CityWeatherInfo[] = [];
 
-  constructor(private favoriteService: FavoriteService) {
-  }
+  constructor(private favoriteService: FavoriteService) {}
 
-  ngOnInit(): void {
+  ngOnInit(){
     this.favorites = this.favoriteService.favorites;
   }
-
 }
