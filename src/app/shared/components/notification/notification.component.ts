@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NotificationService } from 'src/core/api/notification/notification.service';
 import { Notification } from 'src/app/shared/interfaces/notification.interface';
 import { trigger, state, style, animate, transition } from '@angular/animations';
@@ -15,24 +15,21 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
         opacity: 0,
       })),
       transition('shown => hidden', [
-        animate('0.3s')
+        animate('0.1s')
       ])
     ]),
   ],
 })
-export class NotificationComponent implements OnInit  {
+export class NotificationComponent implements OnInit {
   notifications: Notification[] = [];
-  constructor(private notificationService: NotificationService) {
+  constructor(private notificationService: NotificationService) {}
 
-  }
   ngOnInit(){
     this.notifications = this.notificationService.getAll();
   }
 
-  handleClick(itemToDel: Notification){
-    itemToDel.isClicked = true;
-    setTimeout(() => {
-      this.notifications = this.notifications.filter(notification => JSON.stringify(notification) != JSON.stringify(itemToDel));
-    }, 400);
+  handleClick(currentNotification: Notification){
+    currentNotification.isClicked = true;
+    this.notifications = this.notifications.filter(notification => notification.id != currentNotification.id);
   }
 }

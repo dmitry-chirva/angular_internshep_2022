@@ -1,7 +1,11 @@
-<app-breadcrumbs></app-breadcrumbs>
+<app-breadcrumbs [links]="detailBreadcrumbLinks"></app-breadcrumbs>
 <app-current-weather
   class="details__current-weather"
   [weatherInfo]="weatherInfo"
 ></app-current-weather>
 <app-btn-groups class="details__details-btns"></app-btn-groups>
-<app-details-table class="details__details-table"></app-details-table>
+
+<app-table
+  [dataDetails]="detailsWeatherData"
+  class="details__details-table"
+></app-table>

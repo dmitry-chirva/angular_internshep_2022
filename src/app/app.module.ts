@@ -23,7 +23,6 @@ import { SharedModule } from './shared/shared.module';
     DetailsModule,
     HttpClientModule,
     SharedModule
-
   ],
   providers: [],
   bootstrap: [AppComponent],

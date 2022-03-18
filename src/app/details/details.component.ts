@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
+import { tap } from 'rxjs';
 
 import { DetailsService } from 'src/core/api/details/details.service';
+import { TransformDataDetailsService } from 'src/core/api/details/transform-data-details.service';
 import { CurrentWeatherData } from '../../core/api/weather/current-weather.type';
 import { CityWeatherInfo } from '../shared/interfaces/city-weather-info.interfaces';
+import { DetailsWeather } from '../shared/interfaces/details-weather-data.interfaces';
+import { BreadcrumbLink } from '../shared/interfaces/breadcrumbs-links.interfaces';
 
 @Component({
   selector: 'app-details',
@@ -17,7 +21,25 @@ export class DetailsComponent {
     isFavorite: false,
   };
 
-  constructor(private detailsService: DetailsService) {}
+  detailsWeatherData: DetailsWeather = {
+    temperature: [],
+    temperatureFeelsLike: [],
+    windSpeed: [],
+    windSpeedFeelsLike: [],
+    cloud: [],
+    humidity: [],
+    pressure: [],
+  };
+
+  constructor(
+    private detailsService: DetailsService,
+    private transformDataDetailsService: TransformDataDetailsService
+  ) {}
+
+  detailBreadcrumbLinks: BreadcrumbLink[] = [
+    { link: '/', name: 'Home', isActive: false },
+    { link: '/kiev/details', name: 'Details', isActive: true },
+  ];
 
   ngOnInit() {
     this.detailsService
@@ -27,5 +49,16 @@ export class DetailsComponent {
         this.weatherInfo.temp = `${temp} °С`;
         this.weatherInfo.city = city;
       });
+
+    this.detailsService
+      .getDataForWeatherTable()
+      .pipe(
+        tap(
+          (data) =>
+            (this.detailsWeatherData =
+              this.transformDataDetailsService.transformDetailsWeather(data))
+        )
+      )
+      .subscribe();
   }
 }

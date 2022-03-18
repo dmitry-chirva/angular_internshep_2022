@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { ForecastI } from 'src/app/shared/interfaces/forecast-info.interfaces';
+import { ForecastData } from 'src/app/shared/interfaces/forecast-info.interfaces';
 import { CurrentLocationWeather } from 'src/app/shared/interfaces/search-info.interfaces';
 
 @Injectable({
@@ -19,8 +19,8 @@ export class WeatherService {
     days = 1,
     aqi = 'no',
     alerts = 'no'
-  ): Observable<ForecastI> {
-    return this.http.get<ForecastI>(
+  ): Observable<ForecastData> {
+    return this.http.get<ForecastData>(
       `${this.BASE_URL}forecast.json?key=${this.API_KEY}&q=${city}&days=${days}&aqi=${aqi}&alerts=${alerts}`
     );
   }

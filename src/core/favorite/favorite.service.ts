@@ -1,13 +1,14 @@
-import { CityWeatherInfo } from './../../app/shared/interfaces/city-weather-info.interfaces';
 import { Injectable } from '@angular/core';
-
+import { CityWeatherInfo } from './../../app/shared/interfaces/city-weather-info.interfaces';
+import { FavoriteStateService } from 'src/core/favorites-state/favorite-state.service';
 @Injectable({
   providedIn: 'root'
 })
 export class FavoriteService {
 
   maxAmountOfFavs: number = 10;
-  favorites: CityWeatherInfo[] = [
+  favorites: CityWeatherInfo[] = [];
+  testFavorites: CityWeatherInfo[] = [
     {
       city: 'Toronto',
       date: 'February 18th, 2022',
@@ -43,15 +44,14 @@ export class FavoriteService {
         windSpeed: '10 km/h',
         humidity: '90%',
       },
-    },
+    }
   ];
 
-  newFavCitiesCanBeAdded: boolean = (this.favorites.length < this.maxAmountOfFavs) ? true : false;
-
-  constructor() {}
-
-  checkAmountOfFavorites():boolean{
-    return this.newFavCitiesCanBeAdded;
+  constructor(public favoriteStateService: FavoriteStateService) {
+    this.favorites = this.testFavorites;
   }
 
+  checkAmountOfFavorites():boolean{
+    return this.favorites.length < this.maxAmountOfFavs;
+  }
 }
