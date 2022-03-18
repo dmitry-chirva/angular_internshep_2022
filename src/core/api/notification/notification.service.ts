@@ -6,7 +6,7 @@ import { Notification } from 'src/app/shared/interfaces/notification.interface';
 export class NotificationService {
 
   notifications : Notification[] =  [];
-
+  counter: number = 0;
   constructor() {
     this.defaultGreeting();
   }
@@ -14,8 +14,17 @@ export class NotificationService {
     this.show('Info', 'Hello, I am new notification service!');
     this.show('Info', 'Have a nice day =)');
   };
-  show( type: string, message:string ):void {
-    this.notifications.push(  {type: type, message: message} );
+
+  show(type: string, message: string):void {
+    let newNotification: Notification = {
+      id: this.counter,
+      type: type,
+      message: message,
+      isClicked: false
+    };
+
+    this.notifications.push(newNotification);
+    this.counter += 1;
   }
   getAll(): Notification[] {
     return this.notifications;

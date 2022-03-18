@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { NotificationService } from 'src/core/api/notification/notification.service';
 import { Notification } from 'src/app/shared/interfaces/notification.interface';
 import { trigger, state, style, animate, transition } from '@angular/animations';
@@ -20,9 +20,12 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
     ]),
   ],
 })
-export class NotificationComponent  {
-  notifications: Notification[];
+export class NotificationComponent implements OnInit  {
+  notifications: Notification[] = [];
   constructor(private notificationService: NotificationService) {
+
+  }
+  ngOnInit(){
     this.notifications = this.notificationService.getAll();
   }
 
