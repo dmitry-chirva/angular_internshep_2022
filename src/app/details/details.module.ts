@@ -5,15 +5,8 @@ import { SharedModule } from '../shared/shared.module';
 import { DetailsComponent } from './details.component';
 
 @NgModule({
-  declarations: [
-    DetailsComponent
-  ],
-  imports: [
-    CommonModule,
-    SharedModule
-  ],
-  exports: [
-    DetailsComponent
-  ]
+  declarations: [DetailsComponent],
+  imports: [CommonModule, SharedModule],
+  exports: [DetailsComponent],
 })
-export class DetailsModule { }
+export class DetailsModule {}

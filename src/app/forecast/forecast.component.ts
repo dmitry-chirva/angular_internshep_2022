@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { CityWeatherInfo } from '../shared/interfaces/city-weather-info.interfaces';
 import { ForecastService } from 'src/core/api/forecast/forecast.service';
 import { CurrentWeatherData } from '../../core/api/weather/current-weather.type';
+import { ForecastInfo } from '../shared/interfaces/forecast-info.interfaces';
 import { BreadcrumbLink } from '../shared/interfaces/breadcrumbs-links.interfaces';
 
 @Component({
@@ -19,9 +20,9 @@ export class ForecastComponent implements OnInit {
   };
 
   forecastBreadcrumbLinks: BreadcrumbLink[] = [
-    { link : '/', name : 'Home', isActive : false },
-    { link: '/kiev/details', name: 'Details', isActive : false },
-    { link: '/kiev/details', name: 'Forecast', isActive : true }
+    { link: '/', name: 'Home', isActive: false },
+    { link: '/kiev/details', name: 'Details', isActive: false },
+    { link: '/kiev/details', name: 'Forecast', isActive: true },
   ];
 
   constructor(private forecastService: ForecastService) {}
