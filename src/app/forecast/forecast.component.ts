@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { CityWeatherInfo } from '../shared/interfaces/city-weather-info.interfaces';
 import { ForecastService } from 'src/core/api/forecast/forecast.service';
 import { CurrentWeatherData } from '../../core/api/weather/current-weather.type';
-import { ForecastInfo } from '../shared/interfaces/forecast-info.interfaces';
 import { BreadcrumbLink } from '../shared/interfaces/breadcrumbs-links.interfaces';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-forecast',
@@ -12,31 +12,47 @@ import { BreadcrumbLink } from '../shared/interfaces/breadcrumbs-links.interface
   styleUrls: ['./forecast.component.scss'],
 })
 export class ForecastComponent implements OnInit {
-  weatherInfo: CityWeatherInfo = {
-    city: 'Kiev, Ukraine',
-    date: '',
-    temp: '',
-    isFavorite: false,
-  };
+  forecastBreadcrumbLinks: BreadcrumbLink[] = []
+  forecastDays: number;
+  weatherInfo: CityWeatherInfo;
 
-  forecastBreadcrumbLinks: BreadcrumbLink[] = [
-    { link: '/', name: 'Home', isActive: false },
-    { link: '/kiev/details', name: 'Details', isActive: false },
-    { link: '/kiev/details', name: 'Forecast', isActive: true },
-  ];
+  constructor(
+    activateRoute: ActivatedRoute,
+    private forecastService: ForecastService
+  ) {
+    const city = activateRoute.snapshot.params['city'];
 
-  constructor(private forecastService: ForecastService) {}
+    this.weatherInfo = { city: city, date: '', temp: '', isFavorite: false };
+    this.forecastDays = this.getForecastDays(activateRoute.snapshot.params['forecast']);
+
+    this.forecastBreadcrumbLinks = [
+      { link: '/', name: 'Home', isActive: false },
+      { link: `/${city}/details`, name: 'Details', isActive: false },
+      { link: `/${city}/details`, name: 'Forecast', isActive: true },
+    ];
+  }
 
   ngOnInit() {
     this.forecastService
-      .getCurrentWeatherForecast()
+      .getCurrentWeatherForecast(this.weatherInfo.city, this.forecastDays)
       .subscribe(({ city }: CurrentWeatherData) => {
         this.weatherInfo.city = city;
       });
   }
 
+  getForecastDays(forecastType : string): number {
+    if (forecastType === 'three-days') {
+      return 3;
+    } else if (forecastType === 'ten-days') {
+      return 10;
+    }
+
+    return 1;
+  }
+
   forecast: CityWeatherInfo[] = [
     {
+      city: 'Kiev, Ukraine',
       date: 'February 18th, 2022',
       minTemp: '0°',
       maxTemp: '3°',
@@ -48,6 +64,7 @@ export class ForecastComponent implements OnInit {
       },
     },
     {
+      city: 'Kiev, Ukraine',
       date: 'February 18th, 2022',
       minTemp: '-3°',
       maxTemp: '4°',
@@ -59,6 +76,7 @@ export class ForecastComponent implements OnInit {
       },
     },
     {
+      city: 'Kiev, Ukraine',
       date: 'February 7th, 2022',
       minTemp: '1°',
       maxTemp: '2°',

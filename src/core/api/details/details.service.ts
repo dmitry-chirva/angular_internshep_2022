@@ -18,7 +18,7 @@ export class DetailsService {
     private transformDataDetailsService: TransformDataDetailsService
   ) {}
 
-  getDataForWeatherTable(): Observable<DetailsWeather | any> {
+  getDataForWeatherTable(city : string): Observable<DetailsWeather | any> {
     return this.geolocationService
       .getPosition()
       .pipe(
@@ -43,7 +43,7 @@ export class DetailsService {
       )
       .pipe(
         catchError(() =>
-          this.weatherService.getForecastWeather().pipe(
+          this.weatherService.getForecastWeather(city).pipe(
             switchMap((cw): any => {
               const cityName = cw.location.name;
               return this.weatherService.getForecastWeather(cityName).pipe(
@@ -57,7 +57,7 @@ export class DetailsService {
       );
   }
 
-  getCurrentWeatherDetails(): Observable<CurrentWeatherData> {
+  getCurrentWeatherDetails(city : string): Observable<CurrentWeatherData> {
     return this.geolocationService
       .getPosition()
       .pipe(
@@ -89,7 +89,7 @@ export class DetailsService {
       )
       .pipe(
         catchError(() =>
-          this.weatherService.getForecastWeather().pipe(
+          this.weatherService.getForecastWeather(city).pipe(
             map((data) => {
               const year = data.location.localtime
                 .split('')

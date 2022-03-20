@@ -5,7 +5,7 @@
       {{ weatherInfo?.date }}
     </p>
   </div>
-  <a routerLink="/kiev/details" class="current-weather__city">
+  <a routerLink="/{{weatherInfo?.city}}/details" class="current-weather__city">
     {{ weatherInfo?.city }}
   </a>
   <button *ngIf="hasFavorite">
