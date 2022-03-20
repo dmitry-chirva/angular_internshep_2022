@@ -14,7 +14,5 @@ export class FavoriteToggleComponent {
   onToggle() {
     this.isFavorite = !this.isFavorite;
     this.onChange.emit(this.isFavorite);
-
-    this.notificationService.show('Info', 'Team Spirit wishes you a good day!')
   }
 }
