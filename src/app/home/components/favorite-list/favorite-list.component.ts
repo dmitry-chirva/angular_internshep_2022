@@ -18,6 +18,9 @@ export class FavoriteListComponent implements OnInit  {
   constructor(private favoriteService: FavoriteService, private notificationService : NotificationService) {}
 
   ngOnInit(){
+    if(this.favoriteService.checkAmountOfFavorites()){
+      this.notificationService.show('Error','Your can add only 10 cities to your list of favorites')
+    }
     this.favorites = this.favoriteService.favorites;
   }
 }

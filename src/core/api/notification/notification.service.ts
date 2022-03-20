@@ -16,6 +16,10 @@ export class NotificationService{
     this.notifications.push({id, type, message});
   }
 
+  hide(currentNotification : Notification){
+    this.notifications = this.notifications.filter( notification => notification.id != currentNotification.id);
+  }
+
   getAll(): Notification[] {
     return this.notifications;
   }

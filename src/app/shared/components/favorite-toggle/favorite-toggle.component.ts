@@ -14,5 +14,7 @@ export class FavoriteToggleComponent {
   onToggle() {
     this.isFavorite = !this.isFavorite;
     this.onChange.emit(this.isFavorite);
+
+    this.notificationService.show('Info','You clicked on heart icon')
   }
 }
