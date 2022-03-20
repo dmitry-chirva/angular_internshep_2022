@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { NotificationService } from 'src/core/api/notification/notification.service';
 
 @Component({
   selector: 'app-favorite-toggle',
@@ -6,12 +7,14 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: [],
 })
 export class FavoriteToggleComponent {
-  constructor() {}
+  constructor(private notificationService: NotificationService) {}
   @Input() isFavorite: boolean | undefined;
   @Output() onChange = new EventEmitter<boolean | undefined>();
 
   onToggle() {
     this.isFavorite = !this.isFavorite;
     this.onChange.emit(this.isFavorite);
+
+    this.notificationService.show('Info', 'Team Spirit wishes you a good day!')
   }
 }
