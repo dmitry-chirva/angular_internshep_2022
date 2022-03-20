@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { CurrentWeatherData } from '../weather/current-weather.type';
 import { WeatherService } from '../weather/weather.service';
-import { fromForecasttoCurrentWeatherData } from '../common/mapper-module';
+import { toCityWeatherForecast } from '../common/mapper-module';
+import { CityWeatherInfo } from 'src/app/shared/interfaces/city-weather-info.interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +13,7 @@ export class ForecastService {
   getCurrentWeatherForecast(
     city: string,
     days: number
-  ): Observable<CurrentWeatherData> {
-    return this.weatherService.getForecastWeather(city, days).pipe(map(fromForecasttoCurrentWeatherData));
+  ): Observable<CityWeatherInfo[]> {
+    return this.weatherService.getForecastWeather(city, days).pipe(map(toCityWeatherForecast));
   }
 }
