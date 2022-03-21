@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, switchMap } from 'rxjs';
-import { DetailsWeather } from 'src/app/shared/interfaces/details-weather-data.interfaces';
+import { DetailsInfo } from 'src/app/shared/interfaces/details-info.interfaces';
 import { ForecastData } from 'src/app/shared/interfaces/forecast-info.interfaces';
 import { CurrentWeatherData } from '../weather/current-weather.type';
 
@@ -18,7 +18,7 @@ export class DetailsService {
     private transformDataDetailsService: TransformDataDetailsService
   ) {}
 
-  getDataForWeatherTable(): Observable<DetailsWeather | any> {
+  getDataForWeatherTable(): Observable<DetailsInfo | any> {
     return this.geolocationService
       .getPosition()
       .pipe(

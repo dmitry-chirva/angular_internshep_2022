@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { DetailsWeather } from 'src/app/shared/interfaces/details-weather-data.interfaces';
+import { DetailsInfo } from 'src/app/shared/interfaces/details-info.interfaces';
 import {
   ForecastData,
   Day,
@@ -11,8 +11,9 @@ import {
 })
 export class TransformDataDetailsService {
   private TO_METERS_PER_SEC = 0.278;
+  private DATA_OUTPUT_CLOCK = ['12PM', '6AM', '12AM', '6PM'];
 
-  getDataDetails(data: ForecastData): Observable<ForecastData> {
+  getDataDetails(data: ForecastData): Observable<Day[]> {
     return new Observable((obs) => {
       data.forecast.forecastday[0].hour.forEach((day: Day) => {
         day.temp_c = Math.round(day.temp_c);
@@ -20,20 +21,7 @@ export class TransformDataDetailsService {
         day.wind_kps = +(day.wind_kph * this.TO_METERS_PER_SEC).toFixed(1);
         day.gust_kps = +(day.gust_kph * this.TO_METERS_PER_SEC).toFixed(1);
       });
-      obs.next(
-        data.forecast.forecastday[0].hour.reduce(
-          (acc: any, val: { [x: string]: any }) => {
-            let key = Object.keys(val); // array of keys
-
-            key.forEach((k) => {
-              // writing values
-              acc[k] = acc[k] ? [...acc[k], val[k]] : [val[k]];
-            });
-            return acc;
-          },
-          {}
-        )
-      );
+      obs.next(data.forecast.forecastday[0].hour);
       obs.complete();
       (error: unknown) => {
         obs.error(error);
@@ -41,15 +29,18 @@ export class TransformDataDetailsService {
     });
   }
 
-  transformDetailsWeather(data: DetailsWeather[] | any): DetailsWeather {
-    return {
-      temperature: data.temp_c,
-      temperatureFeelsLike: data.feelslike_c,
-      windSpeed: data.wind_kps,
-      windSpeedFeelsLike: data.gust_kps,
-      cloud: data.cloud,
-      humidity: data.humidity,
-      pressure: data.pressure_mb,
-    };
+  transformDetailsWeather(data: Day[]): DetailsInfo[] {
+    return data
+      .filter((_d, i) => i === 0 || i === 6 || i === 12 || i === 18)
+      .map((d, i) => ({
+        hour: this.DATA_OUTPUT_CLOCK[i],
+        temperature: d.temp_c,
+        temperatureFeelsLike: d.feelslike_c,
+        windSpeed: d.wind_kps,
+        windSpeedFeelsLike: d.gust_kps,
+        cloud: d.cloud,
+        humidity: d.humidity,
+        pressure: d.pressure_mb,
+      }));
   }
 }

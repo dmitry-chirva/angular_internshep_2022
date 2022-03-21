@@ -5,8 +5,9 @@ import { DetailsService } from 'src/core/api/details/details.service';
 import { TransformDataDetailsService } from 'src/core/api/details/transform-data-details.service';
 import { CurrentWeatherData } from '../../core/api/weather/current-weather.type';
 import { CityWeatherInfo } from '../shared/interfaces/city-weather-info.interfaces';
-import { DetailsWeather } from '../shared/interfaces/details-weather-data.interfaces';
 import { BreadcrumbLink } from '../shared/interfaces/breadcrumbs-links.interfaces';
+import { Column } from '../shared/interfaces/table.interfaces';
+import { DetailsInfo } from '../shared/interfaces/details-info.interfaces';
 
 @Component({
   selector: 'app-details',
@@ -21,15 +22,18 @@ export class DetailsComponent {
     isFavorite: false,
   };
 
-  detailsWeatherData: DetailsWeather = {
-    temperature: [],
-    temperatureFeelsLike: [],
-    windSpeed: [],
-    windSpeedFeelsLike: [],
-    cloud: [],
-    humidity: [],
-    pressure: [],
-  };
+  detailsColumns: Column[] = [
+    { name: 'hour', displayName: '' },
+    { name: 'temperature', displayName: 'Temperature, °C' },
+    { name: 'temperatureFeelsLike', displayName: 'Feels like, °C' },
+    { name: 'windSpeed', displayName: 'Wind speed, m/s' },
+    { name: 'windSpeedFeelsLike', displayName: 'Wind gust, m/s' },
+    { name: 'cloud', displayName: 'Cloud cover, %' },
+    { name: 'humidity', displayName: 'Humidity, %' },
+    { name: 'pressure', displayName: 'Pressure, mb' },
+  ];
+
+  detailsData: DetailsInfo[] | null = [];
 
   constructor(
     private detailsService: DetailsService,
@@ -53,11 +57,10 @@ export class DetailsComponent {
     this.detailsService
       .getDataForWeatherTable()
       .pipe(
-        tap(
-          (data) =>
-            (this.detailsWeatherData =
-              this.transformDataDetailsService.transformDetailsWeather(data))
-        )
+        tap((data) => {
+          return (this.detailsData =
+            this.transformDataDetailsService.transformDetailsWeather(data));
+        })
       )
       .subscribe();
   }
