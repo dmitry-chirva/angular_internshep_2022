@@ -1,0 +1,20 @@
+<div class="ng-autocomplete">
+  <ng-autocomplete
+    [data]="data"
+    [searchKeyword]="keyword"
+    placeholder="Search..."
+    (selected)='selectEvent($event)'
+    (inputChanged)='onChangeSearch($event)'
+    (inputFocused)='onFocused($event)'
+    [itemTemplate]="itemTemplate"
+    [notFoundTemplate]="notFoundTemplate">
+  </ng-autocomplete>
+  <i class="icon icon-search search__icon"></i>
+  <ng-template #itemTemplate let-item>
+    <a [innerHTML]="item.name"></a>
+  </ng-template>
+
+  <ng-template #notFoundTemplate let-notFound>
+    <div [innerHTML]="notFound">Not found</div>
+  </ng-template>
+</div>
