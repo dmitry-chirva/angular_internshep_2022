@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { CityWeatherInfo } from '../../interfaces/city-weather-info.interfaces';
 
 @Component({
   selector: 'app-btn-groups',
@@ -7,5 +6,5 @@ import { CityWeatherInfo } from '../../interfaces/city-weather-info.interfaces';
   styleUrls: ['./btn-groups.component.scss']
 })
 export class BtnGroupsComponent {
-  @Input() weatherInfo : CityWeatherInfo | null = null;
+  @Input() currentCity : string | undefined = undefined;
 }

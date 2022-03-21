@@ -24,26 +24,26 @@ export class DetailsComponent {
     humidity: [],
     pressure: [],
   };
-  city : string;
+  private currentCity : string;
   weatherInfo: CityWeatherInfo | null = null;
   detailBreadcrumbLinks: BreadcrumbLink[] = [];
 
   constructor(
-    activateRoute : ActivatedRoute,
+    private activateRoute : ActivatedRoute,
     private detailsService: DetailsService,
     private transformDataDetailsService: TransformDataDetailsService
   ) {
-    this.city = activateRoute.snapshot.params['city'];
-    this.weatherInfo = { city: this.city, date: '', temp: '', isFavorite: false };
+    this.currentCity = activateRoute.snapshot.params['city'];
+    this.weatherInfo = { city: this.currentCity, date: '', temp: '', isFavorite: false };
     this.detailBreadcrumbLinks =  [
       { link: '/', name: 'Home', isActive: false },
-      { link: `/${this.city}/details`, name: 'Details', isActive: true },
+      { link: `/${this.currentCity}/details`, name: 'Details', isActive: true },
     ];
   }
 
   ngOnInit() {
     this.detailsService
-      .getCurrentWeatherDetails(this.city)
+      .getCurrentWeatherDetails(this.currentCity)
       .subscribe(({ year, date, month, temp, city }: CurrentWeatherData) => {
         this.weatherInfo = {
           city: city,
@@ -52,7 +52,7 @@ export class DetailsComponent {
         });
 
     this.detailsService
-      .getDataForWeatherTable(this.city)
+      .getDataForWeatherTable(this.currentCity)
       .pipe(
         tap(
           (data) =>

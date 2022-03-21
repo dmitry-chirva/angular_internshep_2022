@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { CityWeatherInfo } from '../shared/interfaces/city-weather-info.interfaces';
 import { ForecastService } from 'src/core/api/forecast/forecast.service';
-import { CurrentWeatherData } from '../../core/api/weather/current-weather.type';
 import { BreadcrumbLink } from '../shared/interfaces/breadcrumbs-links.interfaces';
 import { ActivatedRoute } from '@angular/router';
 
@@ -14,17 +13,30 @@ import { ActivatedRoute } from '@angular/router';
 export class ForecastComponent implements OnInit {
   city: string;
   forecast: CityWeatherInfo[] = [];
-  forecastBreadcrumbLinks: BreadcrumbLink[] = []
+  forecastBreadcrumbLinks: BreadcrumbLink[] = [];
   forecastDays: number;
   weatherInfo: CityWeatherInfo;
 
+  forecastTypes : any = Object.freeze({
+    ['three-days']: 3,
+    ['ten-days']: 10,
+    default: 1,
+  });
+
   constructor(
-    activateRoute: ActivatedRoute,
+    private activateRoute: ActivatedRoute,
     private forecastService: ForecastService
   ) {
     this.city = activateRoute.snapshot.params['city'];
-    this.weatherInfo = { city: this.city, date: '', temp: '', isFavorite: false };
-    this.forecastDays = this.getForecastDays(activateRoute.snapshot.params['forecast']);
+    this.weatherInfo = {
+      city: this.city,
+      date: '',
+      temp: '',
+      isFavorite: false,
+    };
+    this.forecastDays = this.getForecastDays(
+      activateRoute.snapshot.params['forecast']
+    );
 
     this.forecastBreadcrumbLinks = [
       { link: '/', name: 'Home', isActive: false },
@@ -36,16 +48,10 @@ export class ForecastComponent implements OnInit {
   ngOnInit() {
     this.forecastService
       .getCurrentWeatherForecast(this.city, this.forecastDays)
-      .subscribe(forecast => this.forecast = forecast);
+      .subscribe((forecast) => (this.forecast = forecast));
   }
 
-  getForecastDays(forecastType : string): number {
-    if (forecastType === 'three-days') {
-      return 3;
-    } else if (forecastType === 'ten-days') {
-      return 10;
-    }
-
-    return 1;
+  getForecastDays(type: string): number {
+    return this.forecastTypes[type] ? this.forecastTypes[type] : this.forecastTypes.default;
   }
 }
