@@ -7,7 +7,9 @@
     (inputChanged)='onChangeSearch($event)'
     (inputFocused)='onFocused($event)'
     [itemTemplate]="itemTemplate"
-    [notFoundTemplate]="notFoundTemplate">
+    [notFoundTemplate]="notFoundTemplate"
+    [debounceTime]="300"
+  >
   </ng-autocomplete>
   <i class="icon icon-search search__icon"></i>
   <ng-template #itemTemplate let-item>
