@@ -3,12 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { CityWeatherInfo } from '../shared/interfaces/city-weather-info.interfaces';
 import { ForecastService } from 'src/core/api/forecast/forecast.service';
 import { BreadcrumbLink } from '../shared/interfaces/breadcrumbs-links.interfaces';
+import { forecastTypes } from './forecast-types.constant';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-forecast',
   templateUrl: './forecast.component.html',
-  styleUrls: ['./forecast.component.scss'],
+  styleUrls: ['./forecast.component.scss']
 })
 export class ForecastComponent implements OnInit {
   city: string;
@@ -16,12 +17,6 @@ export class ForecastComponent implements OnInit {
   forecastBreadcrumbLinks: BreadcrumbLink[] = [];
   forecastDays: number;
   weatherInfo: CityWeatherInfo;
-
-  forecastTypes : any = Object.freeze({
-    ['three-days']: 3,
-    ['ten-days']: 10,
-    default: 1,
-  });
 
   constructor(
     private activateRoute: ActivatedRoute,
@@ -52,6 +47,6 @@ export class ForecastComponent implements OnInit {
   }
 
   getForecastDays(type: string): number {
-    return this.forecastTypes[type] ? this.forecastTypes[type] : this.forecastTypes.default;
+    return forecastTypes[type] ? forecastTypes[type] : forecastTypes.default;
   }
 }

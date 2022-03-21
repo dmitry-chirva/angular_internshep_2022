@@ -11,7 +11,7 @@ export class FavoriteService {
   testFavorites: CityWeatherInfo[] = [
     {
       city: 'Toronto',
-      date: 'February 18th, 2022',
+      date: '2022-02-18',
       temp: '1 °С',
       isFavorite: true,
       weatherIcon: 'assets/images/weather.png',
@@ -23,7 +23,7 @@ export class FavoriteService {
     },
     {
       city: 'Stockholm',
-      date: 'February 18th, 2022',
+      date: '2022-02-18',
       temp: '-3 °С',
       isFavorite: true,
       weatherIcon: 'assets/images/weather.png',
@@ -35,7 +35,7 @@ export class FavoriteService {
     },
     {
       city: 'Oslo',
-      date: 'February 7th, 2022',
+      date: '2022-02-18',
       temp: '-5 °С',
       isFavorite: true,
       weatherIcon: 'assets/images/weather.png',
