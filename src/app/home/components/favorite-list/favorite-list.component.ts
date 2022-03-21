@@ -24,18 +24,10 @@ export class FavoriteListComponent implements OnInit  {
   }
 
   ngOnInit(){
-
-
-
-
     if(this.favoriteService.checkAmountOfFavorites()){
       this.notificationService.show( NotificationType.Error ,'Your can add only 10 cities to your list of favorites')
-    }
 
-    //TODO you lost icon heart on each fav card component
-    // this.favoriteService.getFavorites().subscribe((cities)=>{
-    //   this.favorites = cities;
-    // });
+    }
   }
 
 
