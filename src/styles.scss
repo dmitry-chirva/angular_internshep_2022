@@ -2,6 +2,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@500;700;900&display=swap");
 @import '../src/assets/styles/_variables';
 
+.light-theme {
+  --background-color: #eaefea;
+  --text-color: #1a1a1a;
+  --input-color: #fff;
+  --icon-search: #747474;
+  --linear-gradient: rgba(43, 56, 39, 0.8)
+}
+
+.dark-theme {
+  --background-color: #000;
+  --text-color: #f5f5f5;
+  --input-color: #909793;
+  --icon-search: #fff;
+  --linear-gradient: rgba(0, 0, 0, 0.85)
+}
+
 html {
   box-sizing: border-box;
   height: 100%;
@@ -55,6 +71,12 @@ body {
   margin: 0;
   font-size: 14px;
   color: #fff;
+  .header {
+    background-color: var(--background-color);
+  }
+  .footer {
+    background-color: var(--background-color);
+  }
 }
 
 .list {
@@ -110,7 +132,8 @@ button {
 
 .icon-search:before {
   content: "\e905";
-  color: #747474;
+  color: var(--icon-search);
+  transition: 0.5s;
 }
 .icon-moon:before {
   content: "\e900";
