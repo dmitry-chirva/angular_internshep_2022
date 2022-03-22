@@ -17,14 +17,13 @@ import { NotificationType } from 'src/app/shared/enums/notification.enum';
 export class FavoriteListComponent implements OnInit  {
 
   favorites: CityWeatherInfo[] = [];
-  favorite: CityWeatherInfo = {
-    date: ''
-  };
 
   constructor(private favoriteService: FavoriteService, private notificationService : NotificationService, private weatherService: WeatherService) {
   }
 
   ngOnInit(){
+    this.favorites = this.favoriteService.favorites;
+
     if(this.favoriteService.checkAmountOfFavorites()){
       this.notificationService.show( NotificationType.Error ,'Your can add only 10 cities to your list of favorites')
     }
