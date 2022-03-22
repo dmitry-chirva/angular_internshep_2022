@@ -15,8 +15,8 @@ export class WeatherService {
   constructor(private http: HttpClient) {}
 
   getForecastWeather(
-    city = 'Kiev',
-    days = 1,
+    city: string,
+    days = 10,
     aqi = 'no',
     alerts = 'no'
   ): Observable<ForecastData> {

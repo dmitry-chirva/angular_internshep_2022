@@ -7,6 +7,7 @@ import { CurrentWeatherData } from '../../core/api/weather/current-weather.type'
 import { CityWeatherInfo } from '../shared/interfaces/city-weather-info.interfaces';
 import { DetailsWeather } from '../shared/interfaces/details-weather-data.interfaces';
 import { BreadcrumbLink } from '../shared/interfaces/breadcrumbs-links.interfaces';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-details',
@@ -14,13 +15,6 @@ import { BreadcrumbLink } from '../shared/interfaces/breadcrumbs-links.interface
   styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent {
-  weatherInfo: CityWeatherInfo = {
-    city: 'Kiev, Ukraine',
-    date: '',
-    temp: '',
-    isFavorite: false,
-  };
-
   detailsWeatherData: DetailsWeather = {
     temperature: [],
     temperatureFeelsLike: [],
@@ -30,28 +24,35 @@ export class DetailsComponent {
     humidity: [],
     pressure: [],
   };
+  private currentCity : string;
+  weatherInfo: CityWeatherInfo | null = null;
+  detailBreadcrumbLinks: BreadcrumbLink[] = [];
 
   constructor(
+    private activateRoute : ActivatedRoute,
     private detailsService: DetailsService,
     private transformDataDetailsService: TransformDataDetailsService
-  ) {}
-
-  detailBreadcrumbLinks: BreadcrumbLink[] = [
-    { link: '/', name: 'Home', isActive: false },
-    { link: '/kiev/details', name: 'Details', isActive: true },
-  ];
+  ) {
+    this.currentCity = activateRoute.snapshot.params['city'];
+    this.weatherInfo = { city: this.currentCity, date: '', temp: '', isFavorite: false };
+    this.detailBreadcrumbLinks =  [
+      { link: '/', name: 'Home', isActive: false },
+      { link: `/${this.currentCity}/details`, name: 'Details', isActive: true },
+    ];
+  }
 
   ngOnInit() {
     this.detailsService
-      .getCurrentWeatherDetails()
+      .getCurrentWeatherDetails(this.currentCity)
       .subscribe(({ year, date, month, temp, city }: CurrentWeatherData) => {
-        this.weatherInfo.date = `${month} ${date}th, ${year}`;
-        this.weatherInfo.temp = `${temp} °С`;
-        this.weatherInfo.city = city;
-      });
+        this.weatherInfo = {
+          city: city,
+          date: `${month} ${date}th, ${year}`,
+          temp: `${temp} °С`}
+        });
 
     this.detailsService
-      .getDataForWeatherTable()
+      .getDataForWeatherTable(this.currentCity)
       .pipe(
         tap(
           (data) =>

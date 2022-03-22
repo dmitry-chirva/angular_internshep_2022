@@ -5,6 +5,7 @@ import { FavoriteStateService } from 'src/core/favorites-state/favorite-state.se
 import { NotificationService } from 'src/core/api/notification/notification.service';
 import { StorageService } from 'src/core/storage/storage.service';
 import { FavoriteService } from 'src/core/favorite/favorite.service';
+
 @Component({
   selector: 'app-favorite-list',
   templateUrl: './favorite-list.component.html',

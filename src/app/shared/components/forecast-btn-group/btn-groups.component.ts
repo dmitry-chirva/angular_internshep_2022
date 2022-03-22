@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-btn-groups',
@@ -6,4 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./btn-groups.component.scss']
 })
 export class BtnGroupsComponent {
+  @Input() currentCity : string | undefined = undefined;
 }
