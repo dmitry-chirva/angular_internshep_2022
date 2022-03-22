@@ -1,24 +1,24 @@
 <div class="btn-groups">
   <button
-    routerLink="/kiev/details"
+    routerLink="/{{currentCity}}/details"
     routerLinkActive="active"
     [routerLinkActiveOptions]="{exact:true}"
     class="btn-groups__today">
     Today
   </button>
-  <button routerLink="/kiev/details/tomorrow"
+  <button routerLink="/{{currentCity}}/details/tomorrow"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{exact:true}"
           class="btn-groups__tomorrow">
     Tomorrow
   </button>
-  <button routerLink="/kiev/details/three-days"
+  <button routerLink="/{{currentCity}}/details/three-days"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{exact:true}"
           class="btn-groups__three-days">
     3 days
   </button>
-  <button routerLink="/kiev/details/ten-days"
+  <button routerLink="/{{currentCity}}/details/ten-days"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{exact:true}"
           class="btn-groups__ten-days">
