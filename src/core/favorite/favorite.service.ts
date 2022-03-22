@@ -1,9 +1,9 @@
 import { CityWeatherInfo } from 'src/app/shared/interfaces/city-weather-info.interfaces';
-import { WeatherService } from 'src/core/api/weather/weather.service';
 import { Injectable } from '@angular/core';
 import { FavoriteStateService } from 'src/core/favorites-state/favorite-state.service';
-import { pipe, map, of, Observable } from 'rxjs'
-
+import { Observable, map } from 'rxjs';
+import { WeatherService } from '../api/weather/weather.service';
+import { WeatherTransformService } from './../api/common/weather-transform.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -49,64 +49,31 @@ export class FavoriteService {
       },
     }
   ];
-  favoritesCitiesNames: string[] = ['Toronto','Oslo','Odessa']; //names
+  favoritesNames: string[] = ['Toronto','Oslo','Odessa'];
 
-  constructor(public favoriteStateService: FavoriteStateService, private weatherService: WeatherService) {
-    this.favorites = this.testFavorites;
-    // this.getFavorites().subscribe((v)=>{console.log(v)});
-
-    this.getFavorite().subscribe(value=> {
-      console.log(value);
-    });
+  constructor(public favoriteStateService: FavoriteStateService, private weatherService: WeatherService, private weatherTransformService: WeatherTransformService) {
   }
 
+  getFavorites(): CityWeatherInfo[] {
+    let result: CityWeatherInfo[] = [];
 
+    this.favoritesNames.map( city => {
 
-  getFavorite(): Observable<CityWeatherInfo>{
+      this.getCurrentWeatherForecast(city, 1)
+      .subscribe((day) => {
+        this.favorites.push(day);
+        console.log(this.favorites);
+      });
+    })
+    return result;
+  }
 
-    return this.weatherService.getForecastWeather('Toronto').pipe(
-      map(({location, current}) => {
-        let month = new Date().toLocaleString('en', {
-          month: 'long',
-          });
-          let dateNumber = location.localtime
-          .split('')
-          .slice(8, 10)
-          .join('');
-          switch(dateNumber){
-            case '1':
-              dateNumber = '1st'
-              break;
-            case '2':
-              dateNumber = '2nd'
-              break;
-            case '3':
-              dateNumber = '3rd'
-              break;
-            default:
-              dateNumber += 'th'
-              break;
-          }
-          let newCity: CityWeatherInfo = {
-            city: location.name,
-            date: `${month} ${dateNumber}, ${location.localtime
-              .split('')
-              .slice(0, 4)
-              .join('')}`
-            ,
-            temp: `${Math.floor(current.temp_c)} °C`,
-            weatherIcon: current.condition.icon,
-            isFavorite: false,
-            additionalInfo: {
-              weatherLabel: current.condition.text,
-              windSpeed: `${Math.ceil(current.wind_kph)} km/h`,
-              humidity: `${current.humidity}%`,
-            }
-          }
-          return newCity
-      })
-    )
-
+  getCurrentWeatherForecast(
+    city: string,
+    days: number
+  ): Observable<CityWeatherInfo> {
+    return this.weatherService.getForecastWeather(city, days)
+      .pipe(map(data => this.weatherTransformService.toCityWeatherFavorite(data)));
   }
 
   checkAmountOfFavorites():boolean{

@@ -1,4 +1,3 @@
-import { WeatherService } from 'src/core/api/weather/weather.service';
 import {Component, Input, OnInit} from '@angular/core';
 import {CityWeatherInfo} from "../../interfaces/city-weather-info.interfaces";
 
