@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { tap } from 'rxjs';
+import { map } from 'rxjs';
 
 import { DetailsService } from 'src/core/api/details/details.service';
 import { TransformDataDetailsService } from 'src/core/api/details/transform-data-details.service';
@@ -57,10 +57,11 @@ export class DetailsComponent {
     this.detailsService
       .getDataForWeatherTable()
       .pipe(
-        tap((data) => {
-          return (this.detailsData =
-            this.transformDataDetailsService.transformDetailsWeather(data));
-        })
+        map(
+          (data: any) =>
+            (this.detailsData =
+              this.transformDataDetailsService.transformDetailsWeather(data))
+        )
       )
       .subscribe();
   }

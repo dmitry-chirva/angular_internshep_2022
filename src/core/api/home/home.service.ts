@@ -18,7 +18,7 @@ export class HomeService {
     return this.geolocationService
       .getPosition()
       .pipe(
-        switchMap((pos) => {
+        switchMap((pos: any) => {
           const latitude = pos.coords.latitude;
           const longitude = pos.coords.longitude;
           return this.weatherService

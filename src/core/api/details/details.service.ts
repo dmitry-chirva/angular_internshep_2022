@@ -18,11 +18,11 @@ export class DetailsService {
     private transformDataDetailsService: TransformDataDetailsService
   ) {}
 
-  getDataForWeatherTable(): Observable<DetailsInfo | any> {
+  getDataForWeatherTable(): Observable<DetailsInfo | unknown> {
     return this.geolocationService
       .getPosition()
       .pipe(
-        switchMap((pos) => {
+        switchMap((pos: any) => {
           const latitude = pos.coords.latitude;
           const longitude = pos.coords.longitude;
           return this.weatherService
@@ -61,7 +61,7 @@ export class DetailsService {
     return this.geolocationService
       .getPosition()
       .pipe(
-        switchMap((pos) => {
+        switchMap((pos: any) => {
           const latitude = pos.coords.latitude;
           const longitude = pos.coords.longitude;
           return this.weatherService
