@@ -7,6 +7,7 @@ import { StorageService } from 'src/core/storage/storage.service';
 import { FavoriteService } from 'src/core/favorite/favorite.service';
 import { WeatherService } from 'src/core/api/weather/weather.service';
 import { NotificationType } from 'src/app/shared/enums/notification.enum';
+
 @Component({
   selector: 'app-favorite-list',
   templateUrl: './favorite-list.component.html',
@@ -24,18 +25,9 @@ export class FavoriteListComponent implements OnInit  {
   }
 
   ngOnInit(){
-
-
-
-
     if(this.favoriteService.checkAmountOfFavorites()){
       this.notificationService.show( NotificationType.Error ,'Your can add only 10 cities to your list of favorites')
     }
-
-    //TODO you lost icon heart on each fav card component
-    // this.favoriteService.getFavorites().subscribe((cities)=>{
-    //   this.favorites = cities;
-    // });
   }
 
 

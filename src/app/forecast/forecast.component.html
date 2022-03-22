@@ -1,6 +1,6 @@
 <div class="forecast">
   <app-breadcrumbs [links]="forecastBreadcrumbLinks"></app-breadcrumbs>
-  <app-btn-groups></app-btn-groups>
+  <app-btn-groups [currentCity]="weatherInfo?.city"></app-btn-groups>
   <app-current-weather
     [weatherInfo]="weatherInfo"
     [hasFavorite]="false"
