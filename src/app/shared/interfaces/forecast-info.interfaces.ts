@@ -46,9 +46,9 @@ export interface Forecast {
 export interface Forecastday {
   date: string;
   date_epoch: number;
-  day: Day;
+  day: CurrentWeather;
   astro: Astro;
-  hour: Day[];
+  hour: CurrentWeather[];
 }
 
 export interface Astro {
@@ -60,7 +60,7 @@ export interface Astro {
   moon_illumination: string;
 }
 
-export interface Day {
+export interface CurrentWeather {
   gust_kps: number;
   temp_c: number;
   condition: Condition;

@@ -18,31 +18,33 @@ export class ForecastService {
     return this.geolocationService
       .getPosition()
       .pipe(
-        switchMap((pos: any) => {
-          const latitude = pos.coords.latitude;
-          const longitude = pos.coords.longitude;
-          return this.weatherService
-            .getCurrentWeather(latitude, longitude)
-            .pipe(
-              map((data) => {
-                const year = data.location.localtime
-                  .split('')
-                  .slice(0, 4)
-                  .join('');
-                const date = data.location.localtime
-                  .split('')
-                  .slice(8, 10)
-                  .join('');
-                const month = new Date().toLocaleString('en', {
-                  month: 'long',
-                });
-                const temp = Math.floor(data.current.temp_c);
-                const city = `${data.location.name}, ${data.location.country}`;
+        switchMap(
+          (pos: { coords: { latitude: number; longitude: number } }) => {
+            const latitude = pos.coords.latitude;
+            const longitude = pos.coords.longitude;
+            return this.weatherService
+              .getCurrentWeather(latitude, longitude)
+              .pipe(
+                map((data) => {
+                  const year = data.location.localtime
+                    .split('')
+                    .slice(0, 4)
+                    .join('');
+                  const date = data.location.localtime
+                    .split('')
+                    .slice(8, 10)
+                    .join('');
+                  const month = new Date().toLocaleString('en', {
+                    month: 'long',
+                  });
+                  const temp = Math.floor(data.current.temp_c);
+                  const city = `${data.location.name}, ${data.location.country}`;
 
-                return { year, date, month, temp, city };
-              })
-            );
-        })
+                  return { year, date, month, temp, city };
+                })
+              );
+          }
+        )
       )
       .pipe(
         catchError(() =>

@@ -22,24 +22,26 @@ export class DetailsService {
     return this.geolocationService
       .getPosition()
       .pipe(
-        switchMap((pos: any) => {
-          const latitude = pos.coords.latitude;
-          const longitude = pos.coords.longitude;
-          return this.weatherService
-            .getCurrentWeather(latitude, longitude)
-            .pipe(
-              switchMap((cw): any => {
-                const cityName = cw.location.name;
-                return this.weatherService.getForecastWeather(cityName).pipe(
-                  switchMap((data: ForecastData) => {
-                    return this.transformDataDetailsService.getDataDetails(
-                      data
-                    );
-                  })
-                );
-              })
-            );
-        })
+        switchMap(
+          (pos: { coords: { latitude: number; longitude: number } }) => {
+            const latitude = pos.coords.latitude;
+            const longitude = pos.coords.longitude;
+            return this.weatherService
+              .getCurrentWeather(latitude, longitude)
+              .pipe(
+                switchMap((cw): any => {
+                  const cityName = cw.location.name;
+                  return this.weatherService.getForecastWeather(cityName).pipe(
+                    switchMap((data: ForecastData) => {
+                      return this.transformDataDetailsService.getDataDetails(
+                        data
+                      );
+                    })
+                  );
+                })
+              );
+          }
+        )
       )
       .pipe(
         catchError(() =>

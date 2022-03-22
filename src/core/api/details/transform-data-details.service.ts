@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { DetailsInfo } from 'src/app/shared/interfaces/details-info.interfaces';
 import {
   ForecastData,
-  Day,
+  CurrentWeather,
 } from 'src/app/shared/interfaces/forecast-info.interfaces';
 
 @Injectable({
@@ -13,9 +13,9 @@ export class TransformDataDetailsService {
   private TO_METERS_PER_SEC = 0.278;
   private DATA_OUTPUT_CLOCK = ['12PM', '6AM', '12AM', '6PM'];
 
-  getDataDetails(data: ForecastData): Observable<Day[]> {
+  getDataDetails(data: ForecastData): Observable<CurrentWeather[]> {
     return new Observable((obs) => {
-      data.forecast.forecastday[0].hour.forEach((day: Day) => {
+      data.forecast.forecastday[0].hour.forEach((day: CurrentWeather) => {
         day.temp_c = Math.round(day.temp_c);
         day.feelslike_c = Math.round(day.feelslike_c);
         day.wind_kps = +(day.wind_kph * this.TO_METERS_PER_SEC).toFixed(1);
@@ -29,7 +29,7 @@ export class TransformDataDetailsService {
     });
   }
 
-  transformDetailsWeather(data: Day[]): DetailsInfo[] {
+  transformDetailsWeather(data: CurrentWeather[]): DetailsInfo[] {
     return data
       .filter((_d, i) => i === 0 || i === 6 || i === 12 || i === 18)
       .map((d, i) => ({
