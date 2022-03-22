@@ -52,25 +52,19 @@ export interface Forecastday {
   hour: Day[];
 }
 
-// export interface Day {
-//   maxtemp_c: number;
-//   mintemp_c: number;
-//   avgtemp_c: number;
-//   maxwind_kph: number;
-//   totalprecip_mm: number;
-//   avgvis_km: number;
-//   avghumidity: number;
-//   daily_will_it_rain: number;
-//   daily_chance_of_rain: number;
-//   daily_will_it_snow: number;
-//   daily_chance_of_snow: number;
-//   condition: Condition;
-// }
-
-export interface Condition {
-  text: string;
-  icon: string;
-  code: number;
+export interface Day {
+  maxtemp_c: number;
+  mintemp_c: number;
+  avgtemp_c: number;
+  maxwind_kph: number;
+  totalprecip_mm: number;
+  avgvis_km: number;
+  avghumidity: number;
+  daily_will_it_rain: number;
+  daily_chance_of_rain: number;
+  daily_will_it_snow: number;
+  daily_chance_of_snow: number;
+  condition: Condition;
 }
 
 export interface Astro {
@@ -93,4 +87,10 @@ export interface Day {
   cloud: number;
   feelslike_c: number;
   gust_kph: number;
+}
+
+export interface Condition {
+  text: string;
+  icon: string;
+  code: number;
 }
