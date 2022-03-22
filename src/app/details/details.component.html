@@ -3,9 +3,13 @@
   class="details__current-weather"
   [weatherInfo]="weatherInfo"
 ></app-current-weather>
-<app-btn-groups class="details__details-btns" [currentCity]="weatherInfo?.city"></app-btn-groups>
+<app-btn-groups
+  class="details__details-btns"
+  [currentCity]="weatherInfo?.city"
+></app-btn-groups>
 
 <app-table
-  [dataDetails]="detailsWeatherData"
   class="details__details-table"
+  [columns]="detailsColumns"
+  [data]="detailsData"
 ></app-table>

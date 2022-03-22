@@ -46,30 +46,9 @@ export interface Forecast {
 export interface Forecastday {
   date: string;
   date_epoch: number;
-  day: Day;
+  day: CurrentWeather;
   astro: Astro;
-  hour: Day[];
-}
-
-export interface Day {
-  maxtemp_c: number;
-  mintemp_c: number;
-  avgtemp_c: number;
-  maxwind_kph: number;
-  totalprecip_mm: number;
-  avgvis_km: number;
-  avghumidity: number;
-  daily_will_it_rain: number;
-  daily_chance_of_rain: number;
-  daily_will_it_snow: number;
-  daily_chance_of_snow: number;
-  condition: Condition2;
-}
-
-export interface Condition2 {
-  text: string;
-  icon: string;
-  code: number;
+  hour: CurrentWeather[];
 }
 
 export interface Astro {
@@ -81,10 +60,10 @@ export interface Astro {
   moon_illumination: string;
 }
 
-export interface Day {
+export interface CurrentWeather {
   gust_kps: number;
   temp_c: number;
-  condition: Condition3;
+  condition: Condition;
   wind_kph: number;
   wind_kps?: number;
   pressure_mb: number;
@@ -92,9 +71,12 @@ export interface Day {
   cloud: number;
   feelslike_c: number;
   gust_kph: number;
+  mintemp_c: number;
+  maxtemp_c: number;
+  avghumidity: number;
 }
 
-export interface Condition3 {
+export interface Condition {
   text: string;
   icon: string;
   code: number;
