@@ -1,6 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {CitySearchInterface} from "../../../shared/interfaces/city-search.interface";
-import {HttpClient} from "@angular/common/http";
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-autocomplete',
@@ -10,7 +8,7 @@ import {HttpClient} from "@angular/common/http";
 
 export class AutocompleteComponent {
 
-  constructor(private http: HttpClient) {
+  constructor() {
   }
 
   keyword = 'name';
@@ -35,7 +33,6 @@ export class AutocompleteComponent {
 
 
   selectEvent(item: any) {
-
   }
 
   onChangeSearch(val: string) {
