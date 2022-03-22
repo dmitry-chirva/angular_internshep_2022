@@ -24,18 +24,23 @@ export class DetailsComponent {
     humidity: [],
     pressure: [],
   };
-  private currentCity : string;
+  private currentCity: string;
   weatherInfo: CityWeatherInfo | null = null;
   detailBreadcrumbLinks: BreadcrumbLink[] = [];
 
   constructor(
-    private activateRoute : ActivatedRoute,
+    private activateRoute: ActivatedRoute,
     private detailsService: DetailsService,
     private transformDataDetailsService: TransformDataDetailsService
   ) {
     this.currentCity = activateRoute.snapshot.params['city'];
-    this.weatherInfo = { city: this.currentCity, date: '', temp: '', isFavorite: false };
-    this.detailBreadcrumbLinks =  [
+    this.weatherInfo = {
+      city: this.currentCity,
+      date: '',
+      temp: '',
+      isFavorite: false,
+    };
+    this.detailBreadcrumbLinks = [
       { link: '/', name: 'Home', isActive: false },
       { link: `/${this.currentCity}/details`, name: 'Details', isActive: true },
     ];
@@ -48,8 +53,9 @@ export class DetailsComponent {
         this.weatherInfo = {
           city: city,
           date: `${month} ${date}th, ${year}`,
-          temp: `${temp} °С`}
-        });
+          temp: `${temp} °С`,
+        };
+      });
 
     this.detailsService
       .getDataForWeatherTable(this.currentCity)
