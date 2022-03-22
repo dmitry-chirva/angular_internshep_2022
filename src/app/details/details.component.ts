@@ -9,6 +9,8 @@ import { BreadcrumbLink } from '../shared/interfaces/breadcrumbs-links.interface
 import { ActivatedRoute } from '@angular/router';
 import { Column } from '../shared/interfaces/table.interfaces';
 import { DetailsInfo } from '../shared/interfaces/details-info.interfaces';
+import { HomeService } from 'src/core/api/home/home.service';
+import { GeoLocationService } from 'src/core/api/weather/geo-location.service';
 
 @Component({
   selector: 'app-details',
@@ -16,6 +18,13 @@ import { DetailsInfo } from '../shared/interfaces/details-info.interfaces';
   styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent {
+  weatherInfo: CityWeatherInfo = {
+    city: 'Kiev, Ukraine',
+    date: '',
+    temp: '',
+    isFavorite: false,
+  };
+
   detailsColumns: Column[] = [
     { name: 'hour', displayName: '' },
     { name: 'temperature', displayName: 'Temperature, °C' },
@@ -30,10 +39,11 @@ export class DetailsComponent {
   detailsData: DetailsInfo[] | null = [];
 
   private currentCity: string;
-  weatherInfo: CityWeatherInfo | null = null;
   detailBreadcrumbLinks: BreadcrumbLink[] = [];
 
   constructor(
+    private homeService: HomeService,
+    private geoLocationService: GeoLocationService,
     private activateRoute: ActivatedRoute,
     private detailsService: DetailsService,
     private transformDataDetailsService: TransformDataDetailsService
@@ -52,14 +62,12 @@ export class DetailsComponent {
   }
 
   ngOnInit() {
-    this.detailsService
-      .getCurrentWeatherDetails(this.currentCity)
+    this.homeService
+      .getCurrentWeatherHome(this.geoLocationService.getPosition())
       .subscribe(({ year, date, month, temp, city }: CurrentWeatherData) => {
-        this.weatherInfo = {
-          city: city,
-          date: `${month} ${date}th, ${year}`,
-          temp: `${temp} °С`,
-        };
+        this.weatherInfo.date = `${month} ${date}th, ${year}`;
+        this.weatherInfo.temp = `${temp} °С`;
+        this.weatherInfo.city = city;
       });
 
     this.detailsService

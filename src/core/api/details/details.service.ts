@@ -13,6 +13,7 @@ import { TransformDataDetailsService } from './transform-data-details.service';
   providedIn: 'root',
 })
 export class DetailsService {
+  weatherTransformService: any;
   constructor(
     private weatherService: WeatherService,
     private geolocationService: GeoLocationService,
@@ -60,60 +61,21 @@ export class DetailsService {
       );
   }
 
-  getCurrentWeatherDetails(city: string): Observable<CurrentWeatherData> {
-    return this.geolocationService
-      .getPosition()
-      .pipe(
-        switchMap(
-          (pos: { coords: { latitude: number; longitude: number } }) => {
-            const latitude = pos.coords.latitude;
-            const longitude = pos.coords.longitude;
-            return this.weatherService
-              .getCurrentWeather(latitude, longitude)
-              .pipe(
-                map((data) => {
-                  const year = data.location.localtime
-                    .split('')
-                    .slice(0, 4)
-                    .join('');
-                  const date = data.location.localtime
-                    .split('')
-                    .slice(8, 10)
-                    .join('');
-                  const month = new Date().toLocaleString('en', {
-                    month: 'long',
-                  });
-                  const temp = Math.floor(data.current.temp_c);
-                  const city = `${data.location.name}, ${data.location.country}`;
-
-                  return { year, date, month, temp, city };
-                })
-              );
-          }
-        )
-      )
-      .pipe(
-        catchError(() =>
-          this.weatherService.getForecastWeather(city).pipe(
-            map((data) => {
-              const year = data.location.localtime
-                .split('')
-                .slice(0, 4)
-                .join('');
-              const date = data.location.localtime
-                .split('')
-                .slice(8, 10)
-                .join('');
-              const month = new Date().toLocaleString('en', {
-                month: 'long',
-              });
-              const temp = Math.floor(data.current.temp_c);
-              const city = `${data.location.name}, ${data.location.country}`;
-
-              return { year, date, month, temp, city };
-            })
-          )
-        )
-      );
+  getCurrentWeatherHome(
+    geoLocation: Observable<GeolocationPosition>
+  ): Observable<CurrentWeatherData> {
+    return geoLocation.pipe(
+      switchMap((pos: { coords: { latitude: number; longitude: number } }) => {
+        const latitude = pos.coords.latitude;
+        const longitude = pos.coords.longitude;
+        return this.weatherService
+          .getCurrentWeather(latitude, longitude)
+          .pipe(
+            map((data) =>
+              this.weatherTransformService.toCurrentWeatherData(data)
+            )
+          );
+      })
+    );
   }
 }
