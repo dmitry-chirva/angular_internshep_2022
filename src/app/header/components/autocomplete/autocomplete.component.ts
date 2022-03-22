@@ -1,4 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, Input, Output} from '@angular/core';
+import {FavoriteStateService} from "../../../../core/favorites-state/favorite-state.service";
+import {CitySearch} from "../../../shared/interfaces/city-search.interface";
 
 @Component({
   selector: 'app-autocomplete',
@@ -8,31 +10,36 @@ import {Component} from '@angular/core';
 
 export class AutocompleteComponent {
 
-  constructor() {
+  constructor(private state: FavoriteStateService) {}
+
+  @Input() currentCity: string = ''
+
+  @Output() selectedCity: CitySearch = {
+    id: 2501828,
+    name: "Kiev",
+    region: "Kyyivs'ka Oblast'",
+    country: "Ukraine",
+    lat: 50.43,
+    lon: 30.52,
+    url: "kiev-kyyivska-oblast-ukraine"
   }
 
   keyword = 'name';
-  data: any = [
+  data: CitySearch[] = [
     {
-      id: 1,
-      name: 'Georgia'
-    },
-    {
-      id: 2,
-      name: 'Usa'
-    },
-    {
-      id: 3,
-      name: 'England'
-    },
-    {
-      id: 4,
-      name: 'London'
+      id: 2501828,
+      name: "Kiev",
+      region: "Kyyivs'ka Oblast'",
+      country: "Ukraine",
+      lat: 50.43,
+      lon: 30.52,
+      url: "kiev-kyyivska-oblast-ukraine"
     },
   ];
 
 
-  selectEvent(item: any) {
+  selectEvent(item: CitySearch) {
+    this.selectedCity = item;
   }
 
   onChangeSearch(val: string) {
