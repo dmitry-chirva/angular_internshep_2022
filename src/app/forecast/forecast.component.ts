@@ -18,6 +18,7 @@ export class ForecastComponent implements OnInit {
   forecastBreadcrumbLinks: BreadcrumbLink[] = [];
   forecastDays: number;
   weatherInfo: CityWeatherInfo;
+  isForecastHistoryEnabled: boolean=true;
 
   constructor(
     private activateRoute: ActivatedRoute,
@@ -49,9 +50,6 @@ export class ForecastComponent implements OnInit {
       .subscribe((forecast) => (this.forecast = forecast));
   }
 
-  isForecastHistoryEnabled () : boolean {
-    return this.forecastHistory.length === 0;
-  }
 
   openForecastHistory() {
     if (this.forecastHistory.length > 0) {
@@ -66,6 +64,7 @@ export class ForecastComponent implements OnInit {
 
     this.forecastService.getHistoryWeatherForecast(this.city, datesRange)
       .subscribe(historyItem => this.forecastHistory.push(historyItem));
+    this.isForecastHistoryEnabled=false;
   }
 
   getForecastDays(type: string): number {
