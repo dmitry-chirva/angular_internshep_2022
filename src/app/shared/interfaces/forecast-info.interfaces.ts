@@ -37,6 +37,7 @@ export interface Current {
   precip_mm: number;
   precip_in: number;
   vis_km: number;
+  condition: Condition;
 }
 
 export interface Forecast {
@@ -63,13 +64,7 @@ export interface Day {
   daily_chance_of_rain: number;
   daily_will_it_snow: number;
   daily_chance_of_snow: number;
-  condition: Condition2;
-}
-
-export interface Condition2 {
-  text: string;
-  icon: string;
-  code: number;
+  condition: Condition;
 }
 
 export interface Astro {
@@ -84,7 +79,7 @@ export interface Astro {
 export interface Day {
   gust_kps: number;
   temp_c: number;
-  condition: Condition3;
+  condition: Condition;
   wind_kph: number;
   wind_kps?: number;
   pressure_mb: number;
@@ -94,7 +89,7 @@ export interface Day {
   gust_kph: number;
 }
 
-export interface Condition3 {
+export interface Condition {
   text: string;
   icon: string;
   code: number;

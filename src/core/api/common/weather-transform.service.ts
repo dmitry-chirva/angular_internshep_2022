@@ -17,25 +17,41 @@ export class WeatherTransformService {
     return { year, date, month, temp, city: this.getCity(weather.location) };
   }
 
-  toCityWeatherForecast(forecast: ForecastData): CityWeatherInfo[] {
-    const weatherInfos: CityWeatherInfo[] = forecast.forecast.forecastday.map(
-      (day) => {
+  toCityWeatherForecast({forecast}: ForecastData): CityWeatherInfo[] {
+    const weatherInfos: CityWeatherInfo[] = forecast.forecastday.map(
+      ({day, date}) => {
         return {
-          minTemp: this.getTemperature(day.day.mintemp_c).toString(),
-          maxTemp: this.getTemperature(day.day.maxtemp_c).toString(),
-          weatherIcon: day.day.condition.icon,
-          date: day.date,
+          minTemp: this.getTemperature(day.mintemp_c).toString(),
+          maxTemp: this.getTemperature(day.maxtemp_c).toString(),
+          weatherIcon: day.condition.icon,
+          date,
           isFavorite: false,
           additionalInfo: {
-            windSpeed: day.day.wind_kph?.toString(),
-            humidity: day.day.avghumidity.toString(),
-            weatherLabel: day.day.condition.text,
+            windSpeed: day.wind_kph?.toString(),
+            humidity: day.avghumidity.toString(),
+            weatherLabel: day.condition.text,
           },
         };
       }
     );
 
     return weatherInfos;
+  }
+
+  toCityWeatherFavorite({location,current,forecast}: ForecastData): CityWeatherInfo {
+    let favoritesInfo: CityWeatherInfo = {
+      city: location.name,
+      date: forecast.forecastday[0].date,
+      temp: `${Math.floor(current.temp_c)} °C`,
+      weatherIcon: current.condition.icon,
+      isFavorite: true,
+      additionalInfo: {
+        weatherLabel: current.condition.text,
+        windSpeed: `${Math.ceil(current.wind_kph)}`,
+        humidity: `${current.humidity}`,
+      }
+    }
+    return favoritesInfo;
   }
 
   private getCity(location: CurrentLocation) {

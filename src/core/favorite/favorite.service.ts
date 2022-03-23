@@ -1,6 +1,9 @@
+import { CityWeatherInfo } from 'src/app/shared/interfaces/city-weather-info.interfaces';
 import { Injectable } from '@angular/core';
-import { CityWeatherInfo } from './../../app/shared/interfaces/city-weather-info.interfaces';
 import { FavoriteStateService } from 'src/core/favorites-state/favorite-state.service';
+import { Observable, map } from 'rxjs';
+import { WeatherService } from '../api/weather/weather.service';
+import { WeatherTransformService } from './../api/common/weather-transform.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -46,12 +49,37 @@ export class FavoriteService {
       },
     }
   ];
+  favoritesNames: string[] = ['Toronto','Oslo','Odessa'];
 
-  constructor(public favoriteStateService: FavoriteStateService) {
-    this.favorites = this.testFavorites;
+  constructor(public favoriteStateService: FavoriteStateService, private weatherService: WeatherService, private weatherTransformService: WeatherTransformService) {
+  }
+
+  getFavorites(): CityWeatherInfo[] {
+    let result: CityWeatherInfo[] = [];
+
+    this.favoritesNames.map( city => {
+
+      this.getCurrentWeatherForecast(city, 1)
+      .subscribe((day) => {
+        this.favorites.push(day);
+        console.log(this.favorites);
+      });
+    })
+    return result;
+  }
+
+  getCurrentWeatherForecast(
+    city: string,
+    days: number
+  ): Observable<CityWeatherInfo> {
+    return this.weatherService.getForecastWeather(city, days)
+      .pipe(map(data => this.weatherTransformService.toCityWeatherFavorite(data)));
   }
 
   checkAmountOfFavorites():boolean{
     return this.favorites.length < this.maxAmountOfFavs;
   }
 }
+
+
+
