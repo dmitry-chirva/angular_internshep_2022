@@ -11,7 +11,7 @@ import { FavoriteStateService } from './../../../../core/favorites-state/favorit
 export class FavoriteToggleComponent {
   @Input()
   favorite!: CityWeatherInfo;
-  @Output() onChange = new EventEmitter<boolean | undefined>();
+  @Output() onChange = new EventEmitter<CityWeatherInfo | undefined>();
 
   constructor(private notificationService: NotificationService, private favoriteStateService: FavoriteStateService) {
   }

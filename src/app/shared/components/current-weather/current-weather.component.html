@@ -11,7 +11,6 @@
   <button *ngIf="true">
     <app-favorite-toggle
     [favorite]="weatherInfo"
-      (onChange)="handleFavoriteChange($event)"
     ></app-favorite-toggle>
   </button>
   <p *ngIf="hasTemperature" class="current-weather__temperature">
