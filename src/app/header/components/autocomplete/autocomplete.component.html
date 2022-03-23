@@ -1,10 +1,10 @@
 <div class="ng-autocomplete">
   <ng-autocomplete
     [data]="data"
-    [searchKeyword]="keyword"
+    [searchKeyword]="label"
     placeholder="Search..."
-    (selected)='selectEvent($event)'
-    (inputChanged)='onChangeSearch($event)'
+    (selected)='selectedCity.emit($event)'
+    (inputChanged)='onSearch.emit($event)'
     (inputFocused)='onFocused($event)'
     [itemTemplate]="itemTemplate"
     [notFoundTemplate]="notFoundTemplate"

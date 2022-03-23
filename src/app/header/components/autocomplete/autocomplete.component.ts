@@ -1,5 +1,4 @@
-import {Component, Input, Output} from '@angular/core';
-import {FavoriteStateService} from "../../../../core/favorites-state/favorite-state.service";
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {CitySearch} from "../../../shared/interfaces/city-search.interface";
 
 @Component({
@@ -10,11 +9,8 @@ import {CitySearch} from "../../../shared/interfaces/city-search.interface";
 
 export class AutocompleteComponent {
 
-  constructor(private state: FavoriteStateService) {}
-
-  @Input() currentCity: string = ''
-
-  @Output() selectedCity: CitySearch = {
+  @Input() label: string = ''
+  @Input() data: CitySearch[] = [{
     id: 2501828,
     name: "Kiev",
     region: "Kyyivs'ka Oblast'",
@@ -22,30 +18,11 @@ export class AutocompleteComponent {
     lat: 50.43,
     lon: 30.52,
     url: "kiev-kyyivska-oblast-ukraine"
-  }
+  }]
 
-  keyword = 'name';
-  data: CitySearch[] = [
-    {
-      id: 2501828,
-      name: "Kiev",
-      region: "Kyyivs'ka Oblast'",
-      country: "Ukraine",
-      lat: 50.43,
-      lon: 30.52,
-      url: "kiev-kyyivska-oblast-ukraine"
-    },
-  ];
+  @Output() selectedCity = new EventEmitter<CitySearch>()
+  @Output() onSearch = new EventEmitter<string>()
 
 
-  selectEvent(item: CitySearch) {
-    this.selectedCity = item;
-  }
-
-  onChangeSearch(val: string) {
-  }
-
-  onFocused(e: any) {
-  }
-
+  onFocused(e: any) {}
 }

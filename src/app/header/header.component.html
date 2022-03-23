@@ -5,7 +5,7 @@
         <div class="logo__icon">W</div>
         <p class="logo__text">eather</p>
       </a>
-      <app-autocomplete></app-autocomplete>
+      <app-autocomplete [label]="searchLabel" [data]="values" (selectedCity)="selectCity($event)" (onSearch)="onSearch($event)"></app-autocomplete>
       <app-theme-switcher></app-theme-switcher>
     </div>
   </div>
