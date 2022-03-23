@@ -24,7 +24,7 @@ export class FavoriteListComponent implements OnInit  {
 
   ngOnInit(){
     this.favorites = this.favoriteService.getFavorites();
-    if(this.favoriteStateService.moreCitiesCanBeAdded()){
+    if(this.favoriteStateService.hasMaxCities()){
       this.notificationService.show( NotificationType.Error ,`Your can add only ${this.favoriteStateService.MAX_AMOUNT_OF_FAVS} cities to your list of favorites`)
     }
   }
