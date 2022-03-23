@@ -50,31 +50,33 @@ export class ForecastComponent implements OnInit {
       .subscribe((forecast) => (this.forecast = forecast));
   }
 
-
   openForecastHistory() {
     if (this.forecastHistory.length > 0) {
       return;
     }
 
-    const daysBeforeNow = 7;
+    const periodDays = 7;
 
-    const datesRange = Array.from(Array(daysBeforeNow).keys())
-      .map(x => x + 1)
-      .map(days => this.getDateBeforeDays(new Date(), days));
-
-    this.forecastService.getHistoryWeatherForecast(this.city, datesRange)
-      .subscribe(historyItem => this.forecastHistory.push(historyItem));
-    this.isForecastHistoryEnabled=false;
+    this.forecastService.getHistoryWeatherForecast(this.city, this.getDatesRange(periodDays))
+      .subscribe(forecastHistory => {
+        this.isForecastHistoryEnabled = false;
+        forecastHistory.forEach(historyItem => this.forecastHistory.push(historyItem));
+      });
   }
 
   getForecastDays(type: string): number {
     return forecastTypes[type] ? forecastTypes[type] : forecastTypes.default;
   }
 
-  private getDateBeforeDays(now : Date, days : number) {
+  private getDatesRange(periodDays : number) {
     const dayMilliseconds = 24*60*60*1000;
-    now.setTime(now.getTime() - days * dayMilliseconds);
 
-    return now;
+    return Array.from(Array(periodDays).keys())
+      .map(x => x + 1)
+      .map(days => {
+        const now = new Date();
+        now.setTime(now.getTime() - days * dayMilliseconds);
+        return now;
+      });
   }
 }
