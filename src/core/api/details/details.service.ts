@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, switchMap } from 'rxjs';
+
 import { DetailsInfo } from 'src/app/shared/interfaces/details-info.interfaces';
 import { ForecastData } from 'src/app/shared/interfaces/forecast-info.interfaces';
 import { CurrentLocationWeather } from 'src/app/shared/interfaces/search-info.interfaces';
+import { WeatherTransformService } from '../common/weather-transform.service';
 import { CurrentWeatherData } from '../weather/current-weather.type';
-
 import { GeoLocationService } from '../weather/geo-location.service';
 import { WeatherService } from '../weather/weather.service';
 import { TransformDataDetailsService } from './transform-data-details.service';
@@ -13,8 +14,8 @@ import { TransformDataDetailsService } from './transform-data-details.service';
   providedIn: 'root',
 })
 export class DetailsService {
-  weatherTransformService: any;
   constructor(
+    private weatherTransformService: WeatherTransformService,
     private weatherService: WeatherService,
     private geolocationService: GeoLocationService,
     private transformDataDetailsService: TransformDataDetailsService
@@ -31,8 +32,8 @@ export class DetailsService {
             return this.weatherService
               .getCurrentWeather(latitude, longitude)
               .pipe(
-                switchMap((cw: CurrentLocationWeather) => {
-                  const cityName = cw.location.name;
+                switchMap((currentLocation: CurrentLocationWeather) => {
+                  const cityName = currentLocation.location.name;
                   return this.weatherService.getForecastWeather(cityName).pipe(
                     switchMap((data: ForecastData) => {
                       return this.transformDataDetailsService.getDataDetails(
@@ -48,8 +49,8 @@ export class DetailsService {
       .pipe(
         catchError(() =>
           this.weatherService.getForecastWeather(city).pipe(
-            switchMap((cw: ForecastData) => {
-              const cityName = cw.location.name;
+            switchMap((currentLocation: ForecastData) => {
+              const cityName = currentLocation.location.name;
               return this.weatherService.getForecastWeather(cityName).pipe(
                 switchMap((data: ForecastData) => {
                   return this.transformDataDetailsService.getDataDetails(data);
