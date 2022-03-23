@@ -5,10 +5,7 @@
         <div class="logo__icon">W</div>
         <p class="logo__text">eather</p>
       </a>
-      <div class="header__search">
-        <input type="text" class="search__input" placeholder="Search..." />
-        <i class="icon icon-search search__icon"></i>
-      </div>
+      <app-autocomplete [label]="searchLabel" [data]="values" (selectedCity)="selectCity($event)" (onSearch)="onSearch($event)"></app-autocomplete>
       <app-theme-switcher></app-theme-switcher>
     </div>
   </div>
