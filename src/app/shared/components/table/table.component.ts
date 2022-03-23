@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { DetailsWeather } from '../../interfaces/details-weather-data.interfaces';
+import { DetailsInfo } from '../../interfaces/details-info.interfaces';
+import { Column } from '../../interfaces/table.interfaces';
 
 @Component({
   selector: 'app-table',
@@ -7,13 +8,6 @@ import { DetailsWeather } from '../../interfaces/details-weather-data.interfaces
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent {
-  @Input() dataDetails: DetailsWeather = {
-    temperature: [],
-    temperatureFeelsLike: [],
-    windSpeed: [],
-    windSpeedFeelsLike: [],
-    cloud: [],
-    humidity: [],
-    pressure: [],
-  };
+  @Input() columns: Column[] = [];
+  @Input() data: DetailsInfo[] | any = [];
 }
