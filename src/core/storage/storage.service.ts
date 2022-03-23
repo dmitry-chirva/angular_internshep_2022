@@ -6,6 +6,9 @@ import { Injectable } from '@angular/core';
 export class StorageService {
 
   getItem(key: string): string[] {
+    if (!localStorage.getItem(key)) {
+      localStorage.setItem(key, JSON.stringify([]))
+    }
     return JSON.parse(<string>localStorage.getItem(key));
   }
 
