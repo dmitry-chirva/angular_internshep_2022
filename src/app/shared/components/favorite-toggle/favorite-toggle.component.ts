@@ -1,3 +1,4 @@
+import { CityWeatherInfo } from './../../interfaces/city-weather-info.interfaces';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { NotificationService } from 'src/core/api/notification/notification.service';
 import { NotificationType } from '../../enums/notification.enum';
@@ -8,13 +9,23 @@ import { FavoriteStateService } from './../../../../core/favorites-state/favorit
   styleUrls: [],
 })
 export class FavoriteToggleComponent {
-  constructor(private notificationService: NotificationService, private favoriteStateService: FavoriteStateService) {}
-  @Input() isFavorite: boolean | undefined;
+  @Input()
+  favorite!: CityWeatherInfo;
   @Output() onChange = new EventEmitter<boolean | undefined>();
 
+  constructor(private notificationService: NotificationService, private favoriteStateService: FavoriteStateService) {
+  }
+
   onToggle() {
-    this.isFavorite = !this.isFavorite;
-    this.onChange.emit(this.isFavorite);
-    this.notificationService.show(NotificationType.Info,'You clicked on heart icon');
+    this.favorite.isFavorite = !this.favorite?.isFavorite
+    console.log(this.favorite)
+
+    // this.onChange.emit(this.favorite);
+    if(this.favorite.isFavorite){
+      this.notificationService.show(NotificationType.Info,`You added ${this.favorite.city} to your favorites!`);
+    }else{
+      this.notificationService.show(NotificationType.Info,`You deleted ${this.favorite.city} from your list of favorites`);
+    }
+
   }
 }

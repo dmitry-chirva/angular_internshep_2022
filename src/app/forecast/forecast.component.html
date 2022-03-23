@@ -8,11 +8,11 @@
     [hasInfo]="false"
   ></app-current-weather>
   <div class="forecast-list">
-    <app-forecast-card
+    <app-card
       *ngFor="let day of forecast"
-      [day]="day"
+      [data]="day"
       class="forecast-list__item"
-    ></app-forecast-card>
+    ></app-card>
   </div>
   <button type="button" class="forecast__history-button">
     Yesterday's weather &#8594;

@@ -7,7 +7,8 @@ import { CityWeatherInfo } from '../../interfaces/city-weather-info.interfaces';
   styleUrls: ['./current-weather.component.scss'],
 })
 export class CurrentWeatherComponent {
-  @Input() weatherInfo: CityWeatherInfo | null = null;
+  @Input()
+  weatherInfo!: CityWeatherInfo;
   @Input() hasFavorite: boolean = true;
   @Input() hasTemperature: boolean = true;
   @Input() hasInfo: boolean = true;

@@ -8,13 +8,11 @@
   <a routerLink="/{{weatherInfo?.city}}/details" class="current-weather__city">
     {{ weatherInfo?.city }}
   </a>
-  <button *ngIf="hasFavorite">
-
+  <button *ngIf="true">
     <app-favorite-toggle
-      [isFavorite]="weatherInfo?.isFavorite"
+    [favorite]="weatherInfo"
       (onChange)="handleFavoriteChange($event)"
     ></app-favorite-toggle>
-
   </button>
   <p *ngIf="hasTemperature" class="current-weather__temperature">
     {{ weatherInfo?.temp }}
