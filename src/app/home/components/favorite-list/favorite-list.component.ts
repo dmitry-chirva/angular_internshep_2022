@@ -1,56 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import { CityWeatherInfo } from '../../../shared/interfaces/city-weather-info.interfaces';
-import { FavoriteStateService } from '../../../../core/favorites-state/favorite-state.service';
-import { StorageService } from '../../../../core/storage/storage.service';
 
+import { CityWeatherInfo } from 'src/app/shared/interfaces/city-weather-info.interfaces';
+import { FavoriteStateService } from 'src/core/favorites-state/favorite-state.service';
+import { NotificationService } from 'src/core/api/notification/notification.service';
+import { StorageService } from 'src/core/storage/storage.service';
+import { FavoriteService } from 'src/core/favorite/favorite.service';
+import { NotificationType } from 'src/app/shared/enums/notification.enum';
 @Component({
   selector: 'app-favorite-list',
   templateUrl: './favorite-list.component.html',
   styleUrls: ['./favorite-list.component.scss'],
   providers: [FavoriteStateService, StorageService],
 })
-export class FavoriteListComponent implements OnInit {
-  favoritesList: string[] = [];
-  favorites: CityWeatherInfo[] = [
-    {
-      city: 'Toronto',
-      date: 'February 18th, 2022',
-      temp: '1 °С',
-      isFavorite: true,
-      weatherIcon: '',
-      additionalInfo: {
-        weatherLabel: 'Light snow',
-        windSpeed: '3 km/h',
-        humidity: '72%',
-      },
-    },
-    {
-      city: 'Stockholm',
-      date: 'February 18th, 2022',
-      temp: '-3 °С',
-      isFavorite: true,
-      weatherIcon: '',
-      additionalInfo: {
-        weatherLabel: 'Light snow',
-        windSpeed: '5 km/h',
-        humidity: '85%',
-      },
-    },
-    {
-      city: 'Oslo',
-      date: 'February 7th, 2022',
-      temp: '-5 °С',
-      isFavorite: true,
-      weatherIcon: '',
-      additionalInfo: {
-        weatherLabel: 'Light snow',
-        windSpeed: '10 km/h',
-        humidity: '90%',
-      },
-    },
-  ];
+export class FavoriteListComponent implements OnInit  {
 
-  ngOnInit() {}
+  favorites: CityWeatherInfo[] = [];
+  favoritesNames: string[] = [];
+  constructor(
+    private favoriteService: FavoriteService,
+    private favoriteStateService: FavoriteStateService,
+    private notificationService : NotificationService) {
+  }
 
-  constructor(public favoriteStateService: FavoriteStateService) {}
+  ngOnInit(){
+    this.favorites = this.favoriteService.getFavorites();
+    if(this.favoriteStateService.hasMaxCities()){
+      this.notificationService.show( NotificationType.Error ,`Your can add only ${this.favoriteStateService.MAX_AMOUNT_OF_FAVS} cities to your list of favorites`)
+    }
+  }
+
 }

@@ -10,7 +10,7 @@ export interface ForecastInfo {
 
 //======
 
-export interface ForecastI {
+export interface ForecastData {
   location: Location;
   current: Current;
   forecast: Forecast;
@@ -32,18 +32,12 @@ export interface Current {
   cloud: number;
   pressure_mb: number;
   is_day: number;
-  condition: Condition;
   wind_degree: number;
   wind_dir: string;
   precip_mm: number;
   precip_in: number;
   vis_km: number;
-}
-
-export interface Condition {
-  text: string;
-  icon: string;
-  code: number;
+  condition: Condition;
 }
 
 export interface Forecast {
@@ -53,31 +47,10 @@ export interface Forecast {
 export interface Forecastday {
   date: string;
   date_epoch: number;
-  day: Day;
+  day: CurrentWeather;
   astro: Astro;
-  hour: Hour[];
-}
+  hour: CurrentWeather[];
 
-export interface Day {
-  maxtemp_c: number;
-  mintemp_c: number;
-  avgtemp_c: number;
-  maxwind_kph: number;
-  totalprecip_mm: number;
-  avgvis_km: number;
-
-  avghumidity: number;
-  daily_will_it_rain: number;
-  daily_chance_of_rain: number;
-  daily_will_it_snow: number;
-  daily_chance_of_snow: number;
-  condition: Condition2;
-}
-
-export interface Condition2 {
-  text: string;
-  icon: string;
-  code: number;
 }
 
 export interface Astro {
@@ -89,32 +62,23 @@ export interface Astro {
   moon_illumination: string;
 }
 
-export interface Hour {
-  time_epoch: number;
-  time: string;
+export interface CurrentWeather {
+  gust_kps: number;
   temp_c: number;
-  is_day: number;
-  condition: Condition3;
+  condition: Condition;
   wind_kph: number;
-  wind_degree: number;
-  wind_dir: string;
+  wind_kps?: number;
   pressure_mb: number;
-  precip_mm: number;
   humidity: number;
   cloud: number;
   feelslike_c: number;
-  windchill_c: number;
-  heatindex_c: number;
-  dewpoint_c: number;
-  will_it_rain: number;
-  chance_of_rain: number;
-  will_it_snow: number;
-  chance_of_snow: number;
-  vis_km: number;
   gust_kph: number;
+  mintemp_c: number;
+  maxtemp_c: number;
+  avghumidity: number;
 }
 
-export interface Condition3 {
+export interface Condition {
   text: string;
   icon: string;
   code: number;

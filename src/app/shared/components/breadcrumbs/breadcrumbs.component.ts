@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input } from '@angular/core';
+import { BreadcrumbLink } from '../../interfaces/breadcrumbs-links.interfaces';
 
 @Component({
   selector: 'app-breadcrumbs',
@@ -8,11 +8,7 @@ import { Router } from '@angular/router';
 })
 export class BreadcrumbsComponent {
 
-  constructor(private router: Router) {
-  }
+  @Input() links: BreadcrumbLink[] = []; 
 
-  get isForecast() {
-    return this.router.url.includes('/details/');
-  }
-
+  constructor() { }
 }

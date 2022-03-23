@@ -6,6 +6,7 @@ import {CitySearch} from "../shared/interfaces/city-search.interface";
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
+
 export class HeaderComponent {
 
   @Output() selectedCity: CitySearch = {
@@ -46,3 +47,4 @@ export class HeaderComponent {
     this.selectedCity = city
   }
 }
+
