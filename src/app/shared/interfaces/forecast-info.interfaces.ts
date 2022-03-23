@@ -37,6 +37,7 @@ export interface Current {
   precip_mm: number;
   precip_in: number;
   vis_km: number;
+  condition: Condition;
 }
 
 export interface Forecast {
@@ -49,6 +50,7 @@ export interface Forecastday {
   day: CurrentWeather;
   astro: Astro;
   hour: CurrentWeather[];
+
 }
 
 export interface Astro {
