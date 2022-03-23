@@ -1,0 +1,22 @@
+<div class="ng-autocomplete">
+  <ng-autocomplete
+    [data]="data"
+    [searchKeyword]="label"
+    placeholder="Search..."
+    (selected)='selectedCity.emit($event)'
+    (inputChanged)='onSearch.emit($event)'
+    (inputFocused)='onFocused($event)'
+    [itemTemplate]="itemTemplate"
+    [notFoundTemplate]="notFoundTemplate"
+    [debounceTime]="300"
+  >
+  </ng-autocomplete>
+  <i class="icon icon-search search__icon"></i>
+  <ng-template #itemTemplate let-item>
+    <a [innerHTML]="item.name"></a>
+  </ng-template>
+
+  <ng-template #notFoundTemplate let-notFound>
+    <div [innerHTML]="notFound">Not found</div>
+  </ng-template>
+</div>

@@ -1,6 +1,7 @@
+import { NotificationType } from './../enums/notification.enum';
 export interface Notification {
   id: string,
-  type: string,
+  type: NotificationType,
   message: string,
   isClicked?: boolean
 }

@@ -1,0 +1,87 @@
+@import "../../../../assets/styles/variables";
+
+.ng-autocomplete {
+  position: relative;
+  width: 100%;
+
+  &::ng-deep {
+    .autocomplete-container {
+      width: 100%;
+      height: 66px;
+
+      .input-container {
+
+        input {
+          width: 100%;
+          height: 66px;
+          padding: 0 50px 0 30px;
+          font-size: $font-size-small;
+          background: $text-color;
+          border: none;
+          border-radius: 5px;
+        }
+
+        .x {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          left: 0;
+
+          i {
+            font-size: 1.8rem;
+
+          }
+        }
+      }
+    }
+
+    .suggestions-container {
+      height: fit-content;
+      max-height: 300px;
+      overflow-y: scroll;
+      ul {
+        li {
+          a {
+            font-size: $font-size-small;
+            padding: 5px 50px 5px 28px;
+            width: 100%;
+            background-color: $accent-color;
+            color: $text-color;
+            transition: all .3s linear;
+            border: none;
+            margin: 0;
+
+            &:hover {
+              opacity: .8;
+            }
+          }
+        }
+      }
+    }
+
+    .not-found {
+      font-size: $font-size-small;
+      padding: 10px 50px 10px 28px;
+      width: 100%;
+      background-color: $text-color-dark;
+      color: $text-color;
+      transition: all .3s linear;
+      border: none;
+      margin: 0;
+
+      div {
+        padding: 0;
+        margin: 0;
+        border: none;
+      }
+    }
+  }
+
+  .search__icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 15px;
+    font-size: 1.8rem;
+  }
+}

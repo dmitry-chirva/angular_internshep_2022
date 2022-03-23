@@ -40,6 +40,22 @@ export class WeatherTransformService {
     return weatherInfos;
   }
 
+  toCityWeatherFavorite({location,current,forecast}: ForecastData): CityWeatherInfo {
+    let favoritesInfo: CityWeatherInfo = {
+      city: location.name,
+      date: forecast.forecastday[0].date,
+      temp: `${Math.floor(current.temp_c)} °C`,
+      weatherIcon: current.condition.icon,
+      isFavorite: true,
+      additionalInfo: {
+        weatherLabel: current.condition.text,
+        windSpeed: `${Math.ceil(current.wind_kph)}`,
+        humidity: `${current.humidity}`,
+      }
+    }
+    return favoritesInfo;
+  }
+
   private getCity(location: CurrentLocation) {
     return `${location.name}, ${location.country}`;
   }

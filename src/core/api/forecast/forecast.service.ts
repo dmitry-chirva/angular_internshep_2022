@@ -11,15 +11,19 @@ import { ForecastData } from 'src/app/shared/interfaces/forecast-info.interfaces
 export class ForecastService {
 
   constructor(
-    private weatherTransformService : WeatherTransformService,
-    private weatherService: WeatherService) { }
+    private weatherTransformService: WeatherTransformService,
+    private weatherService: WeatherService
+  ) {}
 
   getCurrentWeatherForecast(
     city: string,
     days: number
   ): Observable<CityWeatherInfo[]> {
-    return this.weatherService.getForecastWeather(city, days)
-      .pipe(map(data => this.weatherTransformService.toCityWeatherForecast(data)));
+    return this.weatherService
+      .getForecastWeather(city, days)
+      .pipe(
+        map((data) => this.weatherTransformService.toCityWeatherForecast(data))
+      );
   }
 
   getHistoryWeatherForecast (city: string, datesRange: Date[]): Observable<CityWeatherInfo[]> {
