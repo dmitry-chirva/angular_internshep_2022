@@ -17,23 +17,25 @@ export class WeatherTransformService {
     return { year, date, month, temp, city: this.getCity(weather.location) };
   }
 
-  toCityWeatherForecast(forecast: ForecastData): CityWeatherInfo[] {
-    const weatherInfos: CityWeatherInfo[] = forecast.forecast.forecastday.map(
-      (day) => {
-        return {
-          minTemp: this.getTemperature(day.day.mintemp_c).toString(),
-          maxTemp: this.getTemperature(day.day.maxtemp_c).toString(),
-          weatherIcon: day.day.condition.icon,
-          date: day.date,
-          isFavorite: false,
-          additionalInfo: {
-            windSpeed: day.day.wind_kph?.toString(),
-            humidity: day.day.avghumidity.toString(),
-            weatherLabel: day.day.condition.text,
-          },
-        };
-      }
-    );
+  toCityWeatherForecast(...forecasts: ForecastData[]): CityWeatherInfo[] {
+    const weatherInfos: CityWeatherInfo[] = forecasts
+      .flatMap(({forecast}) => forecast.forecastday
+        .map(
+          (day) => {
+            return {
+              minTemp: this.getTemperature(day.day.mintemp_c).toString(),
+              maxTemp: this.getTemperature(day.day.maxtemp_c).toString(),
+              weatherIcon: day.day.condition.icon,
+              date: day.date,
+              isFavorite: false,
+              additionalInfo: {
+                windSpeed: day.day.wind_kph?.toString(),
+                humidity: day.day.avghumidity.toString(),
+                weatherLabel: day.day.condition.text,
+              },
+            };
+          }
+        ));
 
     return weatherInfos;
   }

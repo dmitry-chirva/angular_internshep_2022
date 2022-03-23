@@ -35,7 +35,6 @@ export class ForecastService {
 
           return forkJoin(requests);
         }))
-      .pipe(switchMap(data => data))
-      .pipe(map(data => this.weatherTransformService.toCityWeatherForecast(data)));
+      .pipe(map(data => this.weatherTransformService.toCityWeatherForecast(...data)));
   }
 }

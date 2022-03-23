@@ -60,7 +60,7 @@ export class ForecastComponent implements OnInit {
     this.forecastService.getHistoryWeatherForecast(this.city, this.getDatesRange(periodDays))
       .subscribe(forecastHistory => {
         this.isForecastHistoryEnabled = false;
-        forecastHistory.forEach(historyItem => this.forecastHistory.push(historyItem));
+        this.forecastHistory = forecastHistory;
       });
   }
 
@@ -69,13 +69,11 @@ export class ForecastComponent implements OnInit {
   }
 
   private getDatesRange(periodDays : number) {
-    const dayMilliseconds = 24*60*60*1000;
 
     return Array.from(Array(periodDays).keys())
-      .map(x => x + 1)
-      .map(days => {
+      .map((_, days) => {
         const now = new Date();
-        now.setTime(now.getTime() - days * dayMilliseconds);
+        now.setDate(now.getDate() - days - 1);
         return now;
       });
   }
