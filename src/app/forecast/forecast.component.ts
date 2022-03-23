@@ -14,6 +14,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ForecastComponent implements OnInit {
   city: string;
   forecast: CityWeatherInfo[] = [];
+  forecastHistory: CityWeatherInfo[] = [];
   forecastBreadcrumbLinks: BreadcrumbLink[] = [];
   forecastDays: number;
   weatherInfo: CityWeatherInfo;
@@ -23,12 +24,14 @@ export class ForecastComponent implements OnInit {
     private forecastService: ForecastService
   ) {
     this.city = activateRoute.snapshot.params['city'];
+
     this.weatherInfo = {
       city: this.city,
       date: '',
       temp: '',
       isFavorite: false,
     };
+
     this.forecastDays = this.getForecastDays(
       activateRoute.snapshot.params['forecast']
     );
@@ -46,7 +49,33 @@ export class ForecastComponent implements OnInit {
       .subscribe((forecast) => (this.forecast = forecast));
   }
 
+  isForecastHistoryEnabled () : boolean {
+    return this.forecastHistory.length === 0;
+  }
+
+  openForecastHistory() {
+    if (this.forecastHistory.length > 0) {
+      return;
+    }
+
+    const daysBeforeNow = 7;
+
+    const datesRange = Array.from(Array(daysBeforeNow).keys())
+      .map(x => x + 1)
+      .map(days => this.getDateBeforeDays(new Date(), days));
+
+    this.forecastService.getHistoryWeatherForecast(this.city, datesRange)
+      .subscribe(historyItem => this.forecastHistory.push(historyItem));
+  }
+
   getForecastDays(type: string): number {
     return forecastTypes[type] ? forecastTypes[type] : forecastTypes.default;
+  }
+
+  private getDateBeforeDays(now : Date, days : number) {
+    const dayMilliseconds = 24*60*60*1000;
+    now.setTime(now.getTime() - days * dayMilliseconds);
+
+    return now;
   }
 }

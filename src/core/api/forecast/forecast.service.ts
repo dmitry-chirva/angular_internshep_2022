@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { concatAll, of, map, mergeMap, Observable } from 'rxjs';
 import { WeatherService } from '../weather/weather.service';
 import { WeatherTransformService } from '../common/weather-transform.service';
 import { CityWeatherInfo } from 'src/app/shared/interfaces/city-weather-info.interfaces';
@@ -8,6 +8,7 @@ import { CityWeatherInfo } from 'src/app/shared/interfaces/city-weather-info.int
   providedIn: 'root',
 })
 export class ForecastService {
+
   constructor(
     private weatherTransformService : WeatherTransformService,
     private weatherService: WeatherService) { }
@@ -18,5 +19,15 @@ export class ForecastService {
   ): Observable<CityWeatherInfo[]> {
     return this.weatherService.getForecastWeather(city, days)
       .pipe(map(data => this.weatherTransformService.toCityWeatherForecast(data)));
+  }
+
+  getHistoryWeatherForecast (city: string, datesRange: Date[]): Observable<CityWeatherInfo> {
+    return of(datesRange)
+      .pipe(mergeMap(dates => dates))
+      .pipe(map(date =>
+        this.weatherService.getHistoryForecast(city, date)
+          .pipe(map(data => this.weatherTransformService.toCityWeatherForecast(data)))))
+      .pipe(concatAll())
+      .pipe(mergeMap(res => res));
   }
 }
