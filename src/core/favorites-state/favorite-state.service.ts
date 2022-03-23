@@ -15,7 +15,7 @@ export class FavoriteStateService {
 
   addFavoriteCity(city: string): void {
     if(this.isFavoriteCity(city)){
-      if(this.moreCitiesCanBeAdded()){
+      if(this.hasMaxCities()){
         this.storage.addItem(this.FAVORITES_KEY, city);
       }
     }
@@ -29,7 +29,7 @@ export class FavoriteStateService {
     return this.storage.getItem(this.FAVORITES_KEY).indexOf(city) === -1;
   }
 
-  moreCitiesCanBeAdded(): boolean{
+  hasMaxCities(): boolean{
     return (this.storage.getItem(this.FAVORITES_KEY).length > this.MAX_AMOUNT_OF_FAVS) ? false : true;
   }
 }

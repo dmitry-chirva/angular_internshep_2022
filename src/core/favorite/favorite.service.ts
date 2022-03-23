@@ -37,6 +37,6 @@ export class FavoriteService {
   }
 
   checkAmountOfFavorites():boolean{
-    return this.favoriteStateService.moreCitiesCanBeAdded();
+    return this.favoriteStateService.hasMaxCities();
   }
 }

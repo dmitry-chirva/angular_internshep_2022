@@ -15,10 +15,6 @@ export class FavoriteToggleComponent {
   onToggle() {
     this.isFavorite = !this.isFavorite;
     this.onChange.emit(this.isFavorite);
-    this.favoriteStateService.addFavoriteCity('Toronto');
-    this.favoriteStateService.addFavoriteCity('Kharkiv');
-    this.favoriteStateService.addFavoriteCity('Paris');
-    this.favoriteStateService.addFavoriteCity('Barcelona');
     this.notificationService.show(NotificationType.Info,'You clicked on heart icon');
   }
 }
