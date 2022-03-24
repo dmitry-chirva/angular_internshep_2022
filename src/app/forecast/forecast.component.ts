@@ -29,8 +29,7 @@ export class ForecastComponent implements OnInit {
     this.weatherInfo = {
       city: this.city,
       date: '',
-      temp: '',
-      isFavorite: false,
+      temp: ''
     };
 
     this.forecastDays = this.getForecastDays(

@@ -8,11 +8,11 @@
     [hasInfo]="false"
   ></app-current-weather>
   <div class="forecast-list">
-    <app-forecast-card
+    <app-card
       *ngFor="let day of forecast"
-      [day]="day"
+      [data]="day"
       class="forecast-list__item"
-    ></app-forecast-card>
+    ></app-card>
   </div>
   <button *ngIf="isForecastHistoryEnabled" type="button" class="forecast__history-button" (click)="openForecastHistory()">
     Yesterday's weather &#8594;
@@ -21,10 +21,10 @@
     Yesterday's weather :
   </button>
   <div class="forecast-list">
-    <app-forecast-card
+    <app-card
       *ngFor="let day of forecastHistory"
-      [day]="day"
+      [data]="day"
       class="forecast-list__item"
-    ></app-forecast-card>
+    ></app-card>
   </div>
 </div>
