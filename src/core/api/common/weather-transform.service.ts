@@ -14,27 +14,31 @@ export class WeatherTransformService {
       date: location.localtime.split('').slice(8, 10).join(''),
       month: new Date().toLocaleString('en', { month: 'long' }),
       temp : Math.floor(current.temp_c),
+      condition: '',
       city: location.name };
   }
 
-  toCityWeatherForecast({forecast}: ForecastData): CityWeatherInfo[] {
-    const weatherInfos: CityWeatherInfo[] = forecast.forecastday.map(
-      ({day, date}) => {
-        return {
-          minTemp: this.getTemperature(day.mintemp_c).toString(),
-          maxTemp: this.getTemperature(day.maxtemp_c).toString(),
-          weatherIcon: day.condition.icon,
-          date,
-          isFavorite: false,
-          additionalInfo: {
-            windSpeed: day.wind_kph?.toString(),
-            humidity: day.avghumidity.toString(),
-            weatherLabel: day.condition.text,
-          },
-          city: ''
-        };
-      }
-    );
+  toCityWeatherForecast(...forecasts: ForecastData[]): CityWeatherInfo[] {
+    const weatherInfos: CityWeatherInfo[] = forecasts
+      .flatMap(({forecast}) => forecast.forecastday
+        .map(
+          (day) => {
+            return {
+              minTemp: this.getTemperature(day.day.mintemp_c).toString(),
+              maxTemp: this.getTemperature(day.day.maxtemp_c).toString(),
+              weatherIcon: day.day.condition.icon,
+              date: day.date,
+              isFavorite: false,
+              additionalInfo: {
+                windSpeed: day.day.wind_kph?.toString(),
+                humidity: day.day.avghumidity.toString(),
+                weatherLabel: day.day.condition.text,
+              },
+              city: ''
+            };
+          }
+        ));
+
     return weatherInfos;
   }
 
