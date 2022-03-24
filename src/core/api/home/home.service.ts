@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { map, Observable, switchMap } from 'rxjs';
+import { catchError, map, Observable, switchMap } from 'rxjs';
 import { CurrentWeatherData } from '../weather/current-weather.type';
 import { WeatherService } from '../weather/weather.service';
 import { WeatherTransformService } from '../common/weather-transform.service';
@@ -13,15 +13,21 @@ export class HomeService {
     private weatherService: WeatherService) { }
 
   getCurrentWeatherHome(
-    geoLocation: Observable<GeolocationPosition>
+    geoLocation: Observable<GeolocationPosition>,
+    fallbackCity: string
   ): Observable<CurrentWeatherData> {
     return geoLocation.pipe(
       switchMap((pos) => {
         const latitude = pos.coords.latitude;
         const longitude = pos.coords.longitude;
-        return this.weatherService.getCurrentWeather(latitude, longitude)
+        return this.weatherService.getCurrentWeatherByCoordinates(latitude, longitude)
           .pipe(map(data => this.weatherTransformService.toCurrentWeatherData(data)));
       })
-    );
+    )
+    .pipe(
+      catchError(() =>
+        this.weatherService.getCurrentWeatherByCity(fallbackCity)
+          .pipe(map((data) => this.weatherTransformService.toCurrentWeatherData(data))
+    )));
   }
 }

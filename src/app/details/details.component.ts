@@ -1,18 +1,20 @@
 import { FavoriteStateService } from 'src/core/favorites-state/favorite-state.service';
 import { Component } from '@angular/core';
-import { tap } from 'rxjs';
+import {filter, map, tap} from 'rxjs';
 
 import { DetailsService } from 'src/core/api/details/details.service';
 import { TransformDataDetailsService } from 'src/core/api/details/transform-data-details.service';
 import { CurrentWeatherData } from '../../core/api/weather/current-weather.type';
 import { CityWeatherInfo } from '../shared/interfaces/city-weather-info.interfaces';
 import { BreadcrumbLink } from '../shared/interfaces/breadcrumbs-links.interfaces';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import { Column } from '../shared/interfaces/table.interfaces';
 import { DetailsInfo } from '../shared/interfaces/details-info.interfaces';
 import { HomeService } from 'src/core/api/home/home.service';
 import { GeoLocationService } from 'src/core/api/weather/geo-location.service';
 import { ForecastType } from '../shared/enums/forecast.enum';
+import {WeatherService} from "../../core/api/weather/weather.service";
+import {WeatherTransformService} from "../../core/api/common/weather-transform.service";
 
 @Component({
   selector: 'app-details',
@@ -46,6 +48,9 @@ export class DetailsComponent {
     private detailsService: DetailsService,
     private transformDataDetailsService: TransformDataDetailsService,
     private favoriteStateService: FavoriteStateService,
+    private router: Router,
+    private weatherService: WeatherService,
+    private weatherTransformService : WeatherTransformService,
   ) {
     this.currentCity = activateRoute.snapshot.params['city'];
     this.detailsState = activateRoute.snapshot.routeConfig?.path?.endsWith('tomorrow') ? ForecastType.Tomorrow : ForecastType.Today;
@@ -59,11 +64,33 @@ export class DetailsComponent {
       { link: '/', name: 'Home', isActive: false },
       { link: `/${this.currentCity}/details`, name: 'Details', isActive: true },
     ];
+    router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((value) => {
+      this.currentCity = activateRoute.snapshot.params['city']
+      this.weatherInfo.city = this.currentCity
+
+      weatherService.getCurrentWeatherByCity(this.currentCity)
+        .pipe(map((data) => this.weatherTransformService.toCurrentWeatherData(data)))
+        .subscribe(({ year, date, month, temp, city }: CurrentWeatherData) => {
+          this.weatherInfo.date = `${month} ${date}th, ${year}`;
+          this.weatherInfo.temp = `${temp} °С`;
+          this.weatherInfo.city = city;
+        });
+
+      const getWeatherDataObservable =
+        this.detailsState === ForecastType.Today
+          ? this.detailsService.getDataForTodayWeatherTable(this.currentCity)
+          : this.detailsService.getDataForTomorrowWeatherTable(this.currentCity);
+      getWeatherDataObservable
+        .pipe(tap((data : any) => {
+          this.detailsData = this.transformDataDetailsService.transformDetailsWeather(data)
+        }))
+        .subscribe();
+    })
   }
 
   ngOnInit() {
-    this.homeService
-      .getCurrentWeatherHome(this.geoLocationService.getPosition())
+    this.weatherService.getCurrentWeatherByCity(this.currentCity)
+      .pipe(map((data) => this.weatherTransformService.toCurrentWeatherData(data)))
       .subscribe(({ year, date, month, temp, city }: CurrentWeatherData) => {
         this.weatherInfo.date = `${month} ${date}th, ${year}`;
         this.weatherInfo.temp = `${temp} °С`;
@@ -76,7 +103,9 @@ export class DetailsComponent {
       : this.detailsService.getDataForTomorrowWeatherTable(this.currentCity);
 
     getWeatherDataObservable
-      .pipe(tap((data : any) => this.detailsData = this.transformDataDetailsService.transformDetailsWeather(data)))
+      .pipe(tap((data : any) => {
+        this.detailsData = this.transformDataDetailsService.transformDetailsWeather(data)
+      }))
       .subscribe();
   }
 }
