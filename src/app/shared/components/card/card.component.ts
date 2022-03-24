@@ -1,6 +1,5 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {CityWeatherInfo} from "../../interfaces/city-weather-info.interfaces";
-
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
