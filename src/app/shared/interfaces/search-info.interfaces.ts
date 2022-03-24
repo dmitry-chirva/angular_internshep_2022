@@ -12,4 +12,7 @@ export interface CurrentLocation {
 
 export interface CurrentTemp {
   temp_c: number;
+  condition: {
+    text: string;
+  };
 }
