@@ -22,8 +22,6 @@ export class AppComponent implements OnInit {
     this.homeService
       .getCurrentWeatherHome(this.geoLocationService.getPosition())
       .subscribe(({ condition }: CurrentWeatherData) => {
-        console.log(condition);
-
         this.pathToBackgroundImg =
           this.conditionServise.getBackgroundImagePath(condition);
       });

@@ -9,7 +9,7 @@ import { CurrentLocationWeather } from 'src/app/shared/interfaces/search-info.in
   providedIn: 'root',
 })
 export class WeatherService {
-  readonly BASE_URL = 'http://api.weatherapi.com/v1/';
+  readonly BASE_URL = 'https://api.weatherapi.com/v1/';
   readonly API_KEY = 'b88614b3fb684e8b996104153220302';
 
   constructor(private http: HttpClient) {}
