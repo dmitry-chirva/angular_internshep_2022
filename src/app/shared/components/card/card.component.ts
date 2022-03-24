@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {CityWeatherInfo} from "../../interfaces/city-weather-info.interfaces";
 
 @Component({
@@ -6,15 +6,11 @@ import {CityWeatherInfo} from "../../interfaces/city-weather-info.interfaces";
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })
-export class CardComponent implements OnInit {
-
+export class CardComponent  {
   @Input()
   data!: CityWeatherInfo;
   @Output() favoriteCity = new EventEmitter<CityWeatherInfo>();
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  constructor() {}
 
   onChange(city:CityWeatherInfo){
     this.favoriteCity.emit(city);
