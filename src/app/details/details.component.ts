@@ -13,6 +13,7 @@ import { DetailsInfo } from '../shared/interfaces/details-info.interfaces';
 import { HomeService } from 'src/core/api/home/home.service';
 import { GeoLocationService } from 'src/core/api/weather/geo-location.service';
 import { ForecastType } from '../shared/enums/forecast.enum';
+import { Constants } from 'src/core/api/common/constants';
 
 @Component({
   selector: 'app-details',
@@ -63,7 +64,7 @@ export class DetailsComponent {
 
   ngOnInit() {
     this.homeService
-      .getCurrentWeatherHome(this.geoLocationService.getPosition())
+      .getCurrentWeatherHome(this.geoLocationService.getPosition(), Constants.DEFAULT_CITY)
       .subscribe(({ year, date, month, temp, city }: CurrentWeatherData) => {
         this.weatherInfo.date = `${month} ${date}th, ${year}`;
         this.weatherInfo.temp = `${temp} °С`;
