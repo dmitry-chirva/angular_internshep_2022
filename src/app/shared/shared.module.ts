@@ -11,6 +11,7 @@ import { TableComponent } from './components/table/table.component';
 import { FavoriteToggleComponent } from './components/favorite-toggle/favorite-toggle.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { CardComponent } from './components/card/card.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { CardComponent } from './components/card/card.component';
     FavoriteToggleComponent,
     NotificationComponent,
     CardComponent,
+    LoaderComponent,
   ],
   imports: [BrowserModule, RouterModule, BrowserAnimationsModule],
   exports: [

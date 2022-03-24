@@ -38,7 +38,11 @@ export class WeatherTransformService {
     return weatherInfos;
   }
 
-  toCityWeatherFavorite({location,current,forecast}: ForecastData): CityWeatherInfo {
+  toCityWeatherFavorite({
+    location,
+    current,
+    forecast,
+  }: ForecastData): CityWeatherInfo {
     let favoritesInfo: CityWeatherInfo = {
       city: location.name,
       date: forecast.forecastday[0].date,
@@ -49,8 +53,8 @@ export class WeatherTransformService {
         weatherLabel: current.condition.text,
         windSpeed: `${Math.ceil(current.wind_kph)}`,
         humidity: `${current.humidity}`,
-      }
-    }
+      },
+    };
     return favoritesInfo;
   }
 

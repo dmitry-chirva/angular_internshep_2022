@@ -9,7 +9,7 @@ import { CurrentLocationWeather } from 'src/app/shared/interfaces/search-info.in
   providedIn: 'root',
 })
 export class WeatherService {
-  readonly BASE_URL = 'http://api.weatherapi.com/v1/';
+  readonly BASE_URL = 'https://api.weatherapi.com/v1/';
   readonly API_KEY = 'b88614b3fb684e8b996104153220302';
 
   constructor(private http: HttpClient) {}
@@ -22,6 +22,16 @@ export class WeatherService {
   ): Observable<ForecastData> {
     return this.http.get<ForecastData>(
       `${this.BASE_URL}forecast.json?key=${this.API_KEY}&q=${city}&days=${days}&aqi=${aqi}&alerts=${alerts}`
+    );
+  }
+
+  getHistoryForecast(
+    city: string,
+    date: Date
+  ): Observable<ForecastData> {
+    const formattedDate = date.toISOString().split('T')[0];
+    return this.http.get<ForecastData>(
+      `${this.BASE_URL}history.json?key=${this.API_KEY}&q=${city}&dt=${formattedDate}`
     );
   }
 

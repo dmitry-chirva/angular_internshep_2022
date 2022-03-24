@@ -14,20 +14,24 @@ import { ActivatedRoute } from '@angular/router';
 export class ForecastComponent implements OnInit {
   city: string;
   forecast: CityWeatherInfo[] = [];
+  forecastHistory: CityWeatherInfo[] = [];
   forecastBreadcrumbLinks: BreadcrumbLink[] = [];
   forecastDays: number;
   weatherInfo: CityWeatherInfo;
+  isForecastHistoryEnabled: boolean=true;
 
   constructor(
     private activateRoute: ActivatedRoute,
     private forecastService: ForecastService
   ) {
     this.city = activateRoute.snapshot.params['city'];
+
     this.weatherInfo = {
       city: this.city,
       date: '',
       temp: ''
     };
+
     this.forecastDays = this.getForecastDays(
       activateRoute.snapshot.params['forecast']
     );
@@ -45,7 +49,31 @@ export class ForecastComponent implements OnInit {
       .subscribe((forecast) => (this.forecast = forecast));
   }
 
+  openForecastHistory() {
+    if (this.forecastHistory.length > 0) {
+      return;
+    }
+
+    const periodDays = 7;
+
+    this.forecastService.getHistoryWeatherForecast(this.city, this.getDatesRange(periodDays))
+      .subscribe(forecastHistory => {
+        this.isForecastHistoryEnabled = false;
+        this.forecastHistory = forecastHistory;
+      });
+  }
+
   getForecastDays(type: string): number {
     return forecastTypes[type] ? forecastTypes[type] : forecastTypes.default;
+  }
+
+  private getDatesRange(periodDays : number) {
+
+    return Array.from(Array(periodDays).keys())
+      .map((_, days) => {
+        const now = new Date();
+        now.setDate(now.getDate() - days - 1);
+        return now;
+      });
   }
 }
