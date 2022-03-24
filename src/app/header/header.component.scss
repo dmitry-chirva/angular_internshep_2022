@@ -56,10 +56,8 @@
   }
 }
 
-.header__search {
+app-autocomplete {
   width: 470px;
-  height: 66px;
-  position: relative;
 
   @media only screen and (max-width: $screen-xl) {
     width: 300px;
@@ -92,3 +90,4 @@ input::placeholder {
   right: 20px;
   font-size: 1.8rem;
 }
+

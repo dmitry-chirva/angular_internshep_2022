@@ -1,71 +1,44 @@
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable, switchMap } from 'rxjs';
-import { CurrentWeatherData } from '../weather/current-weather.type';
-
-import { GeoLocationService } from '../weather/geo-location.service';
+import { of, map, Observable, switchMap, forkJoin } from 'rxjs';
 import { WeatherService } from '../weather/weather.service';
+import { WeatherTransformService } from '../common/weather-transform.service';
+import { CityWeatherInfo } from 'src/app/shared/interfaces/city-weather-info.interfaces';
+import { ForecastData } from 'src/app/shared/interfaces/forecast-info.interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ForecastService {
+
   constructor(
-    private weatherService: WeatherService,
-    private geolocationService: GeoLocationService
+    private weatherTransformService: WeatherTransformService,
+    private weatherService: WeatherService
   ) {}
 
-  getCurrentWeatherForecast(): Observable<CurrentWeatherData> {
-    return this.geolocationService
-      .getPosition()
+  getCurrentWeatherForecast(
+    city: string,
+    days: number
+  ): Observable<CityWeatherInfo[]> {
+    return this.weatherService
+      .getForecastWeather(city, days)
       .pipe(
-        switchMap((pos) => {
-          const latitude = pos.coords.latitude;
-          const longitude = pos.coords.longitude;
-          return this.weatherService
-            .getCurrentWeather(latitude, longitude)
-            .pipe(
-              map((data) => {
-                const year = data.location.localtime
-                  .split('')
-                  .slice(0, 4)
-                  .join('');
-                const date = data.location.localtime
-                  .split('')
-                  .slice(8, 10)
-                  .join('');
-                const month = new Date().toLocaleString('en', {
-                  month: 'long',
-                });
-                const temp = Math.floor(data.current.temp_c);
-                const city = `${data.location.name}, ${data.location.country}`;
-
-                return { year, date, month, temp, city };
-              })
-            );
-        })
-      )
-      .pipe(
-        catchError(() =>
-          this.weatherService.getForecastWeather().pipe(
-            map((data) => {
-              const year = data.location.localtime
-                .split('')
-                .slice(0, 4)
-                .join('');
-              const date = data.location.localtime
-                .split('')
-                .slice(8, 10)
-                .join('');
-              const month = new Date().toLocaleString('en', {
-                month: 'long',
-              });
-              const temp = Math.floor(data.current.temp_c);
-              const city = `${data.location.name}, ${data.location.country}`;
-
-              return { year, date, month, temp, city };
-            })
-          )
-        )
+        map((data) => this.weatherTransformService.toCityWeatherForecast(data))
       );
+  }
+
+  getHistoryWeatherForecast (city: string, datesRange: Date[]): Observable<CityWeatherInfo[]> {
+    return of(datesRange)
+      .pipe(switchMap(dates =>
+      {
+          const requests : Observable<ForecastData>[] = [];
+
+          dates.forEach(date => {
+            const forecastHistoryItem = this.weatherService.getHistoryForecast(city, date);
+            requests.push(forecastHistoryItem);
+          })
+
+          return forkJoin(requests);
+        }))
+      .pipe(map(data => this.weatherTransformService.toCityWeatherForecast(...data)));
   }
 }

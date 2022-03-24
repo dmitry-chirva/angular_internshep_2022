@@ -30,6 +30,8 @@ export class NotificationComponent implements OnInit {
 
   handleClick(currentNotification: Notification){
     currentNotification.isClicked = true;
-    this.notifications = this.notifications.filter(notification => notification.id != currentNotification.id);
+
+    this.notificationService.hide(currentNotification);
+    this.notifications = this.notificationService.getAll();
   }
 }

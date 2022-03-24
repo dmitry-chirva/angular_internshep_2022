@@ -1,9 +1,16 @@
 <app-header></app-header>
 <app-notification></app-notification>
-<main class="main">
+<main
+  class="main"
+  [ngStyle]="{
+    'background-image':
+      'linear-gradient(rgba(43, 56, 39, 0.8), rgba(43, 56, 39, 0.8)), url(' +
+      pathToBackgroundImg +
+      ')'
+  }"
+>
   <div class="main-container">
     <router-outlet></router-outlet>
   </div>
 </main>
 <app-footer></app-footer>
-

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ForecastCardComponent } from './forecast-card.component';
+import { AutocompleteComponent } from './autocomplete.component';
 
-describe('ForecastCardComponent', () => {
-  let component: ForecastCardComponent;
-  let fixture: ComponentFixture<ForecastCardComponent>;
+describe('AutocompleteComponent', () => {
+  let component: AutocompleteComponent;
+  let fixture: ComponentFixture<AutocompleteComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ForecastCardComponent ]
+      declarations: [ AutocompleteComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ForecastCardComponent);
+    fixture = TestBed.createComponent(AutocompleteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
