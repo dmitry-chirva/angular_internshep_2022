@@ -4,11 +4,14 @@
     [searchKeyword]="label"
     placeholder="Search..."
     (selected)='selectedCity.emit($event)'
+    (inputCleared)="clearInput.emit()"
     (inputChanged)='onSearch.emit($event)'
     (inputFocused)='onFocused($event)'
     [itemTemplate]="itemTemplate"
     [notFoundTemplate]="notFoundTemplate"
-    [debounceTime]="300"
+    [minQueryLength]="3"
+    [debounceTime]="200"
+    [customFilter]="filter"
   >
   </ng-autocomplete>
   <i class="icon icon-search search__icon"></i>
