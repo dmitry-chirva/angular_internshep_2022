@@ -24,10 +24,18 @@ export class FavoriteListComponent implements OnInit  {
 
   ngOnInit(){
     this.favorites = this.favoriteService.getFavorites();
-    if(this.favoriteStateService.hasMaxCities()){
+
+    if(!this.favoriteStateService.hasMaxCities()){
       this.notificationService.show( NotificationType.Error ,`Your can add only ${this.favoriteStateService.MAX_AMOUNT_OF_FAVS} cities to your list of favorites`)
     }
-    console.log('this.favorites', this.favorites)
+    // console.log('this.favorites', this.favorites)
+  }
+
+  handleFavoriteCard(currentCity:CityWeatherInfo){
+    console.log(currentCity)
+    if(currentCity.isFavorite){
+      // this.favoriteStateService.addFavoriteCity(currentCity.city)
+    }
   }
 
 }

@@ -4,7 +4,8 @@
     <time class="header__date">{{ data.date | date }}</time>
   </div>
   <div class="card__icon-group">
-    <app-favorite-toggle *ngIf="data.city" class="card__favorite-icon" [favorite]="data">
+    <app-favorite-toggle *ngIf="data.city" class="card__favorite-icon" [favorite]="data"
+    (onChange)="onChange($event)">
     </app-favorite-toggle>
     <img class="card__weather-img" src='{{data.weatherIcon}}'  alt="weather icon">
   </div>

@@ -4,7 +4,7 @@
   <h3 class="favorite__btn">Favorites:</h3>
   <div class="favorite-list">
       <div class="favorite-item__wrapper" *ngFor="let favorite of favorites">
-        <app-card [data]="favorite">
+        <app-card [data]="favorite" (favoriteCity)="handleFavoriteCard($event)">
         </app-card>
       </div>
   </div>
