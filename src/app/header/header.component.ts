@@ -50,15 +50,7 @@ export class HeaderComponent {
   }
 
   clearResult():void {
-      this.values = [{
-        id: 2501828,
-        name: "Kiev",
-        region: "Kyyivs'ka Oblast'",
-        country: "Ukraine",
-        lat: 50.43,
-        lon: 30.52,
-        url: "kiev-kyyivska-oblast-ukraine"
-      },]
+      this.values = []
   }
 }
 
