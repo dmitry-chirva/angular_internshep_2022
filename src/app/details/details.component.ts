@@ -11,6 +11,7 @@ import { Column } from '../shared/interfaces/table.interfaces';
 import { DetailsInfo } from '../shared/interfaces/details-info.interfaces';
 import { HomeService } from 'src/core/api/home/home.service';
 import { GeoLocationService } from 'src/core/api/weather/geo-location.service';
+import { ForecastType } from '../shared/enums/forecast.enum';
 
 @Component({
   selector: 'app-details',
@@ -36,6 +37,7 @@ export class DetailsComponent {
     { name: 'pressure', displayName: 'Pressure, mb' },
   ];
 
+  detailsState : ForecastType | null = null;
   detailsData: DetailsInfo[] | null = [];
 
   private currentCity: string;
@@ -49,6 +51,7 @@ export class DetailsComponent {
     private transformDataDetailsService: TransformDataDetailsService
   ) {
     this.currentCity = activateRoute.snapshot.params['city'];
+    this.detailsState = activateRoute.snapshot.routeConfig?.path?.endsWith('tomorrow') ? ForecastType.Tomorrow : ForecastType.Today;
     this.weatherInfo = {
       city: this.currentCity,
       date: '',
@@ -70,15 +73,13 @@ export class DetailsComponent {
         this.weatherInfo.city = city;
       });
 
-    this.detailsService
-      .getDataForWeatherTable(this.currentCity)
-      .pipe(
-        tap(
-          (data: any) =>
-            (this.detailsData =
-              this.transformDataDetailsService.transformDetailsWeather(data))
-        )
-      )
+    const getWeatherDataObservable =
+      this.detailsState === ForecastType.Today
+      ? this.detailsService.getDataForTodayWeatherTable(this.currentCity)
+      : this.detailsService.getDataForTomorrowWeatherTable(this.currentCity);
+
+    getWeatherDataObservable
+      .pipe(tap((data : any) => this.detailsData = this.transformDataDetailsService.transformDetailsWeather(data)))
       .subscribe();
   }
 }
