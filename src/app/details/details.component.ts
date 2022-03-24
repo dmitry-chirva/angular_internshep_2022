@@ -1,3 +1,4 @@
+import { FavoriteStateService } from 'src/core/favorites-state/favorite-state.service';
 import { Component } from '@angular/core';
 import { tap } from 'rxjs';
 
@@ -18,12 +19,7 @@ import { GeoLocationService } from 'src/core/api/weather/geo-location.service';
   styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent {
-  weatherInfo: CityWeatherInfo = {
-    city: 'Kiev, Ukraine',
-    date: '',
-    temp: '',
-    isFavorite: false,
-  };
+  weatherInfo: CityWeatherInfo ;
 
   detailsColumns: Column[] = [
     { name: 'hour', displayName: '' },
@@ -46,14 +42,15 @@ export class DetailsComponent {
     private geoLocationService: GeoLocationService,
     private activateRoute: ActivatedRoute,
     private detailsService: DetailsService,
-    private transformDataDetailsService: TransformDataDetailsService
+    private transformDataDetailsService: TransformDataDetailsService,
+    private favoriteStateService: FavoriteStateService
   ) {
     this.currentCity = activateRoute.snapshot.params['city'];
     this.weatherInfo = {
       city: this.currentCity,
       date: '',
       temp: '',
-      isFavorite: false,
+      isFavorite: !this.favoriteStateService.isFavoriteCity(this.currentCity),
     };
     this.detailBreadcrumbLinks = [
       { link: '/', name: 'Home', isActive: false },

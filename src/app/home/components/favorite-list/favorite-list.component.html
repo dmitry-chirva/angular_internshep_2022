@@ -1,6 +1,4 @@
-<div *ngIf="favorites.length; then withFavoritesBlock else noFavoritesBlock"></div>
-
-<ng-template #withFavoritesBlock>
+<div *ngIf="favorites.length">
   <h3 class="favorite__btn">Favorites:</h3>
   <div class="favorite-list">
       <div class="favorite-item__wrapper" *ngFor="let favorite of favorites">
@@ -8,8 +6,6 @@
         </app-card>
       </div>
   </div>
-</ng-template>
+</div>
 
-<ng-template #noFavoritesBlock>
-  <p class="favorite__empty-list">Try to add some cities to your list!</p>
-</ng-template>
+

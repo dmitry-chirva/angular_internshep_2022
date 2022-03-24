@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { CityWeatherInfo } from 'src/app/shared/interfaces/city-weather-info.interfaces';
 import { ForecastData } from 'src/app/shared/interfaces/forecast-info.interfaces';
-import { CurrentLocation, CurrentLocationWeather } from 'src/app/shared/interfaces/search-info.interfaces';
+import { CurrentLocationWeather } from 'src/app/shared/interfaces/search-info.interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WeatherTransformService {
 
-  toCurrentWeatherData(weather: CurrentLocationWeather) {
-    const year = weather.location.localtime.split('').slice(0, 4).join('');
-    const date = this.getDate(weather);
-    const month = new Date().toLocaleString('en', { month: 'long' });
-    const temp = Math.floor(weather.current.temp_c);
-
-    return { year, date, month, temp, city: this.getCity(weather.location) };
+  toCurrentWeatherData({location,current}: CurrentLocationWeather) {
+    return {
+      year: location.localtime.split('').slice(0, 4).join(''),
+      date: location.localtime.split('').slice(8, 10).join(''),
+      month: new Date().toLocaleString('en', { month: 'long' }),
+      temp : Math.floor(current.temp_c),
+      city: location.name };
   }
 
   toCityWeatherForecast({forecast}: ForecastData): CityWeatherInfo[] {
@@ -35,7 +35,6 @@ export class WeatherTransformService {
         };
       }
     );
-
     return weatherInfos;
   }
 
@@ -53,14 +52,6 @@ export class WeatherTransformService {
       }
     }
     return favoritesInfo;
-  }
-
-  private getCity(location: CurrentLocation) {
-    return `${location.name}, ${location.country}`;
-  }
-
-  private getDate(weather: CurrentLocationWeather) {
-    return weather.location.localtime.split('').slice(8, 10).join('');
   }
 
   private getTemperature(temp: number) {
