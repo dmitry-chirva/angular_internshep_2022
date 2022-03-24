@@ -35,5 +35,4 @@ export class FavoriteListComponent implements OnInit  {
     : this.favoriteStateService.removeFavoriteCity(currentCity.city)
     this.favorites = this.favoriteService.getFavorites();
   }
-  // ["Odessa", "Toronto", "Oslo", "Kyoto"]
 }
