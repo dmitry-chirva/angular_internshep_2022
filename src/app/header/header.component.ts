@@ -1,5 +1,7 @@
-import {Component, Output} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {CitySearch} from "../shared/interfaces/city-search.interface";
+import {SearchService} from "../../core/api/search/search.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -9,7 +11,9 @@ import {CitySearch} from "../shared/interfaces/city-search.interface";
 
 export class HeaderComponent {
 
-  @Output() selectedCity: CitySearch = {
+  constructor(private search: SearchService, private router: Router) {}
+
+  @Output() selectedCity = {
     id: 2501828,
     name: "Kiev",
     region: "Kyyivs'ka Oblast'",
@@ -29,22 +33,24 @@ export class HeaderComponent {
       lon: 30.52,
       url: "kiev-kyyivska-oblast-ukraine"
     },
-    {
-      id: 2501828,
-      name: "New york",
-      region: "Kyyivs'ka Oblast'",
-      country: "Ukraine",
-      lat: 50.43,
-      lon: 30.52,
-      url: "kiev-kyyivska-oblast-ukraine"
-    }
   ]
   searchLabel = 'name';
 
-  onSearch(value: string):void {}
+  onSearch(value: string):void {
+    if(value) {
+      this.search.getSearchList(value).subscribe((data) => {
+        this.values = data;
+      })
+    }
+  }
 
   selectCity(city: CitySearch):void {
     this.selectedCity = city
+    this.router.navigate([`/${this.selectedCity.name}/details`])
+  }
+
+  clearResult():void {
+      this.values = []
   }
 }
 

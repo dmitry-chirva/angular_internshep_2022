@@ -22,7 +22,11 @@ export class AutocompleteComponent {
 
   @Output() selectedCity = new EventEmitter<CitySearch>()
   @Output() onSearch = new EventEmitter<string>()
+  @Output() clearInput = new EventEmitter()
 
+  filter() : CitySearch[] {
+    return this.data
+  }
 
   onFocused(e: any) {}
 }
