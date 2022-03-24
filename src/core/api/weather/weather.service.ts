@@ -35,12 +35,18 @@ export class WeatherService {
     );
   }
 
-  getCurrentWeather(
+  getCurrentWeatherByCoordinates(
     latitude: number,
     longitude: number
   ): Observable<CurrentLocationWeather> {
     return this.http.get<CurrentLocationWeather>(
       `${this.BASE_URL}current.json?key=${this.API_KEY}&q=${latitude},${longitude}&aqi=no`
+    );
+  }
+
+  getCurrentWeatherByCity(city : string): Observable<CurrentLocationWeather> {
+    return this.http.get<CurrentLocationWeather>(
+      `${this.BASE_URL}current.json?key=${this.API_KEY}&q=${city}&aqi=no`
     );
   }
 }

@@ -30,21 +30,27 @@ export class DetailsService {
   }
 
   getCurrentWeatherHome(
-    geoLocation: Observable<GeolocationPosition>
+    geoLocation: Observable<GeolocationPosition>,
+    fallbackCity : string
   ): Observable<CurrentWeatherData> {
     return geoLocation.pipe(
       switchMap((pos: { coords: { latitude: number; longitude: number } }) => {
         const latitude = pos.coords.latitude;
         const longitude = pos.coords.longitude;
         return this.weatherService
-          .getCurrentWeather(latitude, longitude)
+          .getCurrentWeatherByCoordinates(latitude, longitude)
           .pipe(
             map((data) =>
               this.weatherTransformService.toCurrentWeatherData(data)
             )
           );
       })
-    );
+    )
+    .pipe(
+      catchError(() =>
+        this.weatherService.getCurrentWeatherByCity(fallbackCity)
+          .pipe(map((data) => this.weatherTransformService.toCurrentWeatherData(data))
+    )));
   }
 
   private getDataForWeatherTable(city: string, index : number): Observable<DetailsInfo | unknown> {
@@ -56,7 +62,7 @@ export class DetailsService {
             const latitude = pos.coords.latitude;
             const longitude = pos.coords.longitude;
             return this.weatherService
-              .getCurrentWeather(latitude, longitude)
+              .getCurrentWeatherByCoordinates(latitude, longitude)
               .pipe(
                 switchMap((currentLocation: CurrentLocationWeather) => {
                   const cityName = currentLocation.location.name;
