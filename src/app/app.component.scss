@@ -1,6 +1,11 @@
 .main {
   padding-top: 100px;
   flex: 1 0;
+  background-image: linear-gradient(
+      var(--linear-gradient),
+      var(--linear-gradient)
+    ),
+    url(../assets/images/snow1.jpg);
   background-color: rgba(43, 56, 39, 0.8);
   background-position: center;
   background-size: cover;
