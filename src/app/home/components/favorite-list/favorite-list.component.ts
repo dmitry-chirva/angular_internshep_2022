@@ -15,7 +15,6 @@ import { NotificationType } from 'src/app/shared/enums/notification.enum';
 export class FavoriteListComponent implements OnInit  {
 
   favorites: CityWeatherInfo[] = [];
-  favoritesNames: string[] = [];
   constructor(
     private favoriteService: FavoriteService,
     private favoriteStateService: FavoriteStateService,
@@ -28,14 +27,13 @@ export class FavoriteListComponent implements OnInit  {
     if(!this.favoriteStateService.hasMaxCities()){
       this.notificationService.show( NotificationType.Error ,`Your can add only ${this.favoriteStateService.MAX_AMOUNT_OF_FAVS} cities to your list of favorites`)
     }
-    // console.log('this.favorites', this.favorites)
   }
 
   handleFavoriteCard(currentCity:CityWeatherInfo){
-    console.log(currentCity)
-    if(currentCity.isFavorite){
-      // this.favoriteStateService.addFavoriteCity(currentCity.city)
-    }
+    (currentCity.isFavorite)
+    ? this.favoriteStateService.addFavoriteCity(currentCity.city)
+    : this.favoriteStateService.removeFavoriteCity(currentCity.city)
+    this.favorites = this.favoriteService.getFavorites();
   }
-
+  // ["Odessa", "Toronto", "Oslo", "Kyoto"]
 }

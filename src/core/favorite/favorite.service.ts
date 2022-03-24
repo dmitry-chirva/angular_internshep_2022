@@ -10,21 +10,16 @@ import { map } from 'rxjs';
 export class FavoriteService {
 
   favorites: CityWeatherInfo[] = [];
-  favoritesNames: string[] = [];
 
   constructor(
     private favoriteStateService: FavoriteStateService,
     private weatherService: WeatherService,
     private weatherTransformService: WeatherTransformService
-  ) {
-    this.favoritesNames = this.favoriteStateService.getFavoriteCities();
-  }
-  ngOnInit(){
-    this.favoritesNames = this.favoriteStateService.getFavoriteCities();
-  }
+  ) { }
 
   getFavorites(): CityWeatherInfo[] {
-    this.favoritesNames.map( city => {
+    this.favorites = [];
+    this.favoriteStateService.getFavoriteCities().map( city => {
       this.weatherService.getForecastWeather(city, 1)
         .pipe(
           map(data => this.weatherTransformService.toCityWeatherFavorite(data))

@@ -31,6 +31,7 @@ export class WeatherTransformService {
             humidity: day.avghumidity.toString(),
             weatherLabel: day.condition.text,
           },
+          city: ''
         };
       }
     );
