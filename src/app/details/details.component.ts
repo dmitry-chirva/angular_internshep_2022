@@ -7,7 +7,7 @@ import { TransformDataDetailsService } from 'src/core/api/details/transform-data
 import { CurrentWeatherData } from '../../core/api/weather/current-weather.type';
 import { CityWeatherInfo } from '../shared/interfaces/city-weather-info.interfaces';
 import { BreadcrumbLink } from '../shared/interfaces/breadcrumbs-links.interfaces';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import { Column } from '../shared/interfaces/table.interfaces';
 import { DetailsInfo } from '../shared/interfaces/details-info.interfaces';
 import { HomeService } from 'src/core/api/home/home.service';
@@ -45,7 +45,7 @@ export class DetailsComponent {
     private activateRoute: ActivatedRoute,
     private detailsService: DetailsService,
     private transformDataDetailsService: TransformDataDetailsService,
-    private favoriteStateService: FavoriteStateService
+    private favoriteStateService: FavoriteStateService,
   ) {
     this.currentCity = activateRoute.snapshot.params['city'];
     this.detailsState = activateRoute.snapshot.routeConfig?.path?.endsWith('tomorrow') ? ForecastType.Tomorrow : ForecastType.Today;
