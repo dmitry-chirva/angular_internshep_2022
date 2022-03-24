@@ -14,7 +14,17 @@
       class="forecast-list__item"
     ></app-forecast-card>
   </div>
-  <button type="button" class="forecast__history-button">
+  <button *ngIf="isForecastHistoryEnabled" type="button" class="forecast__history-button" (click)="openForecastHistory()">
     Yesterday's weather &#8594;
   </button>
+  <button *ngIf="!isForecastHistoryEnabled" type="button" class="forecast__history-button-disabled">
+    Yesterday's weather :
+  </button>
+  <div class="forecast-list">
+    <app-forecast-card
+      *ngFor="let day of forecastHistory"
+      [day]="day"
+      class="forecast-list__item"
+    ></app-forecast-card>
+  </div>
 </div>

@@ -25,6 +25,16 @@ export class WeatherService {
     );
   }
 
+  getHistoryForecast(
+    city: string,
+    date: Date
+  ): Observable<ForecastData> {
+    const formattedDate = date.toISOString().split('T')[0];
+    return this.http.get<ForecastData>(
+      `${this.BASE_URL}history.json?key=${this.API_KEY}&q=${city}&dt=${formattedDate}`
+    );
+  }
+
   getCurrentWeather(
     latitude: number,
     longitude: number
