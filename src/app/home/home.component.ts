@@ -19,17 +19,21 @@ export class HomeComponent implements OnInit {
     isFavorite: false,
   };
 
+  isLoading: boolean = false;
+
   constructor(
     private homeService: HomeService,
     private geoLocationService : GeoLocationService) {}
 
   ngOnInit() {
+    this.isLoading = true;
     this.homeService
       .getCurrentWeatherHome(this.geoLocationService.getPosition(), this.weatherInfo.city)
       .subscribe(({ year, date, month, temp, city }: CurrentWeatherData) => {
         this.weatherInfo.date = `${month} ${date}th, ${year}`;
         this.weatherInfo.temp = `${temp} °С`;
         this.weatherInfo.city = city;
+        this.isLoading = false;
       });
   }
 }

@@ -15,6 +15,7 @@ export class TransformDataDetailsService {
 
   getDataDetails(data: ForecastData, index : number): Observable<CurrentWeather[]> {
     return new Observable((obs) => {
+      console.log(data.forecast.forecastday[index]);
       data.forecast.forecastday[index].hour.forEach((day: CurrentWeather) => {
         day.temp_c = Math.round(day.temp_c);
         day.feelslike_c = Math.round(day.feelslike_c);

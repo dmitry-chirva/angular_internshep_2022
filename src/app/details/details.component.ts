@@ -21,7 +21,7 @@ import { Constants } from 'src/core/api/common/constants';
   styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent {
-  weatherInfo: CityWeatherInfo ;
+  weatherInfo: CityWeatherInfo;
 
   detailsColumns: Column[] = [
     { name: 'hour', displayName: '' },
@@ -34,6 +34,7 @@ export class DetailsComponent {
     { name: 'pressure', displayName: 'Pressure, mb' },
   ];
 
+  isLoading : boolean = false;
   detailsState : ForecastType | null = null;
   detailsData: DetailsInfo[] | null = [];
 
@@ -63,6 +64,7 @@ export class DetailsComponent {
   }
 
   ngOnInit() {
+    this.isLoading = true;
     this.homeService
       .getCurrentWeatherHome(this.geoLocationService.getPosition(), Constants.DEFAULT_CITY)
       .subscribe(({ year, date, month, temp, city }: CurrentWeatherData) => {
@@ -77,7 +79,10 @@ export class DetailsComponent {
       : this.detailsService.getDataForTomorrowWeatherTable(this.currentCity);
 
     getWeatherDataObservable
-      .pipe(tap((data : any) => this.detailsData = this.transformDataDetailsService.transformDetailsWeather(data)))
+      .pipe(tap((data : any) => {
+        this.detailsData = this.transformDataDetailsService.transformDetailsWeather(data);
+        this.isLoading = false;
+      }))
       .subscribe();
   }
 }
