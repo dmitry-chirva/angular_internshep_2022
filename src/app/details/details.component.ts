@@ -65,8 +65,21 @@ export class DetailsComponent {
       { link: `/${this.currentCity}/details`, name: 'Details', isActive: true },
     ];
     router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((value) => {
+      this.detailsState = activateRoute.snapshot.routeConfig?.path?.endsWith('tomorrow') ? ForecastType.Tomorrow : ForecastType.Today;
       this.currentCity = activateRoute.snapshot.params['city']
       this.weatherInfo.city = this.currentCity
+
+      const getWeatherDataObservable =
+        this.detailsState === ForecastType.Today
+          ? this.detailsService.getDataForTodayWeatherTable(this.currentCity)
+          : this.detailsService.getDataForTomorrowWeatherTable(this.currentCity);
+
+      getWeatherDataObservable
+        .pipe(tap((data : any) => {
+          this.detailsData = this.transformDataDetailsService.transformDetailsWeather(data)
+          console.log(this.detailsData)
+        }))
+        .subscribe();
 
       weatherService.getCurrentWeatherByCity(this.currentCity)
         .pipe(map((data) => this.weatherTransformService.toCurrentWeatherData(data)))
@@ -75,16 +88,6 @@ export class DetailsComponent {
           this.weatherInfo.temp = `${temp} °С`;
           this.weatherInfo.city = city;
         });
-
-      const getWeatherDataObservable =
-        this.detailsState === ForecastType.Today
-          ? this.detailsService.getDataForTodayWeatherTable(this.currentCity)
-          : this.detailsService.getDataForTomorrowWeatherTable(this.currentCity);
-      getWeatherDataObservable
-        .pipe(tap((data : any) => {
-          this.detailsData = this.transformDataDetailsService.transformDetailsWeather(data)
-        }))
-        .subscribe();
     })
   }
 
