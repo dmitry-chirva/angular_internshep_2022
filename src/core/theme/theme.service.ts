@@ -11,11 +11,13 @@ export class ThemeService {
 
   readonly THEME_STORAGE_KEY = 'theme-type';
   constructor(private storage: StorageService) {
-    if(this.storage.getItem(this.THEME_STORAGE_KEY)) {
-      const theme = <ThemeTypes>this.storage.getItem(this.THEME_STORAGE_KEY)[0];
+    let theme = ThemeTypes.LIGHT;
 
-      this.setTheme(theme);
+    if(this.storage.getItem(this.THEME_STORAGE_KEY).length) {
+      theme = <ThemeTypes>this.storage.getItem(this.THEME_STORAGE_KEY)[0];
     }
+
+    this.setTheme(theme);
   }
 
   getTheme$(): Observable<ThemeTypes> {
