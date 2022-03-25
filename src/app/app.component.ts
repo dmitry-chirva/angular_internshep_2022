@@ -21,7 +21,10 @@ export class AppComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.homeService
-      .getCurrentWeatherHome(this.geoLocationService.getPosition(), Constants.DEFAULT_CITY)
+      .getCurrentWeatherHome(
+        this.geoLocationService.getPosition(),
+        Constants.DEFAULT_CITY
+      )
       .subscribe(({ condition }: CurrentWeatherData) => {
         this.pathToBackgroundImg =
           this.conditionServise.getBackgroundImagePath(condition);
