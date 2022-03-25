@@ -1,40 +1,40 @@
-import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ThemeTypes } from '../../enums/theme-types.enum';
+import { ThemeService } from '../../../../core/theme/theme.service';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-theme-switcher',
   templateUrl: './theme-switcher.component.html',
   styleUrls: ['./theme-switcher.component.scss'],
 })
-export class ThemeSwitcherComponent implements OnInit {
-  themes: Themes = 'light-theme';
+export class ThemeSwitcherComponent implements OnInit, OnDestroy {
+  themeType: ThemeTypes = ThemeTypes.LIGHT;
 
-  constructor(@Inject(DOCUMENT) private document: Document,
-              private render: Renderer2) {}
+  private subscribers$ = new Subject();
 
-  lightTheme = 'light';
-  darkTheme = 'dark';
-  theme = this.lightTheme;
+  constructor(private themeService: ThemeService) {}
 
   ngOnInit(): void {
-    this.initializeTheme();
-  }
-
-  switchTheme() {
-    this.document.body.classList.replace(
-      this.themes, 
-      this.themes === 'light-theme' 
-        ? (this.themes = 'dark-theme') 
-        : (this.themes = 'light-theme')
+    this.themeService.getTheme$()
+      .pipe(takeUntil(this.subscribers$))
+      .subscribe(theme =>
+        this.themeType = theme
       );
   }
 
-  initializeTheme = (): void => 
-    this.render.addClass(this.document.body, this.themes)
+  ngOnDestroy(): void {
+    this.subscribers$.next(null);
+    this.subscribers$.complete();
+  }
 
-  onToggle(theme: string): void {
-    this.theme = theme === this.lightTheme ? this.darkTheme : this.lightTheme;
+  get isChecked(): boolean {
+    return this.themeType === ThemeTypes.DARK;
+  }
+
+  onThemeToggle(): void {
+    const newTheme =  (this.themeType === ThemeTypes.LIGHT ? ThemeTypes.DARK : ThemeTypes.LIGHT);
+
+    this.themeService.setTheme(newTheme);
   }
 }
-
-export type Themes = 'light-theme' | 'dark-theme';
