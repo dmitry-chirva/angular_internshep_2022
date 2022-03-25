@@ -63,6 +63,7 @@ export class DetailsComponent {
     private weatherTransformService : WeatherTransformService,
   ) {
     router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((value) => {
+      this.isLoading = true;
       this.currentCity = activateRoute.snapshot.params['city'];
       this.detailBreadcrumbLinks = [
         { link: '/', name: 'Home', isActive: false },
@@ -106,6 +107,7 @@ export class DetailsComponent {
           this.weatherInfo.temp = `${temp} °С`;
           this.weatherInfo.city = city;
           this.weatherInfo.isFavorite = !this.favoriteStateService.isFavoriteCity(this.currentCity)
+          this.isLoading = false;
         });
     })
   }
