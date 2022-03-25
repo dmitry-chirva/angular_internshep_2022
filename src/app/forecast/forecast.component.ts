@@ -19,6 +19,7 @@ export class ForecastComponent implements OnInit {
   forecastDays: number;
   weatherInfo: CityWeatherInfo;
   isForecastHistoryEnabled: boolean=true;
+  isLoading : boolean = false;
 
   constructor(
     private activateRoute: ActivatedRoute,
@@ -44,9 +45,14 @@ export class ForecastComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.isLoading = true;
+
     this.forecastService
       .getCurrentWeatherForecast(this.city, this.forecastDays)
-      .subscribe((forecast) => (this.forecast = forecast));
+      .subscribe((forecast) => {
+        this.forecast = forecast;
+        this.isLoading = false;
+      });
   }
 
   openForecastHistory() {
@@ -56,10 +62,13 @@ export class ForecastComponent implements OnInit {
 
     const periodDays = 7;
 
+    this.isLoading = true;
+
     this.forecastService.getHistoryWeatherForecast(this.city, this.getDatesRange(periodDays))
       .subscribe(forecastHistory => {
-        this.isForecastHistoryEnabled = false;
         this.forecastHistory = forecastHistory;
+        this.isForecastHistoryEnabled = false;
+        this.isLoading = false;
       });
   }
 

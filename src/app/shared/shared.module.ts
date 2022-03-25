@@ -35,6 +35,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     FavoriteToggleComponent,
     NotificationComponent,
     CardComponent,
+    LoaderComponent
   ],
 })
 export class SharedModule {}
