@@ -16,10 +16,10 @@
     ></app-card>
   </div>
   <button *ngIf="isForecastHistoryEnabled" type="button" class="forecast__history-button" (click)="openForecastHistory()">
-    Yesterday's weather &#8594;
+    Last week weather &#8594;
   </button>
   <button *ngIf="!isForecastHistoryEnabled" type="button" class="forecast__history-button-disabled">
-    Yesterday's weather :
+    Last week weather :
   </button>
   <div class="forecast-list">
     <app-card

@@ -22,5 +22,9 @@ export class StorageService {
     localStorage.setItem(key, JSON.stringify([...items.filter((i) => i !== item)]));
   }
 
+  clear(key: string): void {
+    localStorage.setItem(key, JSON.stringify([]));
+  }
+
   constructor() { }
 }

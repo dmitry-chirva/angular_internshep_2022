@@ -23,17 +23,7 @@ export class HeaderComponent {
     url: "kiev-kyyivska-oblast-ukraine"
   }
 
-  values: CitySearch[] = [
-    {
-      id: 2501828,
-      name: "Kiev",
-      region: "Kyyivs'ka Oblast'",
-      country: "Ukraine",
-      lat: 50.43,
-      lon: 30.52,
-      url: "kiev-kyyivska-oblast-ukraine"
-    },
-  ]
+  values: CitySearch[] = []
   searchLabel = 'name';
 
   onSearch(value: string):void {
