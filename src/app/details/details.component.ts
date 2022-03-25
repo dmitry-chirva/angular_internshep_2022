@@ -16,6 +16,8 @@ import { ForecastType } from '../shared/enums/forecast.enum';
 import {WeatherService} from "../../core/api/weather/weather.service";
 import {WeatherTransformService} from "../../core/api/common/weather-transform.service";
 import {ForecastData} from "../shared/interfaces/forecast-info.interfaces";
+import { Constants } from 'src/core/api/common/constants';
+
 
 @Component({
   selector: 'app-details',
@@ -23,6 +25,7 @@ import {ForecastData} from "../shared/interfaces/forecast-info.interfaces";
   styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent {
+
   weatherInfo: CityWeatherInfo = {
     city: '',
     date: '',
@@ -41,6 +44,7 @@ export class DetailsComponent {
     { name: 'pressure', displayName: 'Pressure, mb' },
   ];
 
+  isLoading : boolean = false;
   detailsState : ForecastType | null = null;
   detailsData: DetailsInfo[] = [];
 
@@ -107,6 +111,8 @@ export class DetailsComponent {
   }
 
   ngOnInit() {
+    this.isLoading = true;
+
     this.weatherService.getCurrentWeatherByCity(this.currentCity)
       .pipe(map((data) => this.weatherTransformService.toCurrentWeatherData(data)))
       .subscribe(({ year, date, month, temp, city }: CurrentWeatherData) => {
@@ -141,7 +147,8 @@ export class DetailsComponent {
         )
     getWeatherDataObservable
       .pipe(tap((data : any) => {
-        this.detailsData = this.transformDataDetailsService.transformDetailsWeather(data)
+        this.detailsData = this.transformDataDetailsService.transformDetailsWeather(data);
+        this.isLoading = false;
       }))
       .subscribe();
   }

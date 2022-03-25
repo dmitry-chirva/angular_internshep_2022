@@ -4,8 +4,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: $bkg-light-theme;
   min-height: 100px;
+  transition: 0.5s;
 
   &__text {
     color: $text-color-dark;

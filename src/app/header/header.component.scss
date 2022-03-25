@@ -2,14 +2,13 @@
 
 .header {
   position: fixed;
-  z-index: 1;
   width: 100%;
   height: 100px;
-  background: $bkg-light-theme;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1;
+  transition: 0.5s;
 }
 
 .header__inner {
@@ -68,3 +67,27 @@ app-autocomplete {
     width: 55%;
   }
 }
+
+.search__input {
+  font-size: $font-size-small;
+  width: 100%;
+  padding: 0 50px 0 28px;
+  height: 100%;
+  background: var(--input-color);
+  border: none;
+  border-radius: 5px;
+  transition: 0.5s;
+}
+
+input::placeholder {
+  color: var(--icon-search);
+  transition: 0.5s;
+}
+
+.search__icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 1.8rem;
+}
+
