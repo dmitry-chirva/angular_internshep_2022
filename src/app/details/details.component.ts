@@ -139,5 +139,10 @@ export class DetailsComponent {
             );
           })
         )
+    getWeatherDataObservable
+      .pipe(tap((data : any) => {
+        this.detailsData = this.transformDataDetailsService.transformDetailsWeather(data)
+      }))
+      .subscribe();
   }
 }
