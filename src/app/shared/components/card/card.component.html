@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="card__header">
+    <i class="icon-calendar header__calendar"></i>
+    <time class="header__date">{{ data.date | date }}</time>
+  </div>
+  <div class="card__icon-group">
+    <app-favorite-toggle *ngIf="data.city" class="card__favorite-icon" [favorite]="data"
+    (onChange)="onChange($event)">
+    </app-favorite-toggle>
+    <img class="card__weather-img" src='{{data.weatherIcon}}'  alt="weather icon">
+  </div>
+  <h2 *ngIf="data.city" class="card__city">{{ data.city }}</h2>
+  <p *ngIf="data.minTemp && data.maxTemp" class="card__day-temp">
+    {{ data.minTemp }} ... {{ data.maxTemp }}
+  </p>
+  <p class="card__temp" *ngIf="data.temp">{{ data.temp }}</p>
+  <p class="card__weather-info">{{ data.additionalInfo?.weatherLabel }}</p>
+  <p class="card__weather-info"  *ngIf="data.additionalInfo?.windSpeed">Wind speed: {{ data.additionalInfo?.windSpeed }}km/h</p>
+  <p class="card__weather-info">Humidity: {{ data.additionalInfo?.humidity }}%</p>
+</div>
+

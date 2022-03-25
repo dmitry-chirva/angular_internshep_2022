@@ -1,3 +1,4 @@
+@import "src/assets/styles/_general";
 @import "src/assets/styles/_variables";
 
 .forecast {
@@ -28,6 +29,14 @@
   color: $text-color;
   font-size: $font-size-small;
   font-weight: $font-weight-regular;
+
+  &-disabled {
+    color: $text-color;
+    font-size: $font-size-small;
+    font-weight: $font-weight-regular;
+    margin-bottom: 25px;
+    cursor: none;
+  }
 }
 
 app-btn-groups {

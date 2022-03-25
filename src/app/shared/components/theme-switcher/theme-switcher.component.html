@@ -3,8 +3,8 @@
     <input
       type="checkbox"
       class="theme-switcher__input"
-      [value]="theme"
-      (change)="onToggle(theme)"
+      [checked]="isChecked"
+      (change)="onThemeToggle()"
     />
     <span class="theme-switcher__slider"></span>
   </label>

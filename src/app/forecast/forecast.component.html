@@ -1,4 +1,5 @@
-<div class="forecast">
+<app-loader *ngIf="isLoading" class="loader"></app-loader>
+<div *ngIf="!isLoading" class="forecast">
   <app-breadcrumbs [links]="forecastBreadcrumbLinks"></app-breadcrumbs>
   <app-btn-groups [currentCity]="weatherInfo?.city"></app-btn-groups>
   <app-current-weather
@@ -8,13 +9,23 @@
     [hasInfo]="false"
   ></app-current-weather>
   <div class="forecast-list">
-    <app-forecast-card
+    <app-card
       *ngFor="let day of forecast"
-      [day]="day"
+      [data]="day"
       class="forecast-list__item"
-    ></app-forecast-card>
+    ></app-card>
   </div>
-  <button type="button" class="forecast__history-button">
-    Yesterday's weather &#8594;
+  <button *ngIf="isForecastHistoryEnabled" type="button" class="forecast__history-button" (click)="openForecastHistory()">
+    Last week weather &#8594;
   </button>
+  <button *ngIf="!isForecastHistoryEnabled" type="button" class="forecast__history-button-disabled">
+    Last week weather :
+  </button>
+  <div class="forecast-list">
+    <app-card
+      *ngFor="let day of forecastHistory"
+      [data]="day"
+      class="forecast-list__item"
+    ></app-card>
+  </div>
 </div>

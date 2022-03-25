@@ -21,7 +21,39 @@ export class DetailsService {
     private transformDataDetailsService: TransformDataDetailsService
   ) {}
 
-  getDataForWeatherTable(city: string): Observable<DetailsInfo | unknown> {
+  getDataForTodayWeatherTable(city: string): Observable<DetailsInfo | unknown> {
+    return this.getDataForWeatherTable(city, 0);
+  }
+
+  getDataForTomorrowWeatherTable(city: string): Observable<DetailsInfo | unknown> {
+    return this.getDataForWeatherTable(city, 1);
+  }
+
+  getCurrentWeatherHome(
+    geoLocation: Observable<GeolocationPosition>,
+    fallbackCity : string
+  ): Observable<CurrentWeatherData> {
+    return geoLocation.pipe(
+      switchMap((pos: { coords: { latitude: number; longitude: number } }) => {
+        const latitude = pos.coords.latitude;
+        const longitude = pos.coords.longitude;
+        return this.weatherService
+          .getCurrentWeatherByCoordinates(latitude, longitude)
+          .pipe(
+            map((data) =>
+              this.weatherTransformService.toCurrentWeatherData(data)
+            )
+          );
+      })
+    )
+    .pipe(
+      catchError(() =>
+        this.weatherService.getCurrentWeatherByCity(fallbackCity)
+          .pipe(map((data) => this.weatherTransformService.toCurrentWeatherData(data))
+    )));
+  }
+
+  private getDataForWeatherTable(city: string, index : number): Observable<DetailsInfo | unknown> {
     return this.geolocationService
       .getPosition()
       .pipe(
@@ -30,15 +62,13 @@ export class DetailsService {
             const latitude = pos.coords.latitude;
             const longitude = pos.coords.longitude;
             return this.weatherService
-              .getCurrentWeather(latitude, longitude)
+              .getCurrentWeatherByCoordinates(latitude, longitude)
               .pipe(
                 switchMap((currentLocation: CurrentLocationWeather) => {
                   const cityName = currentLocation.location.name;
                   return this.weatherService.getForecastWeather(cityName).pipe(
                     switchMap((data: ForecastData) => {
-                      return this.transformDataDetailsService.getDataDetails(
-                        data
-                      );
+                      return this.transformDataDetailsService.getDataDetails(data, index);
                     })
                   );
                 })
@@ -53,30 +83,12 @@ export class DetailsService {
               const cityName = currentLocation.location.name;
               return this.weatherService.getForecastWeather(cityName).pipe(
                 switchMap((data: ForecastData) => {
-                  return this.transformDataDetailsService.getDataDetails(data);
+                  return this.transformDataDetailsService.getDataDetails(data, 1);
                 })
               );
             })
           )
         )
       );
-  }
-
-  getCurrentWeatherHome(
-    geoLocation: Observable<GeolocationPosition>
-  ): Observable<CurrentWeatherData> {
-    return geoLocation.pipe(
-      switchMap((pos: { coords: { latitude: number; longitude: number } }) => {
-        const latitude = pos.coords.latitude;
-        const longitude = pos.coords.longitude;
-        return this.weatherService
-          .getCurrentWeather(latitude, longitude)
-          .pipe(
-            map((data) =>
-              this.weatherTransformService.toCurrentWeatherData(data)
-            )
-          );
-      })
-    );
   }
 }
