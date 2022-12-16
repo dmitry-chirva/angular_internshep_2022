@@ -28,18 +28,22 @@ export class AppComponent implements OnInit, OnDestroy {
   ) {}
   ngOnInit(): void {
     this.homeService
-      .getCurrentWeatherHome(this.geoLocationService.getPosition(), Constants.DEFAULT_CITY)
+      .getCurrentWeatherHome(
+        this.geoLocationService.getPosition(),
+        Constants.DEFAULT_CITY
+      )
       .pipe(takeUntil(this.subscribers$))
       .subscribe(({ condition }: CurrentWeatherData) => {
         this.pathToBackgroundImg =
           this.conditionService.getBackgroundImagePath(condition);
       });
 
-    this.themeService.getTheme$()
+    this.themeService
+      .getTheme$()
       .pipe(takeUntil(this.subscribers$))
-      .subscribe(theme => {
+      .subscribe((theme) => {
         this.applyTheme(theme);
-      })
+      });
   }
 
   ngOnDestroy(): void {

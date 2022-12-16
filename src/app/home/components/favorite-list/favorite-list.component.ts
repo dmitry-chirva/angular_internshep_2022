@@ -12,34 +12,41 @@ import { StorageService } from 'src/core/storage/storage.service';
   styleUrls: ['./favorite-list.component.scss'],
   providers: [FavoriteStateService, StorageService],
 })
-export class FavoriteListComponent implements OnInit  {
-
+export class FavoriteListComponent implements OnInit {
   favorites: CityWeatherInfo[] = [];
   constructor(
     private favoriteService: FavoriteService,
     private favoriteStateService: FavoriteStateService,
-    private notificationService : NotificationService) {
-  }
+    private notificationService: NotificationService
+  ) {}
 
-  ngOnInit(){
+  ngOnInit() {
     this.favorites = this.favoriteService.getFavorites();
 
-    if(!this.favoriteStateService.hasMaxCities()){
-      this.notificationService.show( NotificationType.Error ,`Your can add only ${this.favoriteStateService.MAX_AMOUNT_OF_FAVS} cities to your list of favorites`)
+    if (!this.favoriteStateService.hasMaxCities()) {
+      this.notificationService.show(
+        NotificationType.Error,
+        `Your can add only ${this.favoriteStateService.MAX_AMOUNT_OF_FAVS} cities to your list of favorites`
+      );
     }
   }
 
-  handleFavoriteCard(currentCity:CityWeatherInfo){
-    (currentCity.isFavorite)
-    ? this.favoriteStateService.addFavoriteCity(currentCity.city)
-    : this.favoriteStateService.removeFavoriteCity(currentCity.city)
+  handleFavoriteCard(currentCity: CityWeatherInfo) {
+    currentCity.isFavorite
+      ? this.favoriteStateService.addFavoriteCity(currentCity.city)
+      : this.favoriteStateService.removeFavoriteCity(currentCity.city);
     this.favorites = this.favoriteService.getFavorites();
 
-    if(currentCity.isFavorite){
-      this.notificationService.show(NotificationType.Info,`You added ${currentCity.city} to your favorites!`);
-    }else{
-
-      this.notificationService.show(NotificationType.Info,`You deleted ${currentCity.city} from your list of favorites`);
+    if (currentCity.isFavorite) {
+      this.notificationService.show(
+        NotificationType.Info,
+        `You added ${currentCity.city} to your favorites!`
+      );
+    } else {
+      this.notificationService.show(
+        NotificationType.Info,
+        `You deleted ${currentCity.city} from your list of favorites`
+      );
     }
   }
 }

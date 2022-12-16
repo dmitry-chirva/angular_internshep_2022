@@ -3,10 +3,10 @@
     [data]="data"
     [searchKeyword]="label"
     placeholder="Search..."
-    (selected)='selectedCity.emit($event)'
+    (selected)="selectedCity.emit($event)"
     (inputCleared)="clearInput.emit()"
-    (inputChanged)='onSearch.emit($event)'
-    (inputFocused)='onFocused($event)'
+    (inputChanged)="onSearch.emit($event)"
+    (inputFocused)="onFocused($event)"
     [itemTemplate]="itemTemplate"
     [notFoundTemplate]="notFoundTemplate"
     [minQueryLength]="3"

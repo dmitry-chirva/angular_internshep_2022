@@ -1,6 +1,66 @@
 <app-loader *ngIf="isLoading" class="loader"></app-loader>
 <div *ngIf="!isLoading">
-    <app-current-weather [weatherInfo]="weatherInfo" [hasFavorite]="false">
-    </app-current-weather>
-    <app-favorite-list></app-favorite-list>
+  <app-current-weather [weatherInfo]="weatherInfo" [hasFavorite]="false">
+  </app-current-weather>
+  <app-favorite-list></app-favorite-list>
+</div>
+
+<h1 class="title">
+  Більш реальна картина щодо курсу валют від "cdn.jsdelivr.net":
+</h1>
+<div class="currency-container">
+  <div class="input-group mb-3">
+    <span class="input-group-text">{{ currencyBadgeTop }}</span>
+    <input
+      [(ngModel)]="transactionFirstField"
+      (ngModelChange)="formModelChanged(fieldsName.TRANSACTION_FIRST_VALUE)"
+      type="number"
+      class="form-control"
+      autocomplete="off"
+      [name]="fieldsName.TRANSACTION_FIRST_VALUE"
+      aria-label="Amount (to the nearest dollar)"
+    />
+  </div>
+  <select
+    [(ngModel)]="currencyFirstField"
+    (ngModelChange)="formModelChanged(fieldsName.CURRENCY_FIRST_VALUE)"
+    class="form-select"
+    [name]="fieldsName.CURRENCY_FIRST_VALUE"
+    aria-label="Default select example"
+  >
+    <option
+      *ngFor="let currencyMarker of currencyMarkers"
+      value="{{ currencyMarker.type | lowercase }}"
+    >
+      {{ currencyMarker.type }}
+    </option>
+  </select>
+</div>
+<div class="currency-container">
+  <div class="input-group mb-3">
+    <span class="input-group-text">{{ currencyBadgeButtom }}</span>
+    <input
+      [(ngModel)]="transactionSecondField"
+      (ngModelChange)="formModelChanged(fieldsName.TRANSACTION_SECOND_VALUE)"
+      type="number"
+      class="form-control"
+      autocomplete="off"
+      [name]="fieldsName.TRANSACTION_SECOND_VALUE"
+      aria-label="Amount (to the nearest dollar)"
+    />
+  </div>
+  <select
+    [(ngModel)]="currencySecondField"
+    (ngModelChange)="formModelChanged(fieldsName.CURRENCY_SECOND_VALUE)"
+    class="form-select"
+    [name]="fieldsName.CURRENCY_SECOND_VALUE"
+    aria-label="Default select example"
+  >
+    <option
+      *ngFor="let currencyMarker of currencyMarkers"
+      value="{{ currencyMarker.type | lowercase }}"
+    >
+      {{ currencyMarker.type }}
+    </option>
+  </select>
 </div>
